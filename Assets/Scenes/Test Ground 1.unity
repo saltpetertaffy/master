@@ -983,10 +983,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1892880570, guid: 19f151c97f861d44f9d31e2d5498b273, type: 3}
-      propertyPath: hitBoxBuffer
-      value: 0.75
-      objectReference: {fileID: 0}
     - target: {fileID: 7457814603189902434, guid: 19f151c97f861d44f9d31e2d5498b273,
         type: 3}
       propertyPath: m_LocalPosition.x
