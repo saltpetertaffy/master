@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 1055220172}
   - component: {fileID: 1055220173}
   - component: {fileID: 9176970074476659216}
+  - component: {fileID: 7786624517318624836}
   m_Layer: 10
-  m_Name: Weapon Rotator
+  m_Name: Weapon Mount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,6 +65,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de3ac78b7a4d192468d3cbfa9b3491f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7786624517318624836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055220171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73ad2025d98025345a626c18b473cb3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 360
 --- !u!1 &3018056273729346169
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,6 +160,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1234570310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4547393375534385873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73ad2025d98025345a626c18b473cb3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 360
 --- !u!61 &1515257459
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -260,8 +287,6 @@ MonoBehaviour:
   moveSpeed: 5
   midairReverseSpeed: 2
   jumpSpeed: 6
-  directionIndicatorRotatorPrefab: {fileID: 4547393375534385873}
-  weapon: {fileID: 9176970074476659216}
 --- !u!61 &4282263932519210380
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -272,10 +297,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.95}
+  m_Offset: {x: 0, y: -1.023681}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -286,7 +311,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.15}
+  m_Size: {x: 1, y: 0.2973621}
   m_EdgeRadius: 0
 --- !u!1001 &6277905006594421340
 PrefabInstance:
@@ -489,7 +514,7 @@ PrefabInstance:
     - target: {fileID: 5221401475063660238, guid: 145f99cd68be7494da1440ef57b48791,
         type: 3}
       propertyPath: m_Name
-      value: Direction Indicator Rotator
+      value: Direction Indicator
       objectReference: {fileID: 0}
     - target: {fileID: 5221401475063660238, guid: 145f99cd68be7494da1440ef57b48791,
         type: 3}
@@ -510,6 +535,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9109255696659693187, guid: 145f99cd68be7494da1440ef57b48791,
+        type: 3}
+      propertyPath: m_Name
+      value: Body
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 145f99cd68be7494da1440ef57b48791, type: 3}

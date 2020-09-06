@@ -583,68 +583,6 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
---- !u!1 &1055220171 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1055220171, guid: 19f151c97f861d44f9d31e2d5498b273,
-    type: 3}
-  m_PrefabInstance: {fileID: 7457814603403515659}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1055220172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1055220171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73ad2025d98025345a626c18b473cb3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 360
---- !u!114 &1055220175 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9176970074476659216, guid: 19f151c97f861d44f9d31e2d5498b273,
-    type: 3}
-  m_PrefabInstance: {fileID: 7457814603403515659}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1055220171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de3ac78b7a4d192468d3cbfa9b3491f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &1234570307 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4547393375534385873, guid: 19f151c97f861d44f9d31e2d5498b273,
-    type: 3}
-  m_PrefabInstance: {fileID: 7457814603403515659}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1234570308 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4281814024828082967, guid: 19f151c97f861d44f9d31e2d5498b273,
-    type: 3}
-  m_PrefabInstance: {fileID: 7457814603403515659}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1234570307}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90e314c31508ad04cad57a17f39d6019, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1234570310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1234570307}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73ad2025d98025345a626c18b473cb3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 360
 --- !u!1 &1582695384
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,50 +673,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -3548420785637001381, guid: 19f151c97f861d44f9d31e2d5498b273,
-        type: 3}
-      propertyPath: directionIndicatorRotatorPrefab
-      value: 
-      objectReference: {fileID: 1234570308}
-    - target: {fileID: -3548420785637001381, guid: 19f151c97f861d44f9d31e2d5498b273,
-        type: 3}
-      propertyPath: directionIndicatorPrefab
-      value: 
-      objectReference: {fileID: 1234570308}
-    - target: {fileID: -3548420785637001381, guid: 19f151c97f861d44f9d31e2d5498b273,
-        type: 3}
-      propertyPath: weaponMount
-      value: 
-      objectReference: {fileID: 1055220175}
-    - target: {fileID: 1055220171, guid: 19f151c97f861d44f9d31e2d5498b273, type: 3}
-      propertyPath: m_Name
-      value: Weapon Mount
-      objectReference: {fileID: 0}
-    - target: {fileID: 650525091090991772, guid: 19f151c97f861d44f9d31e2d5498b273,
-        type: 3}
-      propertyPath: m_Name
-      value: Body
-      objectReference: {fileID: 0}
-    - target: {fileID: 4282263932519210380, guid: 19f151c97f861d44f9d31e2d5498b273,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4282263932519210380, guid: 19f151c97f861d44f9d31e2d5498b273,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: -1.023681
-      objectReference: {fileID: 0}
-    - target: {fileID: 4282263932519210380, guid: 19f151c97f861d44f9d31e2d5498b273,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.2973621
-      objectReference: {fileID: 0}
-    - target: {fileID: 4547393375534385873, guid: 19f151c97f861d44f9d31e2d5498b273,
-        type: 3}
-      propertyPath: m_Name
-      value: Direction Indicator
-      objectReference: {fileID: 0}
     - target: {fileID: 7457814603189902434, guid: 19f151c97f861d44f9d31e2d5498b273,
         type: 3}
       propertyPath: m_LocalPosition.x

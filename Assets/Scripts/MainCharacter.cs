@@ -11,10 +11,7 @@ public class MainCharacter : MonoBehaviour
     [SerializeField] float midairReverseSpeed = 2f;
     [SerializeField] float jumpSpeed = 5f;
 
-    [Header("Model")]
-    [SerializeField] DirectionIndicator directionIndicatorPrefab;
-    [SerializeField] WeaponMount weaponMount;
-
+    WeaponMount weaponMount;
     BoxCollider2D mainCharacterFeetCollider;
     Rigidbody2D mainCharacterRigidbody;
 
@@ -27,6 +24,7 @@ public class MainCharacter : MonoBehaviour
     {
         mainCharacterRigidbody = GetComponent<Rigidbody2D>();
         mainCharacterFeetCollider = GetComponent<BoxCollider2D>();
+        weaponMount = GetComponentInChildren<WeaponMount>();
     }
 
     // Update is called once per frame
@@ -44,10 +42,6 @@ public class MainCharacter : MonoBehaviour
         float xInput = Input.GetAxis(GameKeys.AXIS_HORIZONTAL_KEY);
 
         bool isReversing = Mathf.Sign(xInput) != Mathf.Sign(jumpXSpeed) && Mathf.Abs(jumpXSpeed) > Mathf.Epsilon;
-        if (isReversing) {
-            Debug.Log("touchingGround: " + isTouchingGround + ", jumpXSpeed: " + jumpXSpeed);
-            Debug.Log("reversedInMidair: " + hasReversedInMidair);
-        }
 
         if ((!isTouchingGround && isReversing) || hasReversedInMidair) {
             selectedSpeed = midairReverseSpeed;
