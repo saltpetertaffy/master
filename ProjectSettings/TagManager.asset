@@ -17,8 +17,8 @@ TagManager:
   - Player
   - Weapon
   - Hitbox
-  - 
-  - 
+  - Enemy Projectile
+  - Projectile Shape
   - 
   - 
   - 
@@ -52,4 +52,7 @@ TagManager:
     locked: 0
   - name: Character UI
     uniqueID: 3821528969
+    locked: 0
+  - name: Projectile
+    uniqueID: 1278401831
     locked: 0

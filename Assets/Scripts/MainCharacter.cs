@@ -9,7 +9,7 @@ public class MainCharacter : MonoBehaviour
     [Header("Config")]
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float midairReverseSpeed = 2f;
-    [SerializeField] float jumpSpeed = 5f;
+    [SerializeField] float jumpSpeed = 12f;
 
     WeaponMount weaponMount;
     BoxCollider2D mainCharacterFeetCollider;
@@ -20,16 +20,14 @@ public class MainCharacter : MonoBehaviour
     bool isTouchingGround = true;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         mainCharacterRigidbody = GetComponent<Rigidbody2D>();
         mainCharacterFeetCollider = GetComponent<BoxCollider2D>();
         weaponMount = GetComponentInChildren<WeaponMount>();
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         UpdateMidair();
         Move();
         Jump();
@@ -38,6 +36,7 @@ public class MainCharacter : MonoBehaviour
 
     private void Move() {
         if (!Input.GetButton(GameKeys.AXIS_HORIZONTAL_KEY)) { return; }
+        
         float selectedSpeed;
         float xInput = Input.GetAxis(GameKeys.AXIS_HORIZONTAL_KEY);
 
@@ -58,7 +57,6 @@ public class MainCharacter : MonoBehaviour
 
     private void Jump() {
         if (!isTouchingGround || !Input.GetButtonDown(GameKeys.AXIS_JUMP_KEY)) { return; }
-
         float currentXSpeed = mainCharacterRigidbody.velocity.x;
         if (Mathf.Abs(currentXSpeed) < GameConfigConstants.GAME_JUMP_MINIMUM_X_THRESHOLD) {
             jumpXSpeed = 0f;
