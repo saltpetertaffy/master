@@ -23,16 +23,14 @@ public class MainCharacter : MonoBehaviour
     bool isTouchingGround = true;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         mainCharacterRigidbody = GetComponent<Rigidbody2D>();
         mainCharacterFeetCollider = GetComponent<BoxCollider2D>();
         weaponMount = GetComponentInChildren<WeaponMount>();
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         UpdateMidair();
         Move();
         Jump();

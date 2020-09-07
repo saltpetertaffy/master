@@ -1,35 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &624153542
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 624153543}
-  m_Layer: 9
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &624153543
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 624153542}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 7457814603189902434}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1055220171
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 1190416589298391068}
   m_Father: {fileID: 7457814603189902434}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1055220173
 Animator:
@@ -249,7 +219,7 @@ Transform:
   m_Children:
   - {fileID: 1437931694}
   m_Father: {fileID: 7457814603189902434}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1892880570
 MonoBehaviour:
@@ -296,7 +266,7 @@ Transform:
   m_Children:
   - {fileID: 7702684288957352900}
   m_Father: {fileID: 7457814603189902434}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1726265901081886493
 SpriteRenderer:
@@ -418,7 +388,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 624153543}
   - {fileID: 1055220172}
   - {fileID: 2717265667604062228}
   - {fileID: 1892880569}
@@ -477,6 +446,7 @@ MonoBehaviour:
   moveSpeed: 5
   midairReverseSpeed: 2
   jumpSpeed: 6
+  maximumHealth: 100
 --- !u!61 &4282263932519210380
 BoxCollider2D:
   m_ObjectHideFlags: 0
