@@ -7,9 +7,9 @@ public class Projectile : MonoBehaviour
     [SerializeField] int healthDamageFlat = 1;
     [SerializeField] [Range(0, 1)] float healthDamagePercentMax = 0f;
     [SerializeField] [Range(0, 1)] float healthDamagePercentRemaining = 0f;
-    [SerializeField] int armorDamageFlat = 0;
-    [SerializeField] [Range(0, 1)] float armorDamagePercentMax = 0f;
-    [SerializeField] [Range(0, 1)] float armorDamagePercentRemaining = 0f;
+    [SerializeField] int armorHealingFlat = 0;
+    [SerializeField] [Range(0, 1)] float armorHealingPercentMax = 0f;
+    [SerializeField] [Range(0, 1)] float armorHealingPercentRemaining = 0f;
 
     Collider2D projectileCollider;
     Health mainCharacterHealth;
@@ -24,7 +24,7 @@ public class Projectile : MonoBehaviour
             + healthDamagePercentMax * mainCharacterHealth.GetMaximumHealth()
             + healthDamagePercentRemaining * mainCharacterHealth.GetHealth());
         float damageRedShade = totalDamage / (float) mainCharacterHealth.GetHealth();
-        GetComponent<SpriteRenderer>().color = new Color(damageRedShade, 0, 0);
+        GetComponent<SpriteRenderer>().color = new Color(1, 1 - damageRedShade, 1 - damageRedShade);
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
