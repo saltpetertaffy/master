@@ -4,16 +4,9 @@ using UnityEngine;
 using GameConstants;
 using ObjectMovers;
 
-public class DirectionIndicator : MonoBehaviour
+public class DirectionIndicator : Rotator
 {
     [SerializeField] GameObject directionIndicatorPrefab;
-    [SerializeField] float rotationSpeed = 360f;
-
-    Rotator rotator;
-
-    private void Start() {
-        rotator = GetComponent<Rotator>();
-    }
 
     // Update is called once per frame
     void Update()
@@ -34,14 +27,11 @@ public class DirectionIndicator : MonoBehaviour
         }
 
         if (directionIndicatorPrefab.activeSelf) {
-            rotator.RotateTowardsAngle(angle);
+            RotateTowardsAngle(angle);
             return;
         }
 
         directionIndicatorPrefab.SetActive(true);
-        rotator.RotateInstant(angle);
-
-        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed);     
+        RotateInstant(angle);    
     }
 }
