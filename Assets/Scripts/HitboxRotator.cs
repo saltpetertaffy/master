@@ -42,7 +42,6 @@ public class HitboxRotator : Rotator
         } else {
             newHitboxVector = new Vector2(inputVector.magnitude / parentBounds.size.x / 2, 0);
         }
-        Debug.Log(newHitboxVector);
         hitbox.transform.localPosition = newHitboxVector;
 
         RotateInstant(angle);
