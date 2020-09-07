@@ -15,9 +15,8 @@ public class Projectile : MonoBehaviour
     }
 
     private void Update() {
-        float damageRedShade = (float) damage / (float) mainCharacterHealth.GetHealth();
-        Debug.Log(damageRedShade);
-        GetComponent<SpriteRenderer>().color = new Color(damage / mainCharacterHealth.GetHealth(), 0, 0);
+        float damageRedShade = damage / (float) mainCharacterHealth.GetHealth();
+        GetComponent<SpriteRenderer>().color = new Color(damageRedShade, 0, 0);
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
