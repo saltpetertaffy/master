@@ -11,6 +11,9 @@ public class MainCharacter : MonoBehaviour
     [SerializeField] float midairReverseSpeed = 2f;
     [SerializeField] float jumpSpeed = 5f;
 
+    [Header("Game Stats")]
+    [SerializeField] int maximumHealth = 100;
+
     WeaponMount weaponMount;
     BoxCollider2D mainCharacterFeetCollider;
     Rigidbody2D mainCharacterRigidbody;
