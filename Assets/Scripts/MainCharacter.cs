@@ -13,11 +13,9 @@ public class MainCharacter : MonoBehaviour
 
     WeaponMount weaponMount;
     BoxCollider2D mainCharacterFeetCollider;
-    CapsuleCollider2D mainCharacterWallCollider;
     Rigidbody2D mainCharacterRigidbody;
 
     float jumpXSpeed = 0;
-    float groundFriction;
     bool hasReversedInMidair = false;
     bool isTouchingGround = true;
 
@@ -25,7 +23,6 @@ public class MainCharacter : MonoBehaviour
     void Start() {
         mainCharacterRigidbody = GetComponent<Rigidbody2D>();
         mainCharacterFeetCollider = GetComponent<BoxCollider2D>();
-        mainCharacterWallCollider = GetComponent<CapsuleCollider2D>();
         weaponMount = GetComponentInChildren<WeaponMount>();
     }
 
@@ -44,11 +41,8 @@ public class MainCharacter : MonoBehaviour
         float xInput = Input.GetAxis(GameKeys.AXIS_HORIZONTAL_KEY);
 
         bool isReversing = Mathf.Sign(xInput) != Mathf.Sign(jumpXSpeed) && Mathf.Abs(jumpXSpeed) > Mathf.Epsilon;
-        bool isTouchingWall = mainCharacterWallCollider.IsTouchingLayers(LayerMask.GetMask(GameKeys.LAYER_GROUND_KEY));
 
-        if (isTouchingWall && !isTouchingGround) {
-            selectedSpeed = 0f;
-        } else if ((!isTouchingGround && isReversing) || hasReversedInMidair) {
+        if ((!isTouchingGround && isReversing) || hasReversedInMidair) {
             selectedSpeed = midairReverseSpeed;
             hasReversedInMidair = true;
         } else {
@@ -87,9 +81,6 @@ public class MainCharacter : MonoBehaviour
         isTouchingGround = mainCharacterFeetCollider.IsTouchingLayers(LayerMask.GetMask(GameKeys.LAYER_GROUND_KEY));
         if (isTouchingGround) {
             hasReversedInMidair = false;
-            //mainCharacterRigidbody.sharedMaterial.friction = groundedFriction;
-        } else {
-            //mainCharacterRigidbody.sharedMaterial.friction = 0;
         }
     }
 }
