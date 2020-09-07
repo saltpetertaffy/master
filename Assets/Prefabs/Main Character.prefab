@@ -445,8 +445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   midairReverseSpeed: 2
-  jumpSpeed: 6
-  maximumHealth: 100
+  jumpSpeed: 12
 --- !u!61 &4282263932519210380
 BoxCollider2D:
   m_ObjectHideFlags: 0
