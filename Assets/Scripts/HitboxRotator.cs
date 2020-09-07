@@ -6,8 +6,12 @@ using ObjectMovers;
 
 public class HitboxRotator : Rotator
 {
-    [SerializeField] float hitBoxOuterBuffer = .2f;
+    [Header("Config")]
+    [SerializeField] float hitBoxBuffer = .75f;
+
+    [Header("Model")]
     [SerializeField] GameObject parentSprite;
+
     Hitbox hitbox;
 
     // Start is called before the first frame update
@@ -28,12 +32,18 @@ public class HitboxRotator : Rotator
 
         if (inputVector.magnitude < GameConfigConstants.INPUT_DEAD_ZONE) {
             hitbox.transform.localPosition = new Vector2(0, 0);
-        } else {
-            Bounds parentBounds = parentSprite.GetComponent<SpriteRenderer>().bounds;
-            hitbox.transform.localPosition = new Vector2(inputVector.magnitude / parentBounds.size.x / 2, 0);
+            return;
         }
-        
-        Debug.Log(hitbox.transform.localPosition);
+
+        Bounds parentBounds = parentSprite.GetComponent<SpriteRenderer>().bounds;
+        Vector2 newHitboxVector;
+        if (inputVector.magnitude > parentBounds.size.x / 2) {
+            newHitboxVector = new Vector2(parentBounds.size.x / 2 - hitBoxBuffer, 0);
+        } else {
+            newHitboxVector = new Vector2(inputVector.magnitude / parentBounds.size.x / 2, 0);
+        }
+        hitbox.transform.localPosition = newHitboxVector;
+
         RotateInstant(angle);
     }
 }
