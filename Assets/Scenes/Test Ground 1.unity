@@ -133,6 +133,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Projectile (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3695005598105236492, guid: 273132091fae11044bcd7c620fad1df5,
+        type: 3}
+      propertyPath: damage
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3695005598105236494, guid: 273132091fae11044bcd7c620fad1df5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -250,6 +255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maximumHealth: 100
+  maximumArmor: 100
 --- !u!1001 &490152596
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -261,6 +267,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Projectile (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3695005598105236492, guid: 273132091fae11044bcd7c620fad1df5,
+        type: 3}
+      propertyPath: damage
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3695005598105236494, guid: 273132091fae11044bcd7c620fad1df5,
         type: 3}
@@ -340,6 +351,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Projectile (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3695005598105236492, guid: 273132091fae11044bcd7c620fad1df5,
+        type: 3}
+      propertyPath: damage
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3695005598105236494, guid: 273132091fae11044bcd7c620fad1df5,
         type: 3}
@@ -1226,6 +1242,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Projectile (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3695005598105236492, guid: 273132091fae11044bcd7c620fad1df5,
+        type: 3}
+      propertyPath: damage
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3695005598105236494, guid: 273132091fae11044bcd7c620fad1df5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1304,6 +1325,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Projectile (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3695005598105236492, guid: 273132091fae11044bcd7c620fad1df5,
+        type: 3}
+      propertyPath: damage
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3695005598105236494, guid: 273132091fae11044bcd7c620fad1df5,
         type: 3}
@@ -1519,6 +1545,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Projectile (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 3695005598105236492, guid: 273132091fae11044bcd7c620fad1df5,
+        type: 3}
+      propertyPath: damage
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3695005598105236494, guid: 273132091fae11044bcd7c620fad1df5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1597,6 +1628,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Projectile (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3695005598105236492, guid: 273132091fae11044bcd7c620fad1df5,
+        type: 3}
+      propertyPath: damage
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3695005598105236494, guid: 273132091fae11044bcd7c620fad1df5,
         type: 3}
@@ -1731,6 +1767,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2701777548114409391, guid: d4089fb681f2aa7409bc13c3f81c6f9b,
+        type: 3}
+      propertyPath: damage
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2701777548114409384, guid: d4089fb681f2aa7409bc13c3f81c6f9b, type: 3}
