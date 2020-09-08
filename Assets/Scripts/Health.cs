@@ -8,12 +8,33 @@ public class Health : MonoBehaviour
     [SerializeField] int maximumHealth = 100;
     [SerializeField] int maximumArmor = 100;
 
+    [Header("Model")]
+    [SerializeField] GameObject healthOwner;
+
     private int health;
     private int armor;
 
+    DeathBehavior[] deathBehaviors;
+
     private void Start() {
+        deathBehaviors = GetComponents<DeathBehavior>();
         health = maximumHealth;
         armor = maximumArmor;
+    }
+
+    private void Update() {
+        if (ReadyToDie()) {
+            Destroy(healthOwner);
+        }
+    }
+
+    private bool ReadyToDie() {
+        foreach (DeathBehavior deathBehavior in deathBehaviors) {
+            if (!deathBehavior.isCompleted) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public void AddHealth(int healthToAdd) {
@@ -36,15 +57,18 @@ public class Health : MonoBehaviour
         armor = (armor < armorToRemove) ? 0 : armor - armorToRemove;
     }
 
-    private void Die() {
-
-    }
-
     public int GetHealth() {
         return health;
     }
 
     public int GetMaximumHealth() {
         return maximumHealth;
+    }
+
+    private void Die() {
+        DeathBehavior[] deathBehaviors = GetComponents<DeathBehavior>();
+        foreach (DeathBehavior deathBehavior in deathBehaviors) {
+            deathBehavior.OnDeath();
+        }
     }
 }

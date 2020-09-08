@@ -5,12 +5,29 @@ using GameConstants;
 
 public class Hitbox : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start() {
+    Health health;
+
+    private void Start() {
+        health = GetComponent<Health>();
     }
 
-    // Update is called once per frame
-    void Update() {
+    public void HandleHit(GameStatEffect[] projectileEffects) {
+        int totalDamage = 0;
+        
+        foreach (GameStatEffect projectileEffect in projectileEffects) {
+            switch (projectileEffect.GetGameStatEffectId()) {
+                case GameConfigConstants.EFFECT_ID_DAMAGE:
+                    totalDamage += Mathf.RoundToInt(projectileEffect.GetValue());
+                    break;
+                case GameConfigConstants.EFFECT_ID_DAMAGE_PERCENT_MAX:
+                    totalDamage += Mathf.RoundToInt(projectileEffect.GetValue() * health.GetMaximumHealth());
+                    break;
+                case GameConfigConstants.EFFECT_ID_DAMAGE_PERCENT_REMAINING:
+                    totalDamage += Mathf.RoundToInt(projectileEffect.GetValue() * health.GetHealth());
+                    break;
+            }
+        }
 
+        health.RemoveHealth(totalDamage);
     }
 }
