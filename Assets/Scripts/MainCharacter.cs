@@ -10,8 +10,9 @@ public class MainCharacter : MonoBehaviour
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float midairReverseSpeed = 2f;
     [SerializeField] float jumpSpeed = 12f;
+    [SerializeField] float abilitycap = 1;
 
-    WeaponMount weaponMount;
+    Ability ability;
     BoxCollider2D mainCharacterFeetCollider;
     Rigidbody2D mainCharacterRigidbody;
 
@@ -23,7 +24,7 @@ public class MainCharacter : MonoBehaviour
     void Start() {
         mainCharacterRigidbody = GetComponent<Rigidbody2D>();
         mainCharacterFeetCollider = GetComponent<BoxCollider2D>();
-        weaponMount = GetComponentInChildren<WeaponMount>();
+        ability = GetComponentInChildren<Ability>();
     }
 
     // Update is called once per frame
@@ -73,7 +74,7 @@ public class MainCharacter : MonoBehaviour
         bool isAttacking = Input.GetButtonDown(GameKeys.AXIS_FIRE_1_KEY);
 
         if (isAttacking) {
-            weaponMount.Fire();
+            ability.Activate();
         }
     }
 

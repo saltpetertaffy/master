@@ -1,6 +1,6 @@
 ﻿namespace GameConstants {
     public static class GameKeys {
-        public const string ANMIMATION_ATTACK_TRIGGER = "isAttacking";
+        public const string ANMIMATION_ACTIVATED_TRIGGER = "isActivated";
         public const string AXIS_FIRE_1_KEY = "Fire1";
         public const string AXIS_HORIZONTAL_KEY = "Horizontal";
         public const string AXIS_JUMP_KEY = "Jump";

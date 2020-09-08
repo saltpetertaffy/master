@@ -4,7 +4,7 @@ using UnityEngine;
 using GameConstants;
 using ObjectMovers;
 
-public class WeaponMount : MonoBehaviour
+public class AimedAbility : Ability
 {
     private Animator weaponAnimator;
     private Rotator rotator;
@@ -19,10 +19,10 @@ public class WeaponMount : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        AimWeapon();
+        AimAbility();
     }
 
-    private void AimWeapon() {
+    private void AimAbility() {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 weaponPos = transform.position;
 
@@ -30,7 +30,7 @@ public class WeaponMount : MonoBehaviour
         rotator.RotateInstant(angle);
     }
 
-    public void Fire() {
-        weaponAnimator.SetTrigger(GameKeys.ANMIMATION_ATTACK_TRIGGER);
+    public override void Activate() {
+        weaponAnimator.SetTrigger(GameKeys.ANMIMATION_ACTIVATED_TRIGGER);
     }
 }
