@@ -24,6 +24,7 @@ public class AnimationDeathBehavior : DeathBehavior
         foreach (AnimationClip clip in clips) {
             if (clip.name == deathAnimationName) {
                 deathAnimationDuration = clip.length;
+                break;
             }
         }
 
