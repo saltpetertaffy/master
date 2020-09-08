@@ -8,6 +8,9 @@ public class Health : MonoBehaviour
     [SerializeField] int maximumHealth = 100;
     [SerializeField] int maximumArmor = 100;
 
+    [Header("Model")]
+    [SerializeField] GameObject healthOwner;
+
     private int health;
     private int armor;
 
@@ -21,7 +24,7 @@ public class Health : MonoBehaviour
 
     private void Update() {
         if (ReadyToDie()) {
-            Destroy(gameObject);
+            Destroy(healthOwner);
         }
     }
 

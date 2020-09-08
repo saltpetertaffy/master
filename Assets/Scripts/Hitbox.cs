@@ -5,12 +5,14 @@ using GameConstants;
 
 public class Hitbox : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start() {
+    Health health;
+    GameObject hitboxOwner;
+
+    private void Start() {
+        health = GetComponent<Health>();
     }
 
-    // Update is called once per frame
-    void Update() {
+    public void HandleHit() {
 
     }
 }

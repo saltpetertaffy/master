@@ -16,7 +16,7 @@ public class HitboxRotator : Rotator
 
     // Start is called before the first frame update
     void Start() {
-        hitbox = FindObjectOfType<Hitbox>();
+        hitbox = GetComponentInChildren<Hitbox>();
     }
 
     // Update is called once per frame

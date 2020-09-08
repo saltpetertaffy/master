@@ -428,6 +428,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fan Out Projectile
       objectReference: {fileID: 0}
+    - target: {fileID: 7180578439752649094, guid: 8de829984ad27bb48906e9751f78539c,
+        type: 3}
+      propertyPath: projectileEffects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7180578439752649094, guid: 8de829984ad27bb48906e9751f78539c,
+        type: 3}
+      propertyPath: healthDamageFlat
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8de829984ad27bb48906e9751f78539c, type: 3}
 --- !u!1 &820402981
@@ -1289,6 +1299,25 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 427467306}
+--- !u!1 &1525747320 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7180578439752649098, guid: 8de829984ad27bb48906e9751f78539c,
+    type: 3}
+  m_PrefabInstance: {fileID: 527567733}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1525747326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525747320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8f297cfcb6b91d42afb2b0a45bec3a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: 100
 --- !u!1 &1582695384
 GameObject:
   m_ObjectHideFlags: 0
@@ -1372,6 +1401,39 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1809364286 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1437931693, guid: 19f151c97f861d44f9d31e2d5498b273,
+    type: 3}
+  m_PrefabInstance: {fileID: 7457814603403515659}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1809364287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809364286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2f86e70dd4e61646a5a06a1b3b45874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1809364291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809364286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66bc2a0a1bcbd2042a96bd2af2a8aa8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCompleted: 0
+  deathParticles: {fileID: 466762750367174132, guid: 3f1566d21e022334fab6282f5d532ed6,
+    type: 3}
 --- !u!1 &1898960279
 GameObject:
   m_ObjectHideFlags: 0
@@ -1410,6 +1472,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 454223837, guid: 19f151c97f861d44f9d31e2d5498b273, type: 3}
+      propertyPath: deathParticles
+      value: 
+      objectReference: {fileID: 466762750367174132, guid: 3f1566d21e022334fab6282f5d532ed6,
+        type: 3}
     - target: {fileID: 7457814603189902434, guid: 19f151c97f861d44f9d31e2d5498b273,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1470,7 +1537,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Character
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7457814603334267497, guid: 19f151c97f861d44f9d31e2d5498b273,
+        type: 3}
+      propertyPath: autoRandomSeed
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 454223837, guid: 19f151c97f861d44f9d31e2d5498b273, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 19f151c97f861d44f9d31e2d5498b273, type: 3}
 --- !u!4 &7457814603403515660 stripped
 Transform:

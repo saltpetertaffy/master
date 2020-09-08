@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class DeathBehavior : MonoBehaviour
 {
-    public bool isCompleted = false;
+    [HideInInspector] public bool isCompleted = false;
 
     public abstract void OnDeath();
 }
