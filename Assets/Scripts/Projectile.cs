@@ -38,8 +38,9 @@ public class Projectile : MonoBehaviour
         if (projectileCollider.IsTouchingLayers(LayerMask.GetMask(GameKeys.LAYER_HITBOX_KEY))) {
             Hitbox hitbox = collision.gameObject.GetComponent<Hitbox>();
             if (hitbox) {
-                hitbox.HandleHit();
+                hitbox.HandleHit(projectileEffects);
             }
+            Destroy(gameObject);
         }
     }
 }

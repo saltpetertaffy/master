@@ -82,7 +82,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Projectile Spoke 1/Projectile
+    path: Projectile Spoke 1/Damage Projectile
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -116,7 +116,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Projectile Spoke 2/Projectile 2
+    path: Projectile Spoke 2/Damage Projectile
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -150,7 +150,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Projectile Spoke 3/Projectile 3
+    path: Projectile Spoke 3/Damage Projectile
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -184,7 +184,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Projectile Spoke 4/Projectile 4
+    path: Projectile Spoke 4/Damage Projectile
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -218,7 +218,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Projectile Spoke 5/Projectile 5
+    path: Projectile Spoke 5/Damage Projectile
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -252,7 +252,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Projectile Spoke 6/Projectile 6
+    path: Projectile Spoke 6/Damage Projectile
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -286,7 +286,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Projectile Spoke 8/Projectile 8
+    path: Projectile Spoke 7/Damage Projectile
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -320,7 +320,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Projectile Spoke 7/Projectile 7
+    path: Projectile Spoke 8/Damage Projectile
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves: []
@@ -332,56 +332,56 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 1956872627
+      path: 508249346
       attribute: 1
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 901544040
+      path: 3172844459
       attribute: 1
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3753159048
+      path: 1795113971
       attribute: 1
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 605918955
+      path: 549570744
       attribute: 1
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3457500939
+      path: 4146284768
       attribute: 1
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 729625450
+      path: 1417006665
       attribute: 1
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 123620333
+      path: 2207731217
       attribute: 1
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3245728394
+      path: 3221805279
       attribute: 1
       script: {fileID: 0}
       typeID: 4
@@ -416,81 +416,6 @@ AnimationClip:
     m_HeightFromFeet: 0
     m_Mirror: 0
   m_EditorCurves:
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 1.8000001
-        outSlope: 1.8000001
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1.6666666
-        value: 3
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalPosition.x
-    path: Projectile Spoke 1/Projectile
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalPosition.y
-    path: Projectile Spoke 1/Projectile
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalPosition.z
-    path: Projectile Spoke 1/Projectile
-    classID: 4
-    script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -618,7 +543,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Projectile Spoke 2/Projectile 2
+    path: Projectile Spoke 1/Damage Projectile
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -637,7 +562,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Projectile Spoke 2/Projectile 2
+    path: Projectile Spoke 1/Damage Projectile
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -656,7 +581,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Projectile Spoke 2/Projectile 2
+    path: Projectile Spoke 1/Damage Projectile
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -693,7 +618,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Projectile Spoke 3/Projectile 3
+    path: Projectile Spoke 2/Damage Projectile
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -712,7 +637,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Projectile Spoke 3/Projectile 3
+    path: Projectile Spoke 2/Damage Projectile
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -731,7 +656,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Projectile Spoke 3/Projectile 3
+    path: Projectile Spoke 2/Damage Projectile
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -768,7 +693,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Projectile Spoke 4/Projectile 4
+    path: Projectile Spoke 3/Damage Projectile
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -787,7 +712,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Projectile Spoke 4/Projectile 4
+    path: Projectile Spoke 3/Damage Projectile
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -806,7 +731,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Projectile Spoke 4/Projectile 4
+    path: Projectile Spoke 3/Damage Projectile
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -843,7 +768,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Projectile Spoke 5/Projectile 5
+    path: Projectile Spoke 4/Damage Projectile
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -862,7 +787,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Projectile Spoke 5/Projectile 5
+    path: Projectile Spoke 4/Damage Projectile
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -881,7 +806,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Projectile Spoke 5/Projectile 5
+    path: Projectile Spoke 4/Damage Projectile
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -918,7 +843,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Projectile Spoke 6/Projectile 6
+    path: Projectile Spoke 5/Damage Projectile
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -937,7 +862,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Projectile Spoke 6/Projectile 6
+    path: Projectile Spoke 5/Damage Projectile
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -956,7 +881,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Projectile Spoke 6/Projectile 6
+    path: Projectile Spoke 5/Damage Projectile
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -993,7 +918,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Projectile Spoke 8/Projectile 8
+    path: Projectile Spoke 6/Damage Projectile
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1012,7 +937,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Projectile Spoke 8/Projectile 8
+    path: Projectile Spoke 6/Damage Projectile
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1031,7 +956,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Projectile Spoke 8/Projectile 8
+    path: Projectile Spoke 6/Damage Projectile
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1068,7 +993,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Projectile Spoke 7/Projectile 7
+    path: Projectile Spoke 7/Damage Projectile
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1087,7 +1012,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Projectile Spoke 7/Projectile 7
+    path: Projectile Spoke 7/Damage Projectile
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1106,7 +1031,82 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Projectile Spoke 7/Projectile 7
+    path: Projectile Spoke 7/Damage Projectile
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 1.8000001
+        outSlope: 1.8000001
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1.6666666
+        value: 3
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: Projectile Spoke 8/Damage Projectile
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: Projectile Spoke 8/Damage Projectile
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: Projectile Spoke 8/Damage Projectile
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves:
