@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Armor : BaseStat {
+public class Armor : GameStat {
 
     [Header("Game Stats")]
     [SerializeField] float maximumArmor = 100f;
@@ -17,7 +17,7 @@ public class Armor : BaseStat {
     // Start is called before the first frame update
     private void Start() {
         armor = maximumArmor;
-        SetBaseStatId((int) BaseStats.ARMOR);
+        SetGameStatId((int) BaseStats.ARMOR);
     }
 
     private void Update() {

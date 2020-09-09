@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Hitbox : MonoBehaviour
 {
-    BaseStatHandler baseStatHandler;
+    GameStatHandler gameStatHandler;
 
     private void Start() {
-        baseStatHandler = GetComponent<BaseStatHandler>();
+        gameStatHandler = GetComponent<GameStatHandler>();
     }
 
     public void HandleHit(GameStatEffect[] projectileEffects) {
-        baseStatHandler.ProcessEffects(projectileEffects);
+        gameStatHandler.ProcessEffects(projectileEffects);
     }
 }

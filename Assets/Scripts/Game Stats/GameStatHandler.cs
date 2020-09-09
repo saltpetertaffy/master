@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameConstants;
 
-public class BaseStatHandler : MonoBehaviour
+public class GameStatHandler : MonoBehaviour
 {
     Health health = null;
     Armor armor = null;

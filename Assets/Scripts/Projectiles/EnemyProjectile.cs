@@ -1,33 +1,24 @@
-﻿using UnityEngine;
-using GameConstants;
+﻿using GameConstants;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class Projectile : MonoBehaviour 
+public class EnemyProjectile : Projectile
 {
-    GameStatEffect[] projectileEffects;
-
-    Collider2D projectileCollider;
     Health mainCharacterHealth;
     Armor mainCharacterArmor;
 
-    private void Start() {
-        projectileCollider = GetComponent<Collider2D>();
+    // Start is called before the first frame update
+    void Start()
+    {
         mainCharacterHealth = FindObjectOfType<MainCharacter>().GetComponentInChildren<Health>();
         mainCharacterArmor = FindObjectOfType<MainCharacter>().GetComponentInChildren<Armor>();
-        projectileEffects = GetComponents<GameStatEffect>();
     }
 
-    private void Update() {
+    // Update is called once per frame
+    void Update()
+    {
         GetComponent<SpriteRenderer>().color = generateDamageColor();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (projectileCollider.IsTouchingLayers(LayerMask.GetMask(GameKeys.LAYER_HITBOX_KEY))) {
-            Hitbox hitbox = collision.gameObject.GetComponent<Hitbox>();
-            if (hitbox) {
-                hitbox.HandleHit(projectileEffects);
-            }
-            Destroy(gameObject);
-        }
     }
 
     private Color generateDamageColor() {
