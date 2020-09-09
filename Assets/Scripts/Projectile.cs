@@ -44,6 +44,8 @@ public class Projectile : MonoBehaviour
                     break;
             }
         }
+        totalDamage = (int) (totalDamage * (1 - mainCharacterHealth.GetArmor() / 100));
+
         float damageRedShade = totalDamage / (float) mainCharacterHealth.GetHealth();
         Color damageColor = new Color(1, 1 - damageRedShade, 1 - damageRedShade);
         return damageColor;

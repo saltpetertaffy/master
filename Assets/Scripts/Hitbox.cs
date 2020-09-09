@@ -12,8 +12,13 @@ public class Hitbox : MonoBehaviour
     }
 
     public void HandleHit(GameStatEffect[] projectileEffects) {
+        HandleDamage(projectileEffects);
+        HandleArmor();
+    }
+
+    private void HandleDamage(GameStatEffect[] projectileEffects) {
         int totalDamage = 0;
-        
+
         foreach (GameStatEffect projectileEffect in projectileEffects) {
             switch (projectileEffect.GetGameStatEffectId()) {
                 case (int) GameStatEffects.DAMAGE:
@@ -28,6 +33,15 @@ public class Hitbox : MonoBehaviour
             }
         }
 
+        totalDamage = (int) (totalDamage * (1 - health.GetArmor() / 100));
+
         health.RemoveHealth(totalDamage);
+    }
+
+    private void HandleArmor() {
+        ArmorAbsorber absorber = GetComponentInParent<ArmorAbsorber>();
+        if (absorber) {
+            health.AddArmor(absorber.GetOnHitArmorRestoreAmount());
+        }
     }
 }

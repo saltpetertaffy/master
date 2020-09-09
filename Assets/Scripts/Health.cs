@@ -5,14 +5,15 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [Header("Game Stats")]
-    [SerializeField] int maximumHealth = 100;
-    [SerializeField] int maximumArmor = 100;
+    [SerializeField] float maximumHealth = 100f;
+    [SerializeField] float maximumArmor = 100f;
+    [SerializeField] float armorDecayRate = 1f;
 
     [Header("Model")]
     [SerializeField] GameObject healthOwner;
 
-    private int health;
-    private int armor;
+    private float health;
+    private float armor;
 
     DeathBehavior[] deathBehaviors;
 
@@ -37,11 +38,13 @@ public class Health : MonoBehaviour
         return true;
     }
 
-    public void AddHealth(int healthToAdd) {
+    public void AddHealth(float healthToAdd) {
         health = (health + healthToAdd > maximumHealth) ? maximumHealth : health + healthToAdd;
     }
 
-    public void RemoveHealth(int healthToRemove) {
+    public void RemoveHealth(float healthToRemove) {
+        if (healthToRemove < 0) { return; }
+
         health = (health < healthToRemove) ? 0 : health - healthToRemove;
         
         if (health == 0) {
@@ -49,20 +52,28 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void AddArmor(int armorToAdd) {
+    public void AddArmor(float armorToAdd) {
         armor = (armor + armorToAdd > maximumArmor) ? maximumArmor : armor + armorToAdd;
     }
 
-    public void RemoveArmor(int armorToRemove) {
+    public void RemoveArmor(float armorToRemove) {
         armor = (armor < armorToRemove) ? 0 : armor - armorToRemove;
     }
 
-    public int GetHealth() {
+    public float GetHealth() {
         return health;
     }
 
-    public int GetMaximumHealth() {
+    public float GetMaximumHealth() {
         return maximumHealth;
+    }
+
+    public float GetArmor() {
+        return armor;
+    }
+
+    public float GetMaximumArmor() {
+        return maximumArmor;
     }
 
     private void Die() {

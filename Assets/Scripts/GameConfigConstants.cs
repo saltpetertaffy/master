@@ -10,7 +10,7 @@
         // Width of stat bar = maxStatValue * this
         public const float UI_STAT_BAR_SCALING_MULTIPLIER = .1f;
 
-        // width of stat bar foreground = (maxStatValue * scalingMultiplier) - this
+        // Width of stat bar foreground = (maxStatValue * scalingMultiplier) - this
         public const float UI_STAT_BAR_RIGHT_MARGIN = .4f;
     }
 }
