@@ -6,21 +6,17 @@ public class Health : MonoBehaviour
 {
     [Header("Game Stats")]
     [SerializeField] float maximumHealth = 100f;
-    [SerializeField] float maximumArmor = 100f;
-    [SerializeField] float armorDecayRate = 1f;
 
     [Header("Model")]
     [SerializeField] GameObject healthOwner;
 
     private float health;
-    private float armor;
 
     DeathBehavior[] deathBehaviors;
 
     private void Start() {
         deathBehaviors = GetComponents<DeathBehavior>();
         health = maximumHealth;
-        armor = maximumArmor;
     }
 
     private void Update() {
@@ -52,28 +48,12 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void AddArmor(float armorToAdd) {
-        armor = (armor + armorToAdd > maximumArmor) ? maximumArmor : armor + armorToAdd;
-    }
-
-    public void RemoveArmor(float armorToRemove) {
-        armor = (armor < armorToRemove) ? 0 : armor - armorToRemove;
-    }
-
     public float GetHealth() {
         return health;
     }
 
     public float GetMaximumHealth() {
         return maximumHealth;
-    }
-
-    public float GetArmor() {
-        return armor;
-    }
-
-    public float GetMaximumArmor() {
-        return maximumArmor;
     }
 
     private void Die() {

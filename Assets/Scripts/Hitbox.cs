@@ -6,14 +6,16 @@ using GameConstants;
 public class Hitbox : MonoBehaviour
 {
     Health health;
+    Armor armor;
 
     private void Start() {
         health = GetComponent<Health>();
+        armor = GetComponent<Armor>();
     }
 
     public void HandleHit(GameStatEffect[] projectileEffects) {
         HandleDamage(projectileEffects);
-        HandleArmor();
+        HandleArmor(projectileEffects);
     }
 
     private void HandleDamage(GameStatEffect[] projectileEffects) {
@@ -33,15 +35,15 @@ public class Hitbox : MonoBehaviour
             }
         }
 
-        totalDamage = (int) (totalDamage * (1 - health.GetArmor() / 100));
+        totalDamage = (int) (totalDamage * (1 - armor.GetArmor() / 100));
 
         health.RemoveHealth(totalDamage);
     }
 
-    private void HandleArmor() {
+    private void HandleArmor(GameStatEffect[] projectileEffects) {
         ArmorAbsorber absorber = GetComponentInParent<ArmorAbsorber>();
         if (absorber) {
-            health.AddArmor(absorber.GetOnHitArmorRestoreAmount());
+            armor.AddArmor(absorber.GetOnHitArmorRestoreAmount());
         }
     }
 }

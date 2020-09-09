@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class ArmorBar : StatBar
 {
-    Health mainCharacterHealth;
+    Armor mainCharacterArmor;
 
     // Start is called before the first frame update
     void Start() {
-        mainCharacterHealth = FindObjectOfType<MainCharacter>().GetComponentInChildren<Health>();
+        mainCharacterArmor = FindObjectOfType<MainCharacter>().GetComponentInChildren<Armor>();
     }
 
     private void Update() {
-        SetMaxStat(mainCharacterHealth.GetMaximumArmor());
-        SetStat(mainCharacterHealth.GetArmor());
+        SetMaxStat(mainCharacterArmor.GetMaximumArmor());
+        SetStat(mainCharacterArmor.GetArmor());
     }
 }
