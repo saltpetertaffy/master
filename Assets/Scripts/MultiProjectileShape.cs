@@ -15,7 +15,7 @@ public class MultiProjectileShape : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        int projectileCount = transform.childCount;
+        int projectileCount = GetComponentsInChildren<Projectile>().Length;
         if (projectileCount == 0) {
             Destroy(gameObject);
         }
