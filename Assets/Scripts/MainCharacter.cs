@@ -1,21 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using GameConstants;
 
 public class MainCharacter : MonoBehaviour
 {
-    [Header("Config")]
+    [Header("Movement And Action Config")]
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float midairReverseSpeed = 2f;
     [SerializeField] float jumpSpeed = 12f;
-    [SerializeField] float abilitycap = 1;
+    [SerializeField] int abilitycap = 1;
+
+    [Header("Game Stats")]
+    [Tooltip("Per Second")][SerializeField][Range(0,10)] int armorDecayRate = 1;
+    [SerializeField] int armorDecayAmount = 5;
 
     Ability ability;
     BoxCollider2D mainCharacterFeetCollider;
     Rigidbody2D mainCharacterRigidbody;
+    Health health;
 
+    float armorDecayTimer = 0f;
     float jumpXSpeed = 0;
     bool hasReversedInMidair = false;
     bool isTouchingGround = true;
@@ -25,6 +30,7 @@ public class MainCharacter : MonoBehaviour
         mainCharacterRigidbody = GetComponent<Rigidbody2D>();
         mainCharacterFeetCollider = GetComponent<BoxCollider2D>();
         ability = GetComponentInChildren<Ability>();
+        health = GetComponentInChildren<Health>();
     }
 
     // Update is called once per frame
@@ -33,6 +39,7 @@ public class MainCharacter : MonoBehaviour
         Move();
         Jump();
         Attack();
+        DecayArmor();
     }
 
     private void Move() {
@@ -83,5 +90,9 @@ public class MainCharacter : MonoBehaviour
         if (isTouchingGround) {
             hasReversedInMidair = false;
         }
+    }
+
+    private void DecayArmor() {
+        health.RemoveArmor(armorDecayAmount * armorDecayRate * Time.deltaTime);
     }
 }

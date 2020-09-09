@@ -12,4 +12,19 @@
         public const string LAYER_PLAYER_KEY = "Player";
         public const string LAYER_WEAPON_KEY = "Weapon";
     }
+
+    public enum GameStatEffects {
+        DAMAGE,
+        DAMAGE_PERCENT_MAX,
+        DAMAGE_PERCENT_REMAINING,
+        HEALING,
+        HEALING_PERCENT_MAX,
+        HEALING_PERCENT_MISSING,
+        ARMOR_SHRED,
+        ARMOR_SHRED_PERCENT_MAX,
+        ARMOR_SHRED_PERCENT_REMAINING,
+        ARMOR_REPAIR,
+        ARMOR_REPAIR_PERCENT_MAX,
+        ARMOR_REPAIR_PERCENT_MISSING
+    }
 }

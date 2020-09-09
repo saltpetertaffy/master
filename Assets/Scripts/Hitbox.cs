@@ -12,22 +12,36 @@ public class Hitbox : MonoBehaviour
     }
 
     public void HandleHit(GameStatEffect[] projectileEffects) {
+        HandleDamage(projectileEffects);
+        HandleArmor();
+    }
+
+    private void HandleDamage(GameStatEffect[] projectileEffects) {
         int totalDamage = 0;
-        
+
         foreach (GameStatEffect projectileEffect in projectileEffects) {
             switch (projectileEffect.GetGameStatEffectId()) {
-                case GameConfigConstants.EFFECT_ID_DAMAGE:
+                case (int) GameStatEffects.DAMAGE:
                     totalDamage += Mathf.RoundToInt(projectileEffect.GetValue());
                     break;
-                case GameConfigConstants.EFFECT_ID_DAMAGE_PERCENT_MAX:
+                case (int) GameStatEffects.DAMAGE_PERCENT_MAX:
                     totalDamage += Mathf.RoundToInt(projectileEffect.GetValue() * health.GetMaximumHealth());
                     break;
-                case GameConfigConstants.EFFECT_ID_DAMAGE_PERCENT_REMAINING:
+                case (int) GameStatEffects.DAMAGE_PERCENT_REMAINING:
                     totalDamage += Mathf.RoundToInt(projectileEffect.GetValue() * health.GetHealth());
                     break;
             }
         }
 
+        totalDamage = (int) (totalDamage * (1 - health.GetArmor() / 100));
+
         health.RemoveHealth(totalDamage);
+    }
+
+    private void HandleArmor() {
+        ArmorAbsorber absorber = GetComponentInParent<ArmorAbsorber>();
+        if (absorber) {
+            health.AddArmor(absorber.GetOnHitArmorRestoreAmount());
+        }
     }
 }
