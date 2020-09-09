@@ -7,6 +7,6 @@ public class DamageEffect : GameStatEffect
 {
     private void Start() {
         SetEffectName("Damage");
-        SetGameStatEffectId(GameConfigConstants.EFFECT_ID_DAMAGE);
+        SetGameStatEffectId((int) GameStatEffects.DAMAGE);
     }
 }

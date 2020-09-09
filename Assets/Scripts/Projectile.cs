@@ -33,13 +33,13 @@ public class Projectile : MonoBehaviour
 
         foreach (GameStatEffect projectileEffect in projectileEffects) {
             switch (projectileEffect.GetGameStatEffectId()) {
-                case GameConfigConstants.EFFECT_ID_DAMAGE:
+                case (int) GameStatEffects.DAMAGE:
                     totalDamage += Mathf.RoundToInt(projectileEffect.GetValue());
                     break;
-                case GameConfigConstants.EFFECT_ID_DAMAGE_PERCENT_MAX:
+                case (int) GameStatEffects.DAMAGE_PERCENT_MAX:
                     totalDamage += Mathf.RoundToInt(projectileEffect.GetValue() * mainCharacterHealth.GetMaximumHealth());
                     break;
-                case GameConfigConstants.EFFECT_ID_DAMAGE_PERCENT_REMAINING:
+                case (int) GameStatEffects.DAMAGE_PERCENT_REMAINING:
                     totalDamage += Mathf.RoundToInt(projectileEffect.GetValue() * mainCharacterHealth.GetHealth());
                     break;
             }
