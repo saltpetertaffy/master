@@ -56,3 +56,6 @@ TagManager:
   - name: Projectile
     uniqueID: 1278401831
     locked: 0
+  - name: HUD Canvas
+    uniqueID: 1282334315
+    locked: 0
