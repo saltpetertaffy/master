@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 1437931694}
   - component: {fileID: 1437931695}
   - component: {fileID: 1437931697}
-  - component: {fileID: 1809364287}
+  - component: {fileID: 1809364292}
   m_Layer: 11
   m_Name: Hitbox
   m_TagString: Untagged
@@ -177,7 +177,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.09
---- !u!114 &1809364287
+--- !u!114 &1809364292
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -186,13 +186,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1437931693}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a0e8b53b3440cf4088e2d5b429a8783, type: 3}
+  m_Script: {fileID: 11500000, guid: e2f86e70dd4e61646a5a06a1b3b45874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumHealth: 100
-  maximumArmor: 100
-  armorDecayRate: 1
-  healthOwner: {fileID: 7457814603189902445}
 --- !u!1 &1892880568
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,6 +372,8 @@ GameObject:
   - component: {fileID: 4282263932519210380}
   - component: {fileID: 454223830}
   - component: {fileID: 454223831}
+  - component: {fileID: 490612764}
+  - component: {fileID: 490612765}
   m_Layer: 9
   m_Name: Main Character
   m_TagString: Untagged
@@ -453,8 +451,6 @@ MonoBehaviour:
   midairReverseSpeed: 2
   jumpSpeed: 12
   abilitycap: 1
-  armorDecayRate: 1
-  armorDecayAmount: 5
 --- !u!61 &4282263932519210380
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -531,6 +527,37 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &490612764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7457814603189902445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee19a20d9c508494f9d6275baa64fa9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maximumArmor: 100
+  freeArmor: 10
+  armorDecayRate: 1
+  armorDecayAmount: 5
+  armorAbsorption: 5
+--- !u!114 &490612765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7457814603189902445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a0e8b53b3440cf4088e2d5b429a8783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maximumHealth: 100
+  healthOwner: {fileID: 7457814603189902445}
 --- !u!1001 &6277905006594421340
 PrefabInstance:
   m_ObjectHideFlags: 0

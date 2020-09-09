@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using GameConstants;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class Health : BaseStat
 {
     [Header("Game Stats")]
     [SerializeField] float maximumHealth = 100f;
@@ -17,6 +18,7 @@ public class Health : MonoBehaviour
     private void Start() {
         deathBehaviors = GetComponents<DeathBehavior>();
         health = maximumHealth;
+        SetBaseStatId((int) BaseStats.HEALTH);
     }
 
     private void Update() {

@@ -27,4 +27,16 @@
         ARMOR_REPAIR_PERCENT_MAX,
         ARMOR_REPAIR_PERCENT_MISSING
     }
+
+    public enum GameStatEffectTypes {
+        DAMAGE,
+        ARMOR_SHRED,
+        HEALING,
+        ARMOR_REPAIR
+    }
+
+    public enum BaseStats {
+        HEALTH,
+        ARMOR
+    }
 }

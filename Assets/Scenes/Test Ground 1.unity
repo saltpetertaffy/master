@@ -323,10 +323,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 490612763}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 182f402891fd9d242bb0df374c09a052, type: 3}
+  m_Script: {fileID: 11500000, guid: 66bc2a0a1bcbd2042a96bd2af2a8aa8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onHitArmorRestoreAmount: 5
+  isCompleted: 0
+  deathParticles: {fileID: 466762750367174132, guid: 3f1566d21e022334fab6282f5d532ed6,
+    type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1498,7 +1500,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7457814603403515659}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1809364287
+--- !u!114 &1809364288
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1507,36 +1509,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1809364286}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee19a20d9c508494f9d6275baa64fa9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maximumArmor: 100
-  freeArmor: 10
---- !u!114 &1809364291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1809364286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66bc2a0a1bcbd2042a96bd2af2a8aa8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isCompleted: 0
-  deathParticles: {fileID: 466762750367174132, guid: 3f1566d21e022334fab6282f5d532ed6,
-    type: 3}
---- !u!114 &1809364292
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1809364286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f86e70dd4e61646a5a06a1b3b45874, type: 3}
+  m_Script: {fileID: 11500000, guid: 64bc32ca3a516154e9ea1f79d8514639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1895325268
@@ -1746,6 +1719,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 490612764, guid: 19f151c97f861d44f9d31e2d5498b273, type: 3}
+      propertyPath: maximumArmor
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 7457814603189902434, guid: 19f151c97f861d44f9d31e2d5498b273,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1805,11 +1782,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Main Character
-      objectReference: {fileID: 0}
-    - target: {fileID: 7457814603334267497, guid: 19f151c97f861d44f9d31e2d5498b273,
-        type: 3}
-      propertyPath: autoRandomSeed
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19f151c97f861d44f9d31e2d5498b273, type: 3}

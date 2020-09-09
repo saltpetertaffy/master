@@ -7,10 +7,13 @@
         // The Input Manager dead zone setting is inaccessible in code
         public const float INPUT_DEAD_ZONE = 0.1f;
 
-        // Width of stat bar = maxStatValue * this
+        // Width of stat bar = maxStatValue * this + 
         public const float UI_STAT_BAR_SCALING_MULTIPLIER = .1f;
 
         // Width of stat bar foreground = (maxStatValue * scalingMultiplier) - this
-        public const float UI_STAT_BAR_RIGHT_MARGIN = .4f;
+        public const float UI_STAT_BAR_FOREGROUND_RIGHT_MARGIN = 0f;
+
+        // width of stat bar background = (maxStatValue * scalingMultiplier) + this
+        public const float UI_STAT_BAR_BACKGROUND_MARGIN = .4f;
     }
 }

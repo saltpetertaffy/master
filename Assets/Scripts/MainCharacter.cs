@@ -14,7 +14,6 @@ public class MainCharacter : MonoBehaviour
     Ability ability;
     BoxCollider2D mainCharacterFeetCollider;
     Rigidbody2D mainCharacterRigidbody;
-    Health health;
 
     float jumpXSpeed = 0;
     bool hasReversedInMidair = false;
@@ -25,7 +24,6 @@ public class MainCharacter : MonoBehaviour
         mainCharacterRigidbody = GetComponent<Rigidbody2D>();
         mainCharacterFeetCollider = GetComponent<BoxCollider2D>();
         ability = GetComponentInChildren<Ability>();
-        health = GetComponentInChildren<Health>();
     }
 
     // Update is called once per frame
