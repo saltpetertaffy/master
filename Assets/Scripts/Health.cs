@@ -66,6 +66,7 @@ public class Health : MonoBehaviour
     }
 
     private void Die() {
+        FindObjectOfType<GameSession>().ProcessPlayerDeath();
         DeathBehavior[] deathBehaviors = GetComponents<DeathBehavior>();
         foreach (DeathBehavior deathBehavior in deathBehaviors) {
             deathBehavior.OnDeath();
