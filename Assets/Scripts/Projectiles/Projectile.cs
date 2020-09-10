@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using GameConstants;
 
-public abstract class Projectile : MonoBehaviour 
+public abstract class Projectile : MonoBehaviour
 {
     private Collider2D projectileCollider;
     protected GameStatEffect[] projectileEffects;

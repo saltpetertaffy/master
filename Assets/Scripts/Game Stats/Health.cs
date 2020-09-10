@@ -12,6 +12,7 @@ public class Health : GameStat
     [SerializeField] GameObject healthOwner;
 
     private float health;
+    private bool isDead = false;
 
     DeathBehavior[] deathBehaviors;
 
@@ -22,7 +23,7 @@ public class Health : GameStat
     }
 
     private void Update() {
-        if (ReadyToDie()) {
+        if (isDead && ReadyToDie()) {
             Destroy(healthOwner);
         }
     }
@@ -59,6 +60,7 @@ public class Health : GameStat
     }
 
     private void Die() {
+        isDead = true;
         FindObjectOfType<GameSession>().ProcessPlayerDeath();
         DeathBehavior[] deathBehaviors = GetComponents<DeathBehavior>();
         foreach (DeathBehavior deathBehavior in deathBehaviors) {
