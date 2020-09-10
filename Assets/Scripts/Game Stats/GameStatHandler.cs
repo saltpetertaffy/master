@@ -16,18 +16,16 @@ public class GameStatHandler : MonoBehaviour
 
     public void ProcessEffects(GameStatEffect[] gameStatEffects) {     
         if (health) {
-            HandleHealthEffects(health, armor, gameStatEffects);
+            HandleHealthEffects(gameStatEffects);
         }
         if (armor) {
-            HandleArmorEffects(armor, gameStatEffects);
+            HandleArmorEffects(gameStatEffects);
         }
     }
 
-    private void HandleHealthEffects(Health health, Armor armor, GameStatEffect[] gameStatEffects) {
+    private void HandleHealthEffects(GameStatEffect[] gameStatEffects) {
         int totalDamage = 0;
         int totalHealing = 0;
-        Debug.Log(health);
-        Debug.Log(armor);
 
         foreach (GameStatEffect gameStatEffect in gameStatEffects) {
             switch (gameStatEffect.GetGameStatEffectId()) {
@@ -54,7 +52,7 @@ public class GameStatHandler : MonoBehaviour
         }
     }
 
-    private void HandleArmorEffects(Armor armor, GameStatEffect[] gameStatEffects) {
+    private void HandleArmorEffects(GameStatEffect[] gameStatEffects) {
         armor.AddArmor(armor.GetArmorAbsoprtion());
     }
 }

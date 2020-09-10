@@ -12,6 +12,4 @@ public abstract class GameStat : MonoBehaviour {
     public void SetGameStatId(int gameStatId) {
         this.gameStatId = gameStatId;
     }
-
-    //public abstract void HandleGameStatEffects(GameStat[] gameStats, GameStatEffect[] gameStatEffects);
 }

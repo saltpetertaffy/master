@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameStatEffect : MonoBehaviour
+public abstract class GameStatEffect : MonoBehaviour
 {
     [SerializeField] float value;
     string effectName;
