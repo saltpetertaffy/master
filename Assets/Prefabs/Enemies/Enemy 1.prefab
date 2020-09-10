@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1948684117569829782}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Enemy 1 Section 1 Axle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2487196738516057217}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Enemy 1 Section 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 385571259197918872}
   - component: {fileID: 4779643677547244954}
   - component: {fileID: 5026285}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Enemy 1 Section 1 Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 7997519164095308655}
   - component: {fileID: 3607353513787242778}
   - component: {fileID: 5026284}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Enemy 1 Section 2 Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -303,7 +303,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3672473728214486674}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Enemy 1 Section 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,11 @@ GameObject:
   - component: {fileID: 5026287}
   - component: {fileID: 5026281}
   - component: {fileID: 5026288}
-  m_Layer: 0
+  - component: {fileID: 5026295}
+  - component: {fileID: 5026277}
+  - component: {fileID: 5026278}
+  - component: {fileID: 5026279}
+  m_Layer: 14
   m_Name: Enemy 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -379,7 +383,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4174195861917014775}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -490,6 +494,65 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maximumHealth: 20
   healthOwner: {fileID: 4174195861917014775}
+--- !u!95 &5026295
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4174195861917014775}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f0e6d9edd624db148811596444f03deb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5026277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4174195861917014775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14da85c021053b54da2111591b3cd682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: {fileID: 5828157131272317073, guid: 8de829984ad27bb48906e9751f78539c, type: 3}
+  attackPoint: {fileID: 8602141433681588040}
+  projectileVelocity: {x: -3, y: 0}
+  aiming: 1
+--- !u!114 &5026278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4174195861917014775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64bc32ca3a516154e9ea1f79d8514639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5026279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4174195861917014775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2f86e70dd4e61646a5a06a1b3b45874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5366444115268209912
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,7 +562,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 152840659153841702}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Enemy 1 Section 3 Axle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -535,7 +598,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 801877869442799997}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Enemy 1 Base Axle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -573,7 +636,7 @@ GameObject:
   - component: {fileID: 8520583490347814893}
   - component: {fileID: 4310447329959586366}
   - component: {fileID: 5026283}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Enemy 1 Section 3 Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -707,7 +770,7 @@ GameObject:
   - component: {fileID: 3052888311998110191}
   - component: {fileID: 8010999777190755017}
   - component: {fileID: 5026286}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Enemy 1 Base Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -813,7 +876,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5141468670461834265}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Enemy 1 Section 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -850,7 +913,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9091297051596769306}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Enemy 1 Section 2 Axle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -989,10 +1052,25 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4843327519801921789, guid: 73da7168db2b173429fcda7338361514,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6396992686029158723, guid: 73da7168db2b173429fcda7338361514,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 9053822846177163079, guid: 73da7168db2b173429fcda7338361514,
         type: 3}
       propertyPath: m_Name
       value: Enemy 1 Section 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053822846177163079, guid: 73da7168db2b173429fcda7338361514,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73da7168db2b173429fcda7338361514, type: 3}

@@ -4,17 +4,13 @@ using UnityEngine;
 
 public abstract class Attack : MonoBehaviour
 {
-    protected Collider2D projectileCollider;
-    protected GameStatEffect[] projectileEffects;
+    protected Collider2D attackCollider;
+    protected GameStatEffect[] attackEffects;
     protected string targetLayer;
 
     private void Awake() {
-        projectileCollider = GetComponent<Collider2D>();
-        projectileEffects = GetComponents<GameStatEffect>();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision) {
-        OnHit(collision);
+        attackCollider = GetComponent<Collider2D>();
+        attackEffects = GetComponents<GameStatEffect>();
     }
 
     protected abstract void OnHit(Collider2D collision);

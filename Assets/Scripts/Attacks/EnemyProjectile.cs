@@ -25,7 +25,7 @@ public class EnemyProjectile : Projectile
     private Color generateDamageColor() {
         int totalDamage = 0;
 
-        foreach (GameStatEffect projectileEffect in projectileEffects) {
+        foreach (GameStatEffect projectileEffect in attackEffects) {
             switch (projectileEffect.GetGameStatEffectId()) {
                 case (int) GameStatEffects.DAMAGE:
                     totalDamage += Mathf.RoundToInt(projectileEffect.GetValue());
