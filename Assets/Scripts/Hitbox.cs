@@ -7,7 +7,7 @@ public class Hitbox : MonoBehaviour
     GameStatHandler gameStatHandler;
 
     private void Start() {
-        gameStatHandler = GetComponent<GameStatHandler>();
+        gameStatHandler = GetComponentInParent<GameStatHandler>();
     }
 
     public void HandleHit(GameStatEffect[] projectileEffects) {

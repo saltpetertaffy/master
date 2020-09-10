@@ -35,7 +35,7 @@
         ARMOR_REPAIR
     }
 
-    public enum BaseStats {
+    public enum GameStats {
         HEALTH,
         ARMOR
     }

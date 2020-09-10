@@ -17,7 +17,7 @@ public class Armor : GameStat {
     // Start is called before the first frame update
     private void Start() {
         armor = maximumArmor;
-        SetGameStatId((int) BaseStats.ARMOR);
+        SetGameStatId((int) GameStats.ARMOR);
     }
 
     private void Update() {

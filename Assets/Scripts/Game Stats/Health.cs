@@ -18,7 +18,7 @@ public class Health : GameStat
     private void Start() {
         deathBehaviors = GetComponents<DeathBehavior>();
         health = maximumHealth;
-        SetGameStatId((int) BaseStats.HEALTH);
+        SetGameStatId((int) GameStats.HEALTH);
     }
 
     private void Update() {

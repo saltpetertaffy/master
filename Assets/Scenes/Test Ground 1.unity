@@ -329,6 +329,18 @@ MonoBehaviour:
   isCompleted: 0
   deathParticles: {fileID: 466762750367174132, guid: 3f1566d21e022334fab6282f5d532ed6,
     type: 3}
+--- !u!114 &490612765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490612763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64bc32ca3a516154e9ea1f79d8514639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1646,24 +1658,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &1809364286 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1437931693, guid: 19f151c97f861d44f9d31e2d5498b273,
-    type: 3}
-  m_PrefabInstance: {fileID: 7457814603403515659}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1809364288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1809364286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64bc32ca3a516154e9ea1f79d8514639, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1895325268
 GameObject:
   m_ObjectHideFlags: 0
