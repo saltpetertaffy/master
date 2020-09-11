@@ -39,8 +39,8 @@ public class EnemyProjectile : Projectile
             }
         }
         totalDamage = (int) (totalDamage * (1 - mainCharacterArmor.GetArmor() / 100));
-
-        float damageRedShade = totalDamage / (float) mainCharacterHealth.GetHealth();
+        
+        float damageRedShade = totalDamage / mainCharacterHealth.GetHealth();
         Color damageColor = new Color(1, 1 - damageRedShade, 1 - damageRedShade);
         return damageColor;
     }
