@@ -45,7 +45,8 @@ public class Health : GameStat
     }
 
     public void RemoveHealth(float healthToRemove) {
-        if (healthToRemove < 0 || debugOptions.godMode) { return; }
+        bool isGodmodedMainCharacter = GetComponentInParent<MainCharacter>() && debugOptions.godMode;
+        if (healthToRemove < 0 || isGodmodedMainCharacter) { return; }
 
         health = (health < healthToRemove) ? 0 : health - healthToRemove;
         
@@ -68,7 +69,7 @@ public class Health : GameStat
 
     private void Die() {
         isDead = true;
-        if (healthOwner.GetType() == typeof(MainCharacter)) {
+        if (GetComponentInParent<MainCharacter>()) {
             FindObjectOfType<GameSession>().ProcessPlayerDeath();
         }
         DeathBehavior[] deathBehaviors = GetComponents<DeathBehavior>();
