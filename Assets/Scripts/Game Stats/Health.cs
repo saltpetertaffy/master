@@ -68,7 +68,9 @@ public class Health : GameStat
 
     private void Die() {
         isDead = true;
-        FindObjectOfType<GameSession>().ProcessPlayerDeath();
+        if (healthOwner.GetType() == typeof(MainCharacter)) {
+            FindObjectOfType<GameSession>().ProcessPlayerDeath();
+        }
         DeathBehavior[] deathBehaviors = GetComponents<DeathBehavior>();
         foreach (DeathBehavior deathBehavior in deathBehaviors) {
             deathBehavior.OnDeath();
