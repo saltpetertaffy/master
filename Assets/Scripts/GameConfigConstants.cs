@@ -4,6 +4,9 @@
         // in midair for a reversal of direction to be considered "trying to go the other way"
         public const float GAME_JUMP_MINIMUM_X_THRESHOLD = 3f;
 
+        // G value of healing projectile color divided by this value to enhance color
+        public const float GAME_PROJECTILE_HEALING_COLOR_G_MULTIPLIER = 4f;
+
         // The Input Manager dead zone setting is inaccessible in code
         public const float INPUT_DEAD_ZONE = 0.1f;
 

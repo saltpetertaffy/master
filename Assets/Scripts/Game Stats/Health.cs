@@ -62,6 +62,10 @@ public class Health : GameStat
         return maximumHealth;
     }
 
+    public float GetMissingHealth() {
+        return maximumHealth - health;
+    }
+
     private void Die() {
         isDead = true;
         FindObjectOfType<GameSession>().ProcessPlayerDeath();
