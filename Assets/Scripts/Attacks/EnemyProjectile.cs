@@ -1,37 +1,31 @@
-﻿using UnityEngine;
-using GameConstants;
+﻿using GameConstants;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class Projectile : MonoBehaviour 
+public class EnemyProjectile : Projectile
 {
-    GameStatEffect[] projectileEffects;
-
-    Collider2D projectileCollider;
     Health mainCharacterHealth;
+    Armor mainCharacterArmor;
 
-    private void Start() {
-        projectileCollider = GetComponent<Collider2D>();
+    // Start is called before the first frame update
+    void Start()
+    {
+        targetLayer = GameKeys.LAYER_HITBOX_KEY;
         mainCharacterHealth = FindObjectOfType<MainCharacter>().GetComponentInChildren<Health>();
-        projectileEffects = GetComponents<GameStatEffect>();
+        mainCharacterArmor = FindObjectOfType<MainCharacter>().GetComponentInChildren<Armor>();
     }
 
-    private void Update() {
+    // Update is called once per frame
+    void Update()
+    {
         GetComponent<SpriteRenderer>().color = generateDamageColor();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (projectileCollider.IsTouchingLayers(LayerMask.GetMask(GameKeys.LAYER_HITBOX_KEY))) {
-            Hitbox hitbox = collision.gameObject.GetComponent<Hitbox>();
-            if (hitbox) {
-                hitbox.HandleHit(projectileEffects);
-            }
-            Destroy(gameObject);
-        }
     }
 
     private Color generateDamageColor() {
         int totalDamage = 0;
 
-        foreach (GameStatEffect projectileEffect in projectileEffects) {
+        foreach (GameStatEffect projectileEffect in attackEffects) {
             switch (projectileEffect.GetGameStatEffectId()) {
                 case (int) GameStatEffects.DAMAGE:
                     totalDamage += Mathf.RoundToInt(projectileEffect.GetValue());
@@ -44,7 +38,7 @@ public class Projectile : MonoBehaviour
                     break;
             }
         }
-        totalDamage = (int) (totalDamage * (1 - mainCharacterHealth.GetArmor() / 100));
+        totalDamage = (int) (totalDamage * (1 - mainCharacterArmor.GetArmor() / 100));
 
         float damageRedShade = totalDamage / (float) mainCharacterHealth.GetHealth();
         Color damageColor = new Color(1, 1 - damageRedShade, 1 - damageRedShade);

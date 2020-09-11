@@ -5,13 +5,13 @@ using GameConstants;
 
 public class AimedAbility : Ability
 {
-    private Animator weaponAnimator;
+    private Animator abilityAnimator;
     private Rotator rotator;
 
     // Start is called before the first frame update
     void Start()
     {
-        weaponAnimator = GetComponent<Animator>();
+        abilityAnimator = GetComponent<Animator>();
         rotator = GetComponent<Rotator>();
     }
 
@@ -30,6 +30,6 @@ public class AimedAbility : Ability
     }
 
     public override void Activate() {
-        weaponAnimator.SetTrigger(GameKeys.ANMIMATION_ACTIVATED_TRIGGER);
+        abilityAnimator.SetTrigger(GameKeys.ANMIMATION_ACTIVATED_TRIGGER);
     }
 }

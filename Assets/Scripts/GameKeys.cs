@@ -7,6 +7,7 @@
         public const string AXIS_JUMP_KEY = "Jump";
         public const string AXIS_VERTICAL_KEY = "Vertical";
         public const string LAYER_CHARACTER_UI_KEY = "Character UI";
+        public const string LAYER_ENEMY_KEY = "Enemy";
         public const string LAYER_GROUND_KEY = "Ground";
         public const string LAYER_HITBOX_KEY = "Hitbox";
         public const string LAYER_PLAYER_KEY = "Player";
@@ -26,5 +27,17 @@
         ARMOR_REPAIR,
         ARMOR_REPAIR_PERCENT_MAX,
         ARMOR_REPAIR_PERCENT_MISSING
+    }
+
+    public enum GameStatEffectTypes {
+        DAMAGE,
+        ARMOR_SHRED,
+        HEALING,
+        ARMOR_REPAIR
+    }
+
+    public enum GameStats {
+        HEALTH,
+        ARMOR
     }
 }

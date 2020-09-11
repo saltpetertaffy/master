@@ -1,30 +1,32 @@
-﻿using System.Collections;
+﻿using GameConstants;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class Health : GameStat
 {
     [Header("Game Stats")]
     [SerializeField] float maximumHealth = 100f;
-    [SerializeField] float maximumArmor = 100f;
-    [SerializeField] float armorDecayRate = 1f;
 
     [Header("Model")]
     [SerializeField] GameObject healthOwner;
 
     private float health;
-    private float armor;
+    private bool isDead = false;
 
     DeathBehavior[] deathBehaviors;
 
+    DebugOptions debugOptions;
+
     private void Start() {
         deathBehaviors = GetComponents<DeathBehavior>();
+        debugOptions = FindObjectOfType<DebugOptions>();
         health = maximumHealth;
-        armor = maximumArmor;
+        SetGameStatId((int) GameStats.HEALTH);
     }
 
     private void Update() {
-        if (ReadyToDie()) {
+        if (isDead && ReadyToDie()) {
             Destroy(healthOwner);
         }
     }
@@ -43,21 +45,13 @@ public class Health : MonoBehaviour
     }
 
     public void RemoveHealth(float healthToRemove) {
-        if (healthToRemove < 0) { return; }
+        if (healthToRemove < 0 || debugOptions.godMode) { return; }
 
         health = (health < healthToRemove) ? 0 : health - healthToRemove;
         
         if (health == 0) {
             Die();
         }
-    }
-
-    public void AddArmor(float armorToAdd) {
-        armor = (armor + armorToAdd > maximumArmor) ? maximumArmor : armor + armorToAdd;
-    }
-
-    public void RemoveArmor(float armorToRemove) {
-        armor = (armor < armorToRemove) ? 0 : armor - armorToRemove;
     }
 
     public float GetHealth() {
@@ -68,15 +62,8 @@ public class Health : MonoBehaviour
         return maximumHealth;
     }
 
-    public float GetArmor() {
-        return armor;
-    }
-
-    public float GetMaximumArmor() {
-        return maximumArmor;
-    }
-
     private void Die() {
+        isDead = true;
         FindObjectOfType<GameSession>().ProcessPlayerDeath();
         DeathBehavior[] deathBehaviors = GetComponents<DeathBehavior>();
         foreach (DeathBehavior deathBehavior in deathBehaviors) {
