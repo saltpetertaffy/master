@@ -7,7 +7,7 @@ public class GameSession : MonoBehaviour
 {
     [SerializeField] StatBar lifeBar;
     [SerializeField] StatBar armorBar;
-    Health mainCharacterHealth;
+    MainCharacter mainCharacter;
     
     private void Awake() {
         if (FindObjectsOfType<GameSession>().Length > 1) {
@@ -21,7 +21,7 @@ public class GameSession : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainCharacterHealth = FindObjectOfType<MainCharacter>().GetComponentInChildren<Health>();
+        mainCharacter = FindObjectOfType<MainCharacter>();
     }
 
     // Update is called once per frame
@@ -31,6 +31,8 @@ public class GameSession : MonoBehaviour
     }
 
     public void ProcessPlayerDeath() {
-        FindObjectOfType<CinemachineStateDrivenCamera>().enabled = false;
+        if (mainCharacter) {
+            FindObjectOfType<CinemachineStateDrivenCamera>().enabled = false;
+        }
     }
 }

@@ -10,6 +10,7 @@ public class MainCharacter : MonoBehaviour
     [SerializeField] float midairReverseSpeed = 2f;
     [SerializeField] float jumpSpeed = 12f;
     [SerializeField] int abilitycap = 1;
+    [SerializeField] float attackSpeed = 1;
 
     Ability ability;
     BoxCollider2D mainCharacterFeetCollider;
@@ -18,6 +19,7 @@ public class MainCharacter : MonoBehaviour
     float jumpXSpeed = 0;
     bool hasReversedInMidair = false;
     bool isTouchingGround = true;
+    bool canAttack = true;
 
     // Start is called before the first frame update
     void Start() {
@@ -72,8 +74,10 @@ public class MainCharacter : MonoBehaviour
     private void Attack() {
         bool isAttacking = Input.GetButtonDown(GameKeys.AXIS_FIRE_1_KEY);
 
-        if (isAttacking) {
+        if (isAttacking && canAttack) {
+            canAttack = false;
             ability.Activate();
+            StartCoroutine(DelayAttack());
         }
     }
 
@@ -82,6 +86,11 @@ public class MainCharacter : MonoBehaviour
         if (isTouchingGround) {
             hasReversedInMidair = false;
         }
+    }
+
+    private IEnumerator DelayAttack() {
+        yield return new WaitForSeconds(attackSpeed);
+        canAttack = true;
     }
 
     
