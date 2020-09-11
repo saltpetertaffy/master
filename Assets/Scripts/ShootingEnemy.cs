@@ -26,13 +26,12 @@ public class ShootingEnemy : Enemy
 
         if (aiming) {
             Vector2 mainCharacterPosition = FindObjectOfType<MainCharacter>().transform.position;
-            Vector2 aimedDirection = mainCharacterPosition + (Vector2) attackPoint.transform.position;
+            Vector2 aimedDirection = mainCharacterPosition - (Vector2) attackPoint.transform.position;
             aimedDirection.Normalize();
-            attackVelocity = -aimedDirection * projectileVelocity.magnitude;
+            attackVelocity = aimedDirection * projectileVelocity.magnitude;
         } else {
             attackVelocity = projectileVelocity;
         }
-
         GameObject newShot = Instantiate(attack, attackPoint.transform.position, Quaternion.identity);
         newShot.GetComponent<Rigidbody2D>().velocity = attackVelocity;
     }

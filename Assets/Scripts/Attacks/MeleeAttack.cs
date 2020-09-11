@@ -8,7 +8,6 @@ public abstract class MeleeAttack : OneOffAttack
         if (attackCollider.IsTouchingLayers(LayerMask.GetMask(targetLayer))) {
             Hitbox hitbox = collision.gameObject.GetComponent<Hitbox>();
             if (hitbox) {
-                Debug.Log("Hit");
                 hitbox.HandleHit(attackEffects);
             }
         }

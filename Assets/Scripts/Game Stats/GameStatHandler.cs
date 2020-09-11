@@ -6,10 +6,12 @@ using System;
 
 public class GameStatHandler : MonoBehaviour
 {
+    TextEmitter textEmitter = null;
     Health health = null;
     Armor armor = null;
 
     private void Awake() {
+        textEmitter = FindObjectOfType<TextEmitter>();
         health = GetComponent<Health>();
         armor = GetComponent<Armor>();
     }
@@ -44,6 +46,7 @@ public class GameStatHandler : MonoBehaviour
         totalDamage = armor ? (int) (totalDamage * (1 - armor.GetArmor() / 100)) - armor.GetFreeArmor() : totalDamage;
         if (totalDamage > 0) {
             health.RemoveHealth(totalDamage);
+            textEmitter.EmitText(totalDamage.ToString(), transform, Color.red);
         } else {
             totalHealing -= totalDamage;
         }
