@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TextEmitter : MonoBehaviour {
     [SerializeField] TextEmission textEmissionPrefab;
-    [SerializeField] [Tooltip("Point relative to the Emitter where text emissions will appear")] Vector2 emissionPoint;
+    [SerializeField] [Tooltip("Point relative to the Emitting object where text emissions will appear")] Vector2 emissionPoint;
     [SerializeField] [Range(0, 2)] float emissionPointXRandomness = 0f;
     [SerializeField] [Range(0, 2)] float emissionPointYRandomness = 0f;
     [SerializeField] Vector2 velocity;
