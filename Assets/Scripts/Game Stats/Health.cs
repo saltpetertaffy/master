@@ -16,8 +16,11 @@ public class Health : GameStat
 
     DeathBehavior[] deathBehaviors;
 
+    DebugOptions debugOptions;
+
     private void Start() {
         deathBehaviors = GetComponents<DeathBehavior>();
+        debugOptions = FindObjectOfType<DebugOptions>();
         health = maximumHealth;
         SetGameStatId((int) GameStats.HEALTH);
     }
@@ -42,7 +45,7 @@ public class Health : GameStat
     }
 
     public void RemoveHealth(float healthToRemove) {
-        if (healthToRemove < 0) { return; }
+        if (healthToRemove < 0 || debugOptions.godMode) { return; }
 
         health = (health < healthToRemove) ? 0 : health - healthToRemove;
         

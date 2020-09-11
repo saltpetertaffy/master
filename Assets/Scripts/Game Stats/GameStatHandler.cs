@@ -46,12 +46,13 @@ public class GameStatHandler : MonoBehaviour
         totalDamage = armor ? (int) (totalDamage * (1 - armor.GetArmor() / 100)) - armor.GetFreeArmor() : totalDamage;
         if (totalDamage > 0) {
             health.RemoveHealth(totalDamage);
-            textEmitter.EmitText(totalDamage.ToString(), transform, Color.red);
+            textEmitter.EmitText("-" + totalDamage.ToString(), transform, Color.red);
         } else {
             totalHealing -= totalDamage;
         }
         if (totalHealing > 0) {
             health.AddHealth(totalHealing);
+            textEmitter.EmitText("+" + totalHealing.ToString(), transform, Color.cyan);
         }
     }
 
