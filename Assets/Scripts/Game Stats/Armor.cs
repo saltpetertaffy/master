@@ -16,6 +16,9 @@ public class Armor : GameStat {
 
     // Start is called before the first frame update
     private void Start() {
+        if (GetComponent<MainCharacter>()) {
+            maximumArmor = FindObjectOfType<GameSession>().currentMaximumArmor;
+        }
         armor = maximumArmor;
         SetGameStatId((int) GameStats.ARMOR);
     }

@@ -92,6 +92,4 @@ public class MainCharacter : MonoBehaviour
         yield return new WaitForSeconds(attackSpeed);
         canAttack = true;
     }
-
-    
 }

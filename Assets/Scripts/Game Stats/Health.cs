@@ -21,6 +21,9 @@ public class Health : GameStat
     private void Start() {
         deathBehaviors = GetComponents<DeathBehavior>();
         debugOptions = FindObjectOfType<DebugOptions>();
+        if (GetComponent<MainCharacter>()) {
+            maximumHealth = FindObjectOfType<GameSession>().currentMaximumHealth;
+        }
         health = maximumHealth;
         SetGameStatId((int) GameStats.HEALTH);
     }
@@ -69,9 +72,7 @@ public class Health : GameStat
 
     private void Die() {
         isDead = true;
-        if (GetComponentInParent<MainCharacter>()) {
-            FindObjectOfType<GameSession>().ProcessPlayerDeath();
-        }
+        FindObjectOfType<GameSession>().ProcessPlayerDeath(GetComponentInParent<MainCharacter>());
         DeathBehavior[] deathBehaviors = GetComponents<DeathBehavior>();
         foreach (DeathBehavior deathBehavior in deathBehaviors) {
             deathBehavior.OnDeath();
