@@ -975,7 +975,7 @@ MonoBehaviour:
   projectile: {fileID: -8068824397810964227, guid: eaa65a92934fa774ab5cf283ee5adb35,
     type: 3}
   attackPoint: {fileID: 845549348}
-  projectileSpeed: 2
+  projectileSpeed: 4
 --- !u!95 &793555400
 Animator:
   serializedVersion: 3
