@@ -15,7 +15,7 @@ public class MainCharacterProjectile : Projectile
     }
 
     public void SetStartingAngle(float angle) {
-        startingAngle = angle;
+        startingAngle = angle >= 0 ? angle : 360 + angle;
     }
 
     public void SetSpeed(float speed) {

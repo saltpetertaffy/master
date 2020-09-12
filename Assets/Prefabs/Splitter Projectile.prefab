@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2611034020716790157}
   - component: {fileID: -8068824397810964227}
   - component: {fileID: -418318398564470974}
+  - component: {fileID: -1096456221841455921}
   m_Layer: 16
   m_Name: Splitter Projectile
   m_TagString: Untagged
@@ -156,3 +157,16 @@ PolygonCollider2D:
       - {x: 0.2578125, y: 0}
       - {x: 0.2578125, y: 0.203125}
       - {x: 0.2421875, y: 0.25}
+--- !u!114 &-1096456221841455921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4712126010721182696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8f297cfcb6b91d42afb2b0a45bec3a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: 10

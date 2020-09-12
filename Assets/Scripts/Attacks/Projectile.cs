@@ -6,7 +6,6 @@ public abstract class Projectile : OneOffAttack
     [SerializeField] bool collidesWithGround = false;
 
     protected override void OnHit(Collider2D collision) {
-        Debug.Log("collision");
         if (collidesWithGround && attackCollider.IsTouchingLayers(LayerMask.GetMask(GameKeys.LAYER_GROUND_KEY))) {
             Destroy(gameObject);
         }
