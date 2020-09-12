@@ -511,7 +511,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.71018434, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 845549349}
   m_Father: {fileID: 793555397}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
@@ -922,8 +923,8 @@ GameObject:
   m_Component:
   - component: {fileID: 793555397}
   - component: {fileID: 793555400}
-  - component: {fileID: 793555399}
   - component: {fileID: 793555398}
+  - component: {fileID: 793555399}
   m_Layer: 9
   m_Name: Splitter
   m_TagString: Untagged
@@ -968,9 +969,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 793555396}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de3ac78b7a4d192468d3cbfa9b3491f0, type: 3}
+  m_Script: {fileID: 11500000, guid: 82c27abf8ceace74aa17626c374b4c21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectile: {fileID: -8068824397810964227, guid: eaa65a92934fa774ab5cf283ee5adb35,
+    type: 3}
+  attackPoint: {fileID: 845549348}
+  projectileSpeed: 2
 --- !u!95 &793555400
 Animator:
   serializedVersion: 3
@@ -1713,6 +1718,36 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!1 &845549348
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 845549349}
+  m_Layer: 9
+  m_Name: Attack Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &845549349
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845549348}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1.1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 218052613}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &970203493 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 1515257459, guid: 19f151c97f861d44f9d31e2d5498b273,
@@ -2303,6 +2338,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 304306531, guid: 19f151c97f861d44f9d31e2d5498b273, type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 304306531, guid: 19f151c97f861d44f9d31e2d5498b273, type: 3}
       propertyPath: m_ColliderPaths.Array.data[1].m_ColliderPaths.Array.data[0].Array.data[0].X
       value: 9017325
       objectReference: {fileID: 0}
@@ -2381,6 +2420,10 @@ PrefabInstance:
     - target: {fileID: 1055220171, guid: 19f151c97f861d44f9d31e2d5498b273, type: 3}
       propertyPath: m_Name
       value: Spark
+      objectReference: {fileID: 0}
+    - target: {fileID: 1055220171, guid: 19f151c97f861d44f9d31e2d5498b273, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282263932519210380, guid: 19f151c97f861d44f9d31e2d5498b273,
         type: 3}

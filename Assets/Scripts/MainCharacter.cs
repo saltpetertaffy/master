@@ -9,7 +9,7 @@ public class MainCharacter : MonoBehaviour
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float midairReverseSpeed = 2f;
     [SerializeField] float jumpSpeed = 12f;
-    [SerializeField] int abilitycap = 1;
+    [SerializeField] int abilityCap = 1;
     [SerializeField] float attackSpeed = 1;
 
     Ability ability;
