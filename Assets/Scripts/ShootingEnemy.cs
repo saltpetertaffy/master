@@ -9,9 +9,12 @@ public class ShootingEnemy : Enemy
 
     Rigidbody2D attackRigidbody;
 
+    DebugOptions debugOptions;
+
     // Start is called before the first frame update
     void Start()
     {
+        debugOptions = FindObjectOfType<DebugOptions>();
         attackRigidbody = attack.GetComponent<Rigidbody2D>();
         if (!attackRigidbody) {
             Debug.LogError("No rigidbody found on attack, did you forget to give the enemy an attack?");
@@ -19,6 +22,8 @@ public class ShootingEnemy : Enemy
     }
 
     public override void Attack() {
+        if (debugOptions.demilitarizedEnemies) { return; }
+
         MainCharacter mainCharacter = FindObjectOfType<MainCharacter>();
         if (!mainCharacter) { return; }
 

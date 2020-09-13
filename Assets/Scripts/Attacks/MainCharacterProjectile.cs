@@ -9,7 +9,7 @@ public class MainCharacterProjectile : Projectile
     protected float speed = 0f;
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         targetLayer = GameKeys.LAYER_ENEMY_KEY;
     }

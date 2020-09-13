@@ -12,8 +12,9 @@ public class SplitterProjectile : MainCharacterProjectile
     public bool isReversed = false;
     
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
+        base.Start();
         splitterRigidbody = GetComponent<Rigidbody2D>();
         SetProjectileForce();
     }
