@@ -21,6 +21,9 @@ public class Health : GameStat
     private void Start() {
         deathBehaviors = GetComponents<DeathBehavior>();
         debugOptions = FindObjectOfType<DebugOptions>();
+        if (GetComponent<MainCharacter>()) {
+            maximumHealth = FindObjectOfType<GameSession>().currentMaximumHealth;
+        }
         health = maximumHealth;
         SetGameStatId((int) GameStats.HEALTH);
     }
@@ -45,7 +48,8 @@ public class Health : GameStat
     }
 
     public void RemoveHealth(float healthToRemove) {
-        if (healthToRemove < 0 || debugOptions.godMode) { return; }
+        bool isGodmodedMainCharacter = GetComponentInParent<MainCharacter>() && debugOptions.godMode;
+        if (healthToRemove < 0 || isGodmodedMainCharacter) { return; }
 
         health = (health < healthToRemove) ? 0 : health - healthToRemove;
         
@@ -62,9 +66,13 @@ public class Health : GameStat
         return maximumHealth;
     }
 
+    public float GetMissingHealth() {
+        return maximumHealth - health;
+    }
+
     private void Die() {
         isDead = true;
-        FindObjectOfType<GameSession>().ProcessPlayerDeath();
+        FindObjectOfType<GameSession>().ProcessPlayerDeath(GetComponentInParent<MainCharacter>());
         DeathBehavior[] deathBehaviors = GetComponents<DeathBehavior>();
         foreach (DeathBehavior deathBehavior in deathBehaviors) {
             deathBehavior.OnDeath();

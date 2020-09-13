@@ -5,7 +5,7 @@ using GameConstants;
 
 public class AimedAbility : Ability
 {
-    private Animator abilityAnimator;
+    protected Animator abilityAnimator;
     private Rotator rotator;
 
     // Start is called before the first frame update
@@ -31,5 +31,14 @@ public class AimedAbility : Ability
 
     public override void Activate() {
         abilityAnimator.SetTrigger(GameKeys.ANMIMATION_ACTIVATED_TRIGGER);
+    }
+
+    protected float GetAimingAngle() {
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 weaponPos = transform.position;
+
+        float angle = Mathf.Atan2(mousePos.y - weaponPos.y, mousePos.x - weaponPos.x) * Mathf.Rad2Deg;
+
+        return angle;
     }
 }

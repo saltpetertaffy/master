@@ -19,10 +19,10 @@ public class EnemyProjectile : Projectile
     // Update is called once per frame
     void Update()
     {
-        GetComponent<SpriteRenderer>().color = generateDamageColor();
+        GetComponent<SpriteRenderer>().color = GenerateProjectileColor();
     }
 
-    private Color generateDamageColor() {
+    private Color GenerateProjectileColor() {
         int totalDamage = 0;
 
         foreach (GameStatEffect projectileEffect in attackEffects) {
@@ -38,10 +38,23 @@ public class EnemyProjectile : Projectile
                     break;
             }
         }
-        totalDamage = (int) (totalDamage * (1 - mainCharacterArmor.GetArmor() / 100));
-        
-        float damageRedShade = totalDamage / mainCharacterHealth.GetHealth();
-        Color damageColor = new Color(1, 1 - damageRedShade, 1 - damageRedShade);
-        return damageColor;
+        totalDamage = (int) (totalDamage * (1 - mainCharacterArmor.GetArmor() / 100) - mainCharacterArmor.GetFreeArmor());
+
+        Color projectileColor;
+        if (mainCharacterHealth.GetHealth() == 0) {
+            projectileColor = Color.red;
+        }
+        else if (totalDamage > 0) {
+            float damageRedShade = totalDamage / mainCharacterHealth.GetHealth();
+            projectileColor = new Color(1, 1 - damageRedShade, 1 - damageRedShade);
+        }
+        else if (totalDamage < 0) {
+            float healingCyanShade = Mathf.Abs(totalDamage) / mainCharacterHealth.GetHealth();
+            projectileColor = new Color(0, 1 - healingCyanShade, 1);
+        }
+        else {
+            projectileColor = Color.white;
+        }
+            return projectileColor;
     }
 }
