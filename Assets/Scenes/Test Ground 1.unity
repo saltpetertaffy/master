@@ -1958,8 +1958,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 045cc2ce399d7424198e3c2a333b8c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  godMode: 1
-  demilitarizedEnemies: 1
+  godMode: 0
+  demilitarizedEnemies: 0
 --- !u!114 &1895325272
 MonoBehaviour:
   m_ObjectHideFlags: 0
