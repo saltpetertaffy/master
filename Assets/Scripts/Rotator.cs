@@ -6,6 +6,10 @@ using GameConstants;
 public class Rotator : MonoBehaviour {
     [SerializeField] float rotationSpeed = 360f;
 
+    public void SetRotationSpeed(float rotationSpeed) {
+        this.rotationSpeed = rotationSpeed;
+    }
+
     internal void RotateTowardsAngle(float angle) {
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed);

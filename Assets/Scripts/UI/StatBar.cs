@@ -17,7 +17,7 @@ public abstract class StatBar : MonoBehaviour
 
     protected void SetStat(float statToSet) {
         float statBarForegroundWidth = statToSet * GameConfigConstants.UI_STAT_BAR_SCALING_MULTIPLIER
-            - GameConfigConstants.UI_STAT_BAR_RIGHT_MARGIN;
+            - GameConfigConstants.UI_STAT_BAR_FOREGROUND_RIGHT_MARGIN;
         statBarForegroundWidth = statBarForegroundWidth >= 0 ? statBarForegroundWidth : 0;
         float statBarForegroundHeight = statBarForeground.GetComponent<SpriteRenderer>().size.y;
 
@@ -25,7 +25,8 @@ public abstract class StatBar : MonoBehaviour
     }
 
     protected void SetMaxStat(float maxStatToSet) {
-        float statBarWidth = maxStatToSet * GameConfigConstants.UI_STAT_BAR_SCALING_MULTIPLIER;
+        float statBarWidth = maxStatToSet * GameConfigConstants.UI_STAT_BAR_SCALING_MULTIPLIER
+            + GameConfigConstants.UI_STAT_BAR_BACKGROUND_MARGIN;
         statBarBackgroundSprite.size = new Vector2(statBarWidth, statBarBackgroundSprite.size.y);
     }
 }

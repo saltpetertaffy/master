@@ -1,18 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameConstants;
 
-public class ArmorRepairEffect : MonoBehaviour
+public class ArmorRepairEffect : GameStatEffect
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void Start() {
+        SetEffectName("Armor Repair");
+        SetGameStatEffectId((int) GameStatEffects.ARMOR_REPAIR);
+        SetGameStatEffectType((int) GameStatEffectTypes.ARMOR_REPAIR);
     }
 }

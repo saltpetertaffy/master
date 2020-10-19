@@ -19,9 +19,9 @@ TagManager:
   - Hitbox
   - Enemy Projectile
   - Projectile Shape
-  - 
-  - 
-  - 
+  - Enemy
+  - Shredder
+  - Player Projectile
   - 
   - 
   - 
@@ -55,6 +55,9 @@ TagManager:
     locked: 0
   - name: Projectile
     uniqueID: 1278401831
+    locked: 0
+  - name: Enemy
+    uniqueID: 623638167
     locked: 0
   - name: HUD Canvas
     uniqueID: 1282334315
