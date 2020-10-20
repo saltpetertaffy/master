@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using GameConstants;
 
@@ -12,7 +11,8 @@ public class MainCharacter : MonoBehaviour
     [SerializeField] int abilityCap = 1;
     [SerializeField] float attackSpeed = 1;
 
-    Ability ability;
+    Ability[] abilities;
+    Ability activeAbility;
     BoxCollider2D mainCharacterFeetCollider;
     Rigidbody2D mainCharacterRigidbody;
 
@@ -25,7 +25,8 @@ public class MainCharacter : MonoBehaviour
     void Start() {
         mainCharacterRigidbody = GetComponent<Rigidbody2D>();
         mainCharacterFeetCollider = GetComponent<BoxCollider2D>();
-        ability = GetComponentInChildren<Ability>();
+        abilities = GetComponentsInChildren<Ability>();
+        activeAbility = abilities[0];
     }
 
     // Update is called once per frame
@@ -34,6 +35,7 @@ public class MainCharacter : MonoBehaviour
         Move();
         Jump();
         Attack();
+        SwitchAbility();
     }
 
     private void Move() {
@@ -76,9 +78,13 @@ public class MainCharacter : MonoBehaviour
 
         if (isAttacking && canAttack) {
             canAttack = false;
-            ability.Activate();
+            activeAbility.Activate();
             StartCoroutine(DelayAttack());
         }
+    }
+
+    private void SwitchAbility() {
+
     }
 
     private void UpdateMidair() {

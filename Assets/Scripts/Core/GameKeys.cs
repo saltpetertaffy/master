@@ -5,6 +5,7 @@
         public const string AXIS_FIRE_1_KEY = "Fire1";
         public const string AXIS_HORIZONTAL_KEY = "Horizontal";
         public const string AXIS_JUMP_KEY = "Jump";
+        public const string AXIS_SELECT_EQUIP_1 = "Select Equip 1";
         public const string AXIS_VERTICAL_KEY = "Vertical";
         public const string LAYER_CHARACTER_UI_KEY = "Character UI";
         public const string LAYER_ENEMY_KEY = "Enemy";

@@ -18,5 +18,8 @@
 
         // width of stat bar background = (maxStatValue * scalingMultiplier) + this
         public const float UI_STAT_BAR_BACKGROUND_MARGIN = .4f;
+
+        // alpha value of selected equip
+        public const float UI_EQUIP_SELECTED_ALPHA = 110f;
     }
 }
