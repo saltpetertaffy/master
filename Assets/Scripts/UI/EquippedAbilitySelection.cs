@@ -3,23 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameConstants;
 
-public class EquippedItemSelection : MonoBehaviour
+public class EquippedAbilitySelection : MonoBehaviour
 {
     private SpriteRenderer selectionSprite;
+    private Ability ability;
 
     public void Start() {
         selectionSprite = GetComponent<SpriteRenderer>();
     }
 
-    public void SelectEquip() {
+    public void SelectAbility() {
         Color selectionColor = selectionSprite.color;
         selectionColor.a = GameConfigConstants.UI_EQUIP_SELECTED_ALPHA;
         selectionSprite.color = selectionColor;
     }
 
-    public void DeselectEquip() {
+    public void DeselectAbility() {
         Color selectionColor = selectionSprite.color;
         selectionColor.a = 0f;
         selectionSprite.color = selectionColor;
+    }
+
+    public void SetAbility(Ability ability) {
+        this.ability = ability;
+    }
+
+    public Ability GetAbility() {
+        return ability;
     }
 }

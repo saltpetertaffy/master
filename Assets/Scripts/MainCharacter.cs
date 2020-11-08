@@ -11,10 +11,10 @@ public class MainCharacter : MonoBehaviour
     [SerializeField] int abilityCap = 1;
     [SerializeField] float attackSpeed = 1;
 
-    Ability[] abilities;
     Ability activeAbility;
     BoxCollider2D mainCharacterFeetCollider;
     Rigidbody2D mainCharacterRigidbody;
+    EquippedAbilitySelector abilities;
 
     float jumpXSpeed = 0;
     bool hasReversedInMidair = false;
@@ -25,8 +25,8 @@ public class MainCharacter : MonoBehaviour
     void Start() {
         mainCharacterRigidbody = GetComponent<Rigidbody2D>();
         mainCharacterFeetCollider = GetComponent<BoxCollider2D>();
-        abilities = GetComponentsInChildren<Ability>();
-        activeAbility = abilities[0];
+        abilities = FindObjectOfType<EquippedAbilitySelector>();
+        activeAbility = abilities.GetActiveAbility();
     }
 
     // Update is called once per frame
@@ -35,7 +35,7 @@ public class MainCharacter : MonoBehaviour
         Move();
         Jump();
         Attack();
-        SwitchAbility();
+        CycleAbility();
     }
 
     private void Move() {
@@ -83,8 +83,13 @@ public class MainCharacter : MonoBehaviour
         }
     }
 
-    private void SwitchAbility() {
-
+    private void CycleAbility() {
+        bool selectingNextAbility = Input.GetButtonDown(GameKeys.AXIS_CYCLE_EQUIP_KEY);
+        if (selectingNextAbility) {
+            Debug.Log("BUTTON PRESSED");
+            abilities.CycleAbility();
+            activeAbility = abilities.GetActiveAbility();
+        }
     }
 
     private void UpdateMidair() {
