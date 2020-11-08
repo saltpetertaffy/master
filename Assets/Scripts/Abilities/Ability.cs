@@ -28,4 +28,8 @@ public abstract class Ability : MonoBehaviour
     public void SetAbilityPrefab(string path) {
         abilityPrefab = Resources.Load<GameObject>(path);
     }
+
+    public GameObject GetAbilityPrefab() {
+        return abilityPrefab;
+    }
 }

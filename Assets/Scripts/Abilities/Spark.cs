@@ -9,6 +9,6 @@ public class Spark : AimedAbility
     void Start()
     {
         SetAbilityId(GameKeys.ABILITY_SPARK_KEY);
-        SetAbilityPrefab("Prefabs/Ability Bases/Spark Base");
+        SetAbilityPrefab("Prefabs/Abilities/Spark");
     }
 }
