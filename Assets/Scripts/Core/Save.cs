@@ -1,10 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using GameConstants;
+﻿using GameConstants;
+using System;
 
-public class Save : MonoBehaviour
+[Serializable]
+public class Save
 {
-    public int lives = 3;
-    public string[] abilityLoadout = { GameKeys.ABILITY_SPARK_KEY };
+    public int lives;
+    public string[] abilityLoadout;
+
+    public Save() {
+        lives = 3;
+        abilityLoadout = new string[2] {GameKeys.ABILITY_SPARK_KEY, GameKeys.ABILITY_SPLITTER_KEY};
+    }
+
+    public Save(int lives, string[] abilityLoadout) {
+        this.lives = lives;
+        this.abilityLoadout = abilityLoadout;
+    }
 }

@@ -3,19 +3,11 @@ using UnityEngine;
 
 public abstract class Ability : MonoBehaviour 
 {
-    [SerializeField] EquippedAbilitySelection abilitySelectionIcon;
-    private GameObject abilityPrefab;
     private string abilityId;
 
     public abstract void Activate();
 
-    public void Select() {
-        abilitySelectionIcon.SelectAbility();
-    }
-
-    public void Deselect() {
-        abilitySelectionIcon.DeselectAbility();
-    }
+    public abstract void Initialize();
 
     public string GetAbilityId() {
         return abilityId;
@@ -23,13 +15,5 @@ public abstract class Ability : MonoBehaviour
 
     public void SetAbilityId(string abilityId) {
         this.abilityId = abilityId;
-    }
-
-    public void SetAbilityPrefab(string path) {
-        abilityPrefab = Resources.Load<GameObject>(path);
-    }
-
-    public GameObject GetAbilityPrefab() {
-        return abilityPrefab;
     }
 }

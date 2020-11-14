@@ -5,10 +5,8 @@ using UnityEngine;
 
 public class Spark : AimedAbility
 {
-    // Start is called before the first frame update
-    void Start()
+    override public void Initialize()
     {
         SetAbilityId(GameKeys.ABILITY_SPARK_KEY);
-        SetAbilityPrefab("Prefabs/Abilities/Spark");
     }
 }

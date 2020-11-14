@@ -1,4 +1,5 @@
 ﻿using Cinemachine;
+using GameConstants;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -15,6 +16,8 @@ public class GameSession : MonoBehaviour
     public int currentMaximumArmor = 50;
 
     SceneLoader sceneLoader;
+
+    private const string ABILITIES_RELATIVE_PATH = "Prefabs/Abilities/";
     
     private void Awake() {
         if (FindObjectsOfType<GameSession>().Length > 1) {
@@ -22,6 +25,9 @@ public class GameSession : MonoBehaviour
         }
         else {
             DontDestroyOnLoad(gameObject);
+        }
+        if (SceneManager.GetActiveScene().buildIndex != 0) {
+            LoadGame();
         }
     }
 
@@ -46,7 +52,6 @@ public class GameSession : MonoBehaviour
         FileStream file = File.Create(Application.persistentDataPath + "/save1.save");
         bin.Serialize(file, save);
         file.Close();
-        Debug.Log("Game saved.");
     }
 
     private Save CreateSave() {
@@ -75,9 +80,48 @@ public class GameSession : MonoBehaviour
 
             lives = save.lives;
 
+            SetAbilityLoadout(save.abilityLoadout);
+
             Debug.Log("Game Loaded");
         } else {
             Debug.Log("No saved games.");
         }
+    }
+
+    private void SetAbilityLoadout(string[] abilityLoadout) {
+        EquippedAbilitySelector abilitySet = FindObjectOfType<EquippedAbilitySelector>();
+        abilitySet.ClearAbilities();
+        foreach (string abilityKey in abilityLoadout) {
+            if (abilityKey != null) {
+                GameObject abilityPrefab = Instantiate(Resources.Load(ABILITIES_RELATIVE_PATH + abilityKey) as GameObject);
+                Ability ability;
+                switch (abilityKey) {
+                    case GameKeys.ABILITY_SPARK_KEY:
+                        ability = abilityPrefab.GetComponent<Spark>();
+                        break;
+                    case GameKeys.ABILITY_SPLITTER_KEY:
+                        ability = abilityPrefab.GetComponent<Splitter>();
+                        break;
+                    default:
+                        throw new AbilityNotFoundException("Ability " + abilityKey + " not found.");
+                }
+                ability.Initialize();
+                abilitySet.addAbility(ability);
+            } else {
+                Debug.LogError("Ability not found.");
+                throw new AbilityNotFoundException("Ability not found.");
+            }
+        }
+    }
+
+    public void StartGame() {
+        Save save = new Save();
+
+        BinaryFormatter bin = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "/save1.save");
+        bin.Serialize(file, save);
+        file.Close();
+
+        sceneLoader.LoadNextScene();
     }
 }

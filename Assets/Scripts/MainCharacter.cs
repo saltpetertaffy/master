@@ -31,6 +31,9 @@ public class MainCharacter : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
+        if (!activeAbility) {
+            activeAbility = abilities.GetActiveAbility();
+        }
         UpdateMidair();
         Move();
         Jump();
@@ -88,7 +91,9 @@ public class MainCharacter : MonoBehaviour
         if (selectingNextAbility) {
             Debug.Log("BUTTON PRESSED");
             abilities.CycleAbility();
+            Destroy(activeAbility);
             activeAbility = abilities.GetActiveAbility();
+            Instantiate(activeAbility, transform.position, Quaternion.identity, transform);
         }
     }
 

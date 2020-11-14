@@ -8,10 +8,6 @@ public class EquippedAbilitySelection : MonoBehaviour
     private SpriteRenderer selectionSprite;
     private Ability ability;
 
-    public void Start() {
-        selectionSprite = GetComponent<SpriteRenderer>();
-    }
-
     public void SelectAbility() {
         Color selectionColor = selectionSprite.color;
         selectionColor.a = GameConfigConstants.UI_EQUIP_SELECTED_ALPHA;
@@ -30,5 +26,13 @@ public class EquippedAbilitySelection : MonoBehaviour
 
     public Ability GetAbility() {
         return ability;
+    }
+
+    public void SetSelectionSprite(SpriteRenderer selectionSprite) {
+        this.selectionSprite = selectionSprite;
+    }
+
+    public SpriteRenderer GetSelectionSprite() {
+        return selectionSprite;
     }
 }

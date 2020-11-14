@@ -442,10 +442,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8569320090765858798}
   - component: {fileID: 8569320090765858799}
-  - component: {fileID: 700154236016571442}
   - component: {fileID: 1937658922379587686}
+  - component: {fileID: 763372537316995494}
   m_Layer: 10
-  m_Name: Ability 1
+  m_Name: Spark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -485,19 +485,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &700154236016571442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8569320090765858793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de3ac78b7a4d192468d3cbfa9b3491f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilitySelectionIcon: {fileID: 0}
 --- !u!114 &1937658922379587686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,3 +498,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 360
+--- !u!114 &763372537316995494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8569320090765858793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42624925f1adf694da8c5635c18ff112, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
