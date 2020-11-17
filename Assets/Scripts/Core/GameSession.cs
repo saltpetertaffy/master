@@ -93,7 +93,7 @@ public class GameSession : MonoBehaviour
         abilitySet.ClearAbilities();
         foreach (string abilityKey in abilityLoadout) {
             if (abilityKey != null) {
-                GameObject abilityPrefab = Instantiate(Resources.Load(ABILITIES_RELATIVE_PATH + abilityKey) as GameObject);
+                GameObject abilityPrefab = Resources.Load(ABILITIES_RELATIVE_PATH + abilityKey) as GameObject;
                 Ability ability;
                 switch (abilityKey) {
                     case GameKeys.ABILITY_SPARK_KEY:

@@ -16,7 +16,7 @@ public class EquippedAbilitySelector : MonoBehaviour
     private const float EQUIPPED_ABILITY_SELECTION_SPACING = 100f;
     private const float EQUIPPED_ABILITY_SELECTION_SCALE_ALL_AXES = 1f;
 
-    public void CycleAbility() {
+    public Ability CycleAbility() {
         if (activeAbilityIndex == abilities.Count - 1 || abilities[activeAbilityIndex + 1] == null) {
             activeAbilityIndex = 0;
         } else {
@@ -24,6 +24,7 @@ public class EquippedAbilitySelector : MonoBehaviour
         }
 
         SelectAbility(activeAbilityIndex);
+        return abilities[activeAbilityIndex].GetAbility();
     }
 
     public void SelectAbility(int selectedAbilityIndex) {
@@ -38,7 +39,7 @@ public class EquippedAbilitySelector : MonoBehaviour
     }
 
     public Ability GetActiveAbility() {
-        return abilities[activeAbilityIndex].GetComponent<EquippedAbilitySelection>().GetAbility();
+        return abilities[activeAbilityIndex].GetAbility();
     }
 
     public void addAbility(Ability ability) {
@@ -52,8 +53,6 @@ public class EquippedAbilitySelector : MonoBehaviour
         selection.SetSelectionSprite(selectionSprite);
         RectTransform selectionRectTransform = selection.GetComponent<RectTransform>();
         selectionRectTransform.SetParent(gameObject.transform);
-        Debug.Log(EQUIPPED_ABILITY_SELECTION_OFFSET
-            + (EQUIPPED_ABILITY_SELECTION_SPACING * abilities.Count));
         selectionRectTransform.localPosition = new Vector2(EQUIPPED_ABILITY_SELECTION_OFFSET 
             + (EQUIPPED_ABILITY_SELECTION_SPACING * abilities.Count), 0);
         selectionRectTransform.localScale = new Vector3(EQUIPPED_ABILITY_SELECTION_SCALE_ALL_AXES, 

@@ -8,5 +8,6 @@ public class Spark : AimedAbility
     override public void Initialize()
     {
         SetAbilityId(GameKeys.ABILITY_SPARK_KEY);
+        base.Start();
     }
 }

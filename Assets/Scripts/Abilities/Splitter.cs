@@ -7,6 +7,7 @@ public class Splitter : MainCharacterShooter
 {
     override public void Initialize() {
         SetAbilityId(GameKeys.ABILITY_SPLITTER_KEY);
+        base.Start();
     }
 
     public override void Activate() {

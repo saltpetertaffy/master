@@ -2,8 +2,7 @@
 using UnityEngine;
 using GameConstants;
 
-public class MainCharacter : MonoBehaviour
-{
+public class MainCharacter : MonoBehaviour {
     [Header("Movement And Action Config")]
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float midairReverseSpeed = 2f;
@@ -11,7 +10,7 @@ public class MainCharacter : MonoBehaviour
     [SerializeField] int abilityCap = 1;
     [SerializeField] float attackSpeed = 1;
 
-    Ability activeAbility;
+    Ability activeAbility { get; set; }
     BoxCollider2D mainCharacterFeetCollider;
     Rigidbody2D mainCharacterRigidbody;
     EquippedAbilitySelector abilities;
@@ -26,7 +25,7 @@ public class MainCharacter : MonoBehaviour
         mainCharacterRigidbody = GetComponent<Rigidbody2D>();
         mainCharacterFeetCollider = GetComponent<BoxCollider2D>();
         abilities = FindObjectOfType<EquippedAbilitySelector>();
-        activeAbility = abilities.GetActiveAbility();
+        activeAbility = Instantiate(abilities.GetActiveAbility(), gameObject.transform);
     }
 
     // Update is called once per frame
@@ -89,11 +88,9 @@ public class MainCharacter : MonoBehaviour
     private void CycleAbility() {
         bool selectingNextAbility = Input.GetButtonDown(GameKeys.AXIS_CYCLE_EQUIP_KEY);
         if (selectingNextAbility) {
-            Debug.Log("BUTTON PRESSED");
+            Destroy(activeAbility.gameObject);
             abilities.CycleAbility();
-            Destroy(activeAbility);
-            activeAbility = abilities.GetActiveAbility();
-            Instantiate(activeAbility, transform.position, Quaternion.identity, transform);
+            activeAbility = Instantiate(abilities.GetActiveAbility(), gameObject.transform); ;
         }
     }
 

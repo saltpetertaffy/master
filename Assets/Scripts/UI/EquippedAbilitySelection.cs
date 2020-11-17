@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GameConstants;
+using UnityEngine.UI;
 
 public class EquippedAbilitySelection : MonoBehaviour
 {
     private SpriteRenderer selectionSprite;
     private Ability ability;
+    private Image selectionImage;
 
     public void SelectAbility() {
         Color selectionColor = selectionSprite.color;
