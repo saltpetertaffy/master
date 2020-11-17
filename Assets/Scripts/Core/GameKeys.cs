@@ -31,18 +31,25 @@
         ARMOR_SHRED_PERCENT_REMAINING,
         ARMOR_REPAIR,
         ARMOR_REPAIR_PERCENT_MAX,
-        ARMOR_REPAIR_PERCENT_MISSING
+        ARMOR_REPAIR_PERCENT_MISSING,
+        MOVEMENT_MOVE_SPEED_UP,
+        MOPVEMENT_MOVE_SPEED_DOWN,
+        MOVEMENT_JUMP_SPEED_UP,
+        MOVEMENT_JUMP_SPEED_DOWN
     }
 
     public enum GameStatEffectTypes {
         DAMAGE,
         ARMOR_SHRED,
         HEALING,
-        ARMOR_REPAIR
+        ARMOR_REPAIR,
+        MOVEMENT
     }
 
     public enum GameStats {
         HEALTH,
-        ARMOR
+        ARMOR,
+        MOVE_SPEED,
+        JUMP_SPEED
     }
 }

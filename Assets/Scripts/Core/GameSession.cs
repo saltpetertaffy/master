@@ -15,6 +15,9 @@ public class GameSession : MonoBehaviour
     public int currentMaximumHealth = 100;
     public int currentMaximumArmor = 50;
 
+    public List<Upgrade> tempUpgrades;
+    public List<upgrade> permanentUpgrades;
+
     SceneLoader sceneLoader;
 
     private const string ABILITIES_RELATIVE_PATH = "Prefabs/Abilities/";
@@ -82,9 +85,9 @@ public class GameSession : MonoBehaviour
 
             SetAbilityLoadout(save.abilityLoadout);
 
-            Debug.Log("Game Loaded");
+            Debug.LogAssertion("Game Loaded");
         } else {
-            Debug.Log("No saved games.");
+            Debug.LogError("Trying to load nonexistent game.");
         }
     }
 
