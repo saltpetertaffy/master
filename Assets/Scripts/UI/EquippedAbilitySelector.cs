@@ -45,9 +45,11 @@ public class EquippedAbilitySelector : MonoBehaviour
     public void addAbility(Ability ability) {
         GameObject selectionPrefab = Instantiate(
             Resources.Load(EQUIPPED_ABILITY_SELECTION_RELATIVE_PATH + EQUIPPED_ABILITY_SELECTION_FILE_NAME) as GameObject);
-        GameObject selectionSpritePrefab = 
-            Resources.Load(EQUIPPED_ABILITY_SELECTION_RELATIVE_PATH + ability.GetAbilityId()) as GameObject;
+        GameObject selectionSpritePrefab = Instantiate(
+            Resources.Load(EQUIPPED_ABILITY_SELECTION_RELATIVE_PATH + ability.GetAbilityId()) as GameObject,
+            selectionPrefab.transform);
         EquippedAbilitySelection selection = selectionPrefab.GetComponent<EquippedAbilitySelection>();
+        selection.Initialize();
         SpriteRenderer selectionSprite = selectionSpritePrefab.GetComponent<SpriteRenderer>();
         selection.SetAbility(ability);
         selection.SetSelectionSprite(selectionSprite);

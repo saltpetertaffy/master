@@ -10,16 +10,21 @@ public class EquippedAbilitySelection : MonoBehaviour
     private Ability ability;
     private Image selectionImage;
 
+    public void Initialize() {
+        selectionSprite = GetComponent<SpriteRenderer>();
+        selectionImage = GetComponent<Image>();   
+    }
+
     public void SelectAbility() {
-        Color selectionColor = selectionSprite.color;
+        Color selectionColor = selectionImage.color;
         selectionColor.a = GameConfigConstants.UI_EQUIP_SELECTED_ALPHA;
-        selectionSprite.color = selectionColor;
+        selectionImage.color = selectionColor;
     }
 
     public void DeselectAbility() {
-        Color selectionColor = selectionSprite.color;
+        Color selectionColor = selectionImage.color;
         selectionColor.a = 0f;
-        selectionSprite.color = selectionColor;
+        selectionImage.color = selectionColor;
     }
 
     public void SetAbility(Ability ability) {

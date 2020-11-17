@@ -112,6 +112,7 @@ public class GameSession : MonoBehaviour
                 throw new AbilityNotFoundException("Ability not found.");
             }
         }
+        abilitySet.SelectAbility(0);
     }
 
     public void StartGame() {
