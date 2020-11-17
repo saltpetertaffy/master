@@ -3,8 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SplitterShooter : MainCharacterShooter
+public class Splitter : MainCharacterShooter
 {
+    override public void Initialize() {
+        SetAbilityId(GameKeys.ABILITY_SPLITTER_KEY);
+        base.Start();
+    }
+
     public override void Activate() {
         MakeSplitterProjectile();
         SplitterProjectile secondShot = MakeSplitterProjectile();

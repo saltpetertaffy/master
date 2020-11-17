@@ -8,8 +8,11 @@ public class AimedAbility : Ability
     protected Animator abilityAnimator;
     private Rotator rotator;
 
-    // Start is called before the first frame update
-    void Start()
+    public override void Initialize() {
+        throw new System.NotImplementedException();
+    }
+
+    protected void Start()
     {
         abilityAnimator = GetComponent<Animator>();
         rotator = GetComponent<Rotator>();
@@ -18,6 +21,12 @@ public class AimedAbility : Ability
     // Update is called once per frame
     void Update()
     {
+        if (!rotator) {
+            rotator = GetComponent<Rotator>();
+        }
+        if (!abilityAnimator) {
+            abilityAnimator = GetComponent<Animator>();
+        }
         AimAbility();
     }
 

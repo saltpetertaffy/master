@@ -1,10 +1,8 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using GameConstants;
 
-public class MainCharacter : MonoBehaviour
-{
+public class MainCharacter : MonoBehaviour {
     [Header("Movement And Action Config")]
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float midairReverseSpeed = 2f;
@@ -12,9 +10,10 @@ public class MainCharacter : MonoBehaviour
     [SerializeField] int abilityCap = 1;
     [SerializeField] float attackSpeed = 1;
 
-    Ability ability;
+    Ability activeAbility { get; set; }
     BoxCollider2D mainCharacterFeetCollider;
     Rigidbody2D mainCharacterRigidbody;
+    EquippedAbilitySelector abilities;
 
     float jumpXSpeed = 0;
     bool hasReversedInMidair = false;
@@ -25,15 +24,20 @@ public class MainCharacter : MonoBehaviour
     void Start() {
         mainCharacterRigidbody = GetComponent<Rigidbody2D>();
         mainCharacterFeetCollider = GetComponent<BoxCollider2D>();
-        ability = GetComponentInChildren<Ability>();
+        abilities = FindObjectOfType<EquippedAbilitySelector>();
+        activeAbility = Instantiate(abilities.GetActiveAbility(), gameObject.transform);
     }
 
     // Update is called once per frame
     void Update() {
+        if (!activeAbility) {
+            activeAbility = abilities.GetActiveAbility();
+        }
         UpdateMidair();
         Move();
         Jump();
         Attack();
+        CycleAbility();
     }
 
     private void Move() {
@@ -76,8 +80,17 @@ public class MainCharacter : MonoBehaviour
 
         if (isAttacking && canAttack) {
             canAttack = false;
-            ability.Activate();
+            activeAbility.Activate();
             StartCoroutine(DelayAttack());
+        }
+    }
+
+    private void CycleAbility() {
+        bool selectingNextAbility = Input.GetButtonDown(GameKeys.AXIS_CYCLE_EQUIP_KEY);
+        if (selectingNextAbility) {
+            Destroy(activeAbility.gameObject);
+            abilities.CycleAbility();
+            activeAbility = Instantiate(abilities.GetActiveAbility(), gameObject.transform); ;
         }
     }
 
