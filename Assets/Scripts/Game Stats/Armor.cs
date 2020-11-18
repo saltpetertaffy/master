@@ -20,7 +20,7 @@ public class Armor : GameStat {
             maximumArmor = FindObjectOfType<GameSession>().currentMaximumArmor;
         }
         armor = maximumArmor;
-        SetGameStatId((int) GameStats.ARMOR);
+        SetGameStatId(GameStats.STAT_ARMOR);
     }
 
     private void Update() {

@@ -4,17 +4,26 @@ using UnityEngine;
 
 public abstract class GameStatEffect : MonoBehaviour
 {
-    [SerializeField] float value;
-    string effectName;
-    int gameStatEffectId;
-    int gameStatEffectType;
+    [SerializeField] private float value;
+    private string gameStatEffectName;
+    private int gameStatEffectType; // for use with upgrades only
+    private int gameStatEffectId;
+    private int gameStatEffectCategory;
 
     public string GetEffectName() {
-        return effectName;
+        return gameStatEffectName;
     }
 
-    protected void SetEffectName(string effectName) {
-        this.effectName = name;
+    protected void SetEffectName(string gameStatEffectName) {
+        this.gameStatEffectName = gameStatEffectName;
+    }
+
+    public int GetEffectType() {
+        return gameStatEffectType;
+    }
+
+    public void SetEffectType(int gameStatEffectType) {
+        this.gameStatEffectType = gameStatEffectType;
     }
 
     public int GetGameStatEffectId() {
@@ -25,12 +34,12 @@ public abstract class GameStatEffect : MonoBehaviour
         this.gameStatEffectId = gameStatEffectId;
     }
 
-    public int GetGameStatEffectType() {
-        return gameStatEffectType;
+    public int GetGameStatEffectCategory() {
+        return gameStatEffectCategory;
     }
 
-    protected void SetGameStatEffectType(int gameStatEffectType) {
-        this.gameStatEffectType = gameStatEffectType;
+    protected void SetGameStatEffectCategory(int gameStatEffectCategory) {
+        this.gameStatEffectCategory = gameStatEffectCategory;
     }
 
     public float GetValue() {

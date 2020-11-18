@@ -25,7 +25,7 @@ public class Health : GameStat
             maximumHealth = FindObjectOfType<GameSession>().currentMaximumHealth;
         }
         health = maximumHealth;
-        SetGameStatId((int) GameStats.HEALTH);
+        SetGameStatId(GameStats.STAT_HEALTH);
     }
 
     private void Update() {

@@ -38,7 +38,7 @@
         MOVEMENT_JUMP_SPEED_DOWN
     }
 
-    public enum GameStatEffectTypes {
+    public enum GameStatEffectCategories {
         DAMAGE,
         ARMOR_SHRED,
         HEALING,
@@ -46,10 +46,16 @@
         MOVEMENT
     }
 
-    public enum GameStats {
-        HEALTH,
-        ARMOR,
-        MOVE_SPEED,
-        JUMP_SPEED
+    public enum GameStatEffectTypes {
+        SET,
+        ADD,
+        MULTIPLY
+    }
+
+    public static class GameStats {
+        public const string STAT_HEALTH = "Health";
+        public const string STAT_ARMOR = "Armor";
+        public const string STAT_MOVE_SPEED = "Movement Speed";
+        public const string STAT_JUMP_SPEED = "Jump Speed";
     }
 }

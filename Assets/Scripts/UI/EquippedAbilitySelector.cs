@@ -46,7 +46,7 @@ public class EquippedAbilitySelector : MonoBehaviour
         GameObject selectionPrefab = Instantiate(
             Resources.Load(EQUIPPED_ABILITY_SELECTION_RELATIVE_PATH + EQUIPPED_ABILITY_SELECTION_FILE_NAME) as GameObject);
         GameObject selectionSpritePrefab = Instantiate(
-            Resources.Load(EQUIPPED_ABILITY_SELECTION_RELATIVE_PATH + ability.GetAbilityId()) as GameObject,
+            Resources.Load(EQUIPPED_ABILITY_SELECTION_RELATIVE_PATH + ability.AbilityId) as GameObject,
             selectionPrefab.transform);
         EquippedAbilitySelection selection = selectionPrefab.GetComponent<EquippedAbilitySelection>();
         selection.Initialize();

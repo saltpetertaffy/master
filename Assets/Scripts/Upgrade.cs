@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class Upgrade : MonoBehaviour {
-    private string name { get; set; }
-    private string description { get; set; }
-    private float duration { get; set; }
-    private List<GameStatEffect> effects { get; set; }
+    public string Id { get; }
+    public string Name { get; set; }
+    public string Description { get; set; }
+    public float Duration { get; set; }
+    public List<GameStatEffect> Effects { get; set; }
 }

@@ -8,6 +8,6 @@ public class DamagePercentMaxEffect : GameStatEffect
     private void Start() {
         SetEffectName("Percent Max Damage");
         SetGameStatEffectId((int) GameStatEffects.DAMAGE_PERCENT_MAX);
-        SetGameStatEffectType((int) GameStatEffectTypes.DAMAGE);
+        SetGameStatEffectCategory((int) GameStatEffectCategories.DAMAGE);
     }
 }

@@ -1,19 +1,21 @@
 ﻿using GameConstants;
 using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class Save
 {
-    public int lives;
-    public string[] abilityLoadout;
+    public int Lives                        { get; set; }
+    public string[] AbilityLoadout          { get; set; }
+    public List<Upgrade> PermanentUpgrades  { get; set; }
 
     public Save() {
-        lives = 3;
-        abilityLoadout = new string[2] {GameKeys.ABILITY_SPARK_KEY, GameKeys.ABILITY_SPLITTER_KEY};
+        Lives = 3;
+        AbilityLoadout = new string[2] {GameKeys.ABILITY_SPARK_KEY, GameKeys.ABILITY_SPLITTER_KEY};
     }
 
     public Save(int lives, string[] abilityLoadout) {
-        this.lives = lives;
-        this.abilityLoadout = abilityLoadout;
+        this.Lives = lives;
+        this.AbilityLoadout = abilityLoadout;
     }
 }

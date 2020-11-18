@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,9 +15,10 @@ public class GameSession : MonoBehaviour
     public int currentMaximumArmor = 50;
 
     public List<Upgrade> tempUpgrades;
-    public List<upgrade> permanentUpgrades;
+    public List<Upgrade> permanentUpgrades;
 
     SceneLoader sceneLoader;
+    UpgradeHandler upgradeHandler;
 
     private const string ABILITIES_RELATIVE_PATH = "Prefabs/Abilities/";
     
@@ -59,7 +59,7 @@ public class GameSession : MonoBehaviour
 
     private Save CreateSave() {
         Save save = new Save();
-        save.lives = lives;
+        save.Lives = lives;
 
         return save;
     }
@@ -81,9 +81,9 @@ public class GameSession : MonoBehaviour
             Save save = (Save) bin.Deserialize(file);
             file.Close();
 
-            lives = save.lives;
+            lives = save.Lives;
 
-            SetAbilityLoadout(save.abilityLoadout);
+            SetAbilityLoadout(save.AbilityLoadout);
 
             Debug.LogAssertion("Game Loaded");
         } else {

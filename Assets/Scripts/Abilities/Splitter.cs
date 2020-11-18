@@ -6,7 +6,7 @@ using UnityEngine;
 public class Splitter : MainCharacterShooter
 {
     override public void Initialize() {
-        SetAbilityId(GameKeys.ABILITY_SPLITTER_KEY);
+        AbilityId = GameKeys.ABILITY_SPLITTER_KEY;
         base.Start();
     }
 
