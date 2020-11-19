@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class Health : GameStat
 {
-    [Header("Game Stats")]
-    [SerializeField] float maximumHealth = 100f;
+    public float MaximumHealth { get; set; }
 
     [Header("Model")]
     [SerializeField] GameObject healthOwner;
@@ -22,9 +21,9 @@ public class Health : GameStat
         deathBehaviors = GetComponents<DeathBehavior>();
         debugOptions = FindObjectOfType<DebugOptions>();
         if (GetComponent<MainCharacter>()) {
-            maximumHealth = FindObjectOfType<GameSession>().currentMaximumHealth;
+            MaximumHealth = FindObjectOfType<GameSession>().currentMaximumHealth;
         }
-        health = maximumHealth;
+        health = MaximumHealth;
         SetGameStatId(GameStats.STAT_HEALTH);
     }
 
@@ -44,7 +43,7 @@ public class Health : GameStat
     }
 
     public void AddHealth(float healthToAdd) {
-        health = (health + healthToAdd > maximumHealth) ? maximumHealth : health + healthToAdd;
+        health = (health + healthToAdd > MaximumHealth) ? MaximumHealth : health + healthToAdd;
     }
 
     public void RemoveHealth(float healthToRemove) {
@@ -62,12 +61,8 @@ public class Health : GameStat
         return health;
     }
 
-    public float GetMaximumHealth() {
-        return maximumHealth;
-    }
-
     public float GetMissingHealth() {
-        return maximumHealth - health;
+        return MaximumHealth - health;
     }
 
     private void Die() {

@@ -32,7 +32,7 @@ public class GameStatHandler : MonoBehaviour
                     totalDamage += Mathf.RoundToInt(gameStatEffect.GetValue());
                     break;
                 case (int) GameStatEffects.DAMAGE_PERCENT_MAX:
-                    totalDamage += Mathf.RoundToInt(gameStatEffect.GetValue() * health.GetMaximumHealth());
+                    totalDamage += Mathf.RoundToInt(gameStatEffect.GetValue() * health.MaximumHealth);
                     break;
                 case (int) GameStatEffects.DAMAGE_PERCENT_REMAINING:
                     totalDamage += Mathf.RoundToInt(gameStatEffect.GetValue() * health.GetHealth());

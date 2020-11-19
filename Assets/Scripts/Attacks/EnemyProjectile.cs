@@ -31,7 +31,7 @@ public class EnemyProjectile : Projectile
                     totalDamage += Mathf.RoundToInt(projectileEffect.GetValue());
                     break;
                 case (int) GameStatEffects.DAMAGE_PERCENT_MAX:
-                    totalDamage += Mathf.RoundToInt(projectileEffect.GetValue() * mainCharacterHealth.GetMaximumHealth());
+                    totalDamage += Mathf.RoundToInt(projectileEffect.GetValue() * mainCharacterHealth.MaximumHealth);
                     break;
                 case (int) GameStatEffects.DAMAGE_PERCENT_REMAINING:
                     totalDamage += Mathf.RoundToInt(projectileEffect.GetValue() * mainCharacterHealth.GetHealth());

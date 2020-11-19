@@ -22,21 +22,21 @@ public class UpgradeHandler : MonoBehaviour
             foreach (XElement upgradeElement in upgradesToLoadXml) {
                 List<UpgradeEffect> effects = new List<UpgradeEffect>();
                 foreach (XElement effectElement in upgradeElement.Descendants("UpgradeEffect").ToList()) {
-                    Debug.Log(effectElement);
                     UpgradeEffect effectToLoad = new UpgradeEffect(effectElement.Attribute("statkey").Value,
                                                                    effectElement.Attribute("type").Value,
                                                                    float.Parse(effectElement.Attribute("value").Value));
                     effects.Add(effectToLoad);
-                    Debug.Log(effectToLoad.GameStatKey + ", " + effectToLoad.UpgradeEffectType + ", " + effectToLoad.Value);
                 }
                 
-                //Upgrade upgradetoLoad = new Upgrade(upgradeElement.Attribute("id"),
-                  //                                  upgradeElement.Element("Name"),
-                    //                                upgradeElement.Element("Description"),
-                      //                              0f,
-                        //                            null);
+                Upgrade upgradetoLoad = new Upgrade(upgradeElement.Attribute("id").Value,
+                                                    upgradeElement.Element("Name").Value,
+                                                    upgradeElement.Element("Description").Value,
+                                                    0f,
+                                                    effects);
+                upgradesToLoad.Add(upgradetoLoad);
             }
         }
+        ApplyPermanentUpgrades(upgradesToLoad);
     }
 
     public void ApplyPermanentUpgrades(List<Upgrade> upgrades) {
@@ -68,28 +68,64 @@ public class UpgradeHandler : MonoBehaviour
 
         // enforce order of operations (set, add, multiply)
         foreach (UpgradeEffect effect in setUpgradeEffects) {
-            ApplyPermanentEffect(mainCharacter, effect);    
+            ApplySetEffect(mainCharacter, effect);    
         }
         foreach (UpgradeEffect effect in addUpgradeEffects) {
-            ApplyPermanentEffect(mainCharacter, effect);
+            ApplyAddEffect(mainCharacter, effect);
         }
         foreach (UpgradeEffect effect in multiplyUpgradeEffects) {
-            ApplyPermanentEffect(mainCharacter, effect);
+            ApplyMultiplyEffect(mainCharacter, effect);
+        }
+        Debug.Log(mainCharacter.GetComponent<Health>().MaximumHealth + ", " +
+                  mainCharacter.GetComponent<Armor>().MaximumArmor + ", " +
+                  mainCharacter.MoveSpeed);
+    }
+
+    private void ApplySetEffect(MainCharacter mainCharacter, UpgradeEffect effect) {
+        switch (effect.GameStatKey) {
+            case GameStats.STAT_HEALTH:
+                mainCharacter.GetComponent<Health>().MaximumHealth = effect.Value;
+                break;
+            case GameStats.STAT_ARMOR:
+                mainCharacter.GetComponent<Armor>().MaximumArmor = effect.Value;
+                break;
+            case GameStats.STAT_MOVE_SPEED:
+                mainCharacter.MoveSpeed = effect.Value;
+                break;
+            default:
+                throw new StatNotFoundException("Stat not found: " + effect.GameStatKey);
         }
     }
 
-    private void ApplyPermanentEffect(MainCharacter mainCharacter, UpgradeEffect effect) {
-        GameStat stat;
-        switch (effect.UpgradeEffectType) {
-            case UpgradeEffectTypes.SET:
-
+    private void ApplyAddEffect(MainCharacter mainCharacter, UpgradeEffect effect) {
+        switch (effect.GameStatKey) {
+            case GameStats.STAT_HEALTH:
+                mainCharacter.GetComponent<Health>().MaximumHealth += effect.Value;
                 break;
-            case UpgradeEffectTypes.ADD:
-
+            case GameStats.STAT_ARMOR:
+                mainCharacter.GetComponent<Armor>().MaximumArmor += effect.Value;
                 break;
-            case UpgradeEffectTypes.MULTIPLY:
-
+            case GameStats.STAT_MOVE_SPEED:
+                mainCharacter.MoveSpeed += effect.Value;
                 break;
+            default:
+                throw new StatNotFoundException("Stat not found: " + effect.GameStatKey);
+        }
+    }
+
+    private void ApplyMultiplyEffect(MainCharacter mainCharacter, UpgradeEffect effect) {
+        switch (effect.GameStatKey) {
+            case GameStats.STAT_HEALTH:
+                mainCharacter.GetComponent<Health>().MaximumHealth *= effect.Value;
+                break;
+            case GameStats.STAT_ARMOR:
+                mainCharacter.GetComponent<Armor>().MaximumArmor *= effect.Value;
+                break;
+            case GameStats.STAT_MOVE_SPEED:
+                mainCharacter.MoveSpeed *= effect.Value;
+                break;
+            default:
+                throw new StatNotFoundException("Stat not found: " + effect.GameStatKey);
         }
     }
 }

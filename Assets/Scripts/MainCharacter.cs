@@ -3,8 +3,9 @@ using UnityEngine;
 using GameConstants;
 
 public class MainCharacter : MonoBehaviour {
+    public float MoveSpeed { get; set; }
+
     [Header("Movement And Action Config")]
-    [SerializeField] float moveSpeed = 5f;
     [SerializeField] float midairReverseSpeed = 2f;
     [SerializeField] float jumpSpeed = 12f;
     [SerializeField] float attackSpeed = 1;
@@ -51,7 +52,7 @@ public class MainCharacter : MonoBehaviour {
             selectedSpeed = midairReverseSpeed;
             hasReversedInMidair = true;
         } else {
-            selectedSpeed = moveSpeed;
+            selectedSpeed = MoveSpeed;
         }
 
         float newX = Mathf.Sign(xInput) * selectedSpeed;
