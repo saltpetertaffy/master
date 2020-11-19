@@ -7,6 +7,9 @@
 			<UpgradeEffect statkey="Health" type="SET" value="100" />
 			<UpgradeEffect statkey="Armor" type="SET" value="50" />
 			<UpgradeEffect statkey="Movement Speed" type="SET" value="5" />
+			<UpgradeEffect statkey="Jump Speed" type="SET" value="12" />
+			<UpgradeEffect statkey="Attack Speed" type="SET" value="1" />
+			<UpgradeEffect statkey="Midair Reverse Speed" type="SET" value="2" />
 		</Effects>
 	</Upgrade>
 	<Upgrade id="addHealth1">

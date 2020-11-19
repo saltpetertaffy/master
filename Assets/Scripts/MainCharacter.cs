@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
 using GameConstants;
+using System.Dynamic;
 
 public class MainCharacter : MonoBehaviour {
     public float MoveSpeed { get; set; }
-
-    [Header("Movement And Action Config")]
-    [SerializeField] float midairReverseSpeed = 2f;
-    [SerializeField] float jumpSpeed = 12f;
-    [SerializeField] float attackSpeed = 1;
+    public float JumpSpeed { get; set; }
+    public float AttackSpeed { get; set; }
+    public float MidairReverseSpeed { get; set; }
 
     Ability activeAbility { get; set; }
     BoxCollider2D mainCharacterFeetCollider;
@@ -49,7 +48,7 @@ public class MainCharacter : MonoBehaviour {
         bool isReversing = Mathf.Sign(xInput) != Mathf.Sign(jumpXSpeed) && Mathf.Abs(jumpXSpeed) > Mathf.Epsilon;
 
         if ((!isTouchingGround && isReversing) || hasReversedInMidair) {
-            selectedSpeed = midairReverseSpeed;
+            selectedSpeed = MidairReverseSpeed;
             hasReversedInMidair = true;
         } else {
             selectedSpeed = MoveSpeed;
@@ -70,7 +69,7 @@ public class MainCharacter : MonoBehaviour {
             jumpXSpeed = mainCharacterRigidbody.velocity.x;
         }
 
-        Vector2 newVelocity = new Vector2(mainCharacterRigidbody.velocity.x, jumpSpeed);
+        Vector2 newVelocity = new Vector2(mainCharacterRigidbody.velocity.x, JumpSpeed);
         mainCharacterRigidbody.velocity = newVelocity;
         
     }
@@ -102,7 +101,7 @@ public class MainCharacter : MonoBehaviour {
     }
 
     private IEnumerator DelayAttack() {
-        yield return new WaitForSeconds(attackSpeed);
+        yield return new WaitForSeconds(AttackSpeed);
         canAttack = true;
     }
 }

@@ -47,15 +47,17 @@
     }
 
     public static class UpgradeEffectTypes {
-        public const string SET = "SET";
         public const string ADD = "ADD";
         public const string MULTIPLY = "MULTIPLY";
+        public const string SET = "SET";
     }
 
     public static class GameStats {
-        public const string STAT_HEALTH = "Health";
         public const string STAT_ARMOR = "Armor";
-        public const string STAT_MOVE_SPEED = "Movement Speed";
+        public const string STAT_ATTACK_SPEED = "Attack Speed";
+        public const string STAT_HEALTH = "Health";
         public const string STAT_JUMP_SPEED = "Jump Speed";
+        public const string STAT_MOVE_SPEED = "Movement Speed";
+        public const string STAT_MIDAIR_REVERSE_SPEED = "Midair Reverse Speed";
     }
 }

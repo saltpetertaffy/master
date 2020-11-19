@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 using UnityEngine;
-using UnityEngine.Experimental.AI;
 
 public class UpgradeHandler : MonoBehaviour
 {
@@ -92,6 +91,15 @@ public class UpgradeHandler : MonoBehaviour
             case GameStats.STAT_MOVE_SPEED:
                 mainCharacter.MoveSpeed = effect.Value;
                 break;
+            case GameStats.STAT_JUMP_SPEED:
+                mainCharacter.JumpSpeed = effect.Value;
+                break;
+            case GameStats.STAT_ATTACK_SPEED:
+                mainCharacter.AttackSpeed = effect.Value;
+                break;
+            case GameStats.STAT_MIDAIR_REVERSE_SPEED:
+                mainCharacter.MidairReverseSpeed = effect.Value;
+                break;
             default:
                 throw new StatNotFoundException("Stat not found: " + effect.GameStatKey);
         }
@@ -108,6 +116,15 @@ public class UpgradeHandler : MonoBehaviour
             case GameStats.STAT_MOVE_SPEED:
                 mainCharacter.MoveSpeed += effect.Value;
                 break;
+            case GameStats.STAT_JUMP_SPEED:
+                mainCharacter.JumpSpeed += effect.Value;
+                break;
+            case GameStats.STAT_ATTACK_SPEED:
+                mainCharacter.AttackSpeed += effect.Value;
+                break;
+            case GameStats.STAT_MIDAIR_REVERSE_SPEED:
+                mainCharacter.MidairReverseSpeed += effect.Value;
+                break;
             default:
                 throw new StatNotFoundException("Stat not found: " + effect.GameStatKey);
         }
@@ -123,6 +140,15 @@ public class UpgradeHandler : MonoBehaviour
                 break;
             case GameStats.STAT_MOVE_SPEED:
                 mainCharacter.MoveSpeed *= effect.Value;
+                break;
+            case GameStats.STAT_JUMP_SPEED:
+                mainCharacter.JumpSpeed *= effect.Value;
+                break;
+            case GameStats.STAT_ATTACK_SPEED:
+                mainCharacter.AttackSpeed *= effect.Value;
+                break;
+            case GameStats.STAT_MIDAIR_REVERSE_SPEED:
+                mainCharacter.MidairReverseSpeed *= effect.Value;
                 break;
             default:
                 throw new StatNotFoundException("Stat not found: " + effect.GameStatKey);
