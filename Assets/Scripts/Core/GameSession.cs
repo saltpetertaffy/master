@@ -18,7 +18,6 @@ public class GameSession : MonoBehaviour
     public List<Upgrade> permanentUpgrades;
 
     SceneLoader sceneLoader;
-    UpgradeHandler upgradeHandler;
 
     private const string ABILITIES_RELATIVE_PATH = "Prefabs/Abilities/";
     
@@ -30,7 +29,6 @@ public class GameSession : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         if (SceneManager.GetActiveScene().buildIndex != 0) {
-            upgradeHandler = GetComponent<UpgradeHandler>();
             LoadGame();
         }
     }
@@ -84,7 +82,6 @@ public class GameSession : MonoBehaviour
 
             lives = save.Lives;
             SetAbilityLoadout(save.AbilityLoadout);
-            upgradeHandler.LoadUpgrades(save.PermanentUpgrades);
 
             Debug.Log("Game Loaded");
         } else {

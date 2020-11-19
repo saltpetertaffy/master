@@ -35,11 +35,10 @@ public class GameStatHandler : MonoBehaviour
                     totalDamage += Mathf.RoundToInt(gameStatEffect.GetValue() * health.MaximumHealth);
                     break;
                 case (int) GameStatEffects.DAMAGE_PERCENT_REMAINING:
-                    totalDamage += Mathf.RoundToInt(gameStatEffect.GetValue() * health.GetHealth());
+                    totalDamage += Mathf.RoundToInt(gameStatEffect.GetValue() * health.CurrentHealth);
                     break;
             }
         }
-
         totalDamage = armor ? (int) (totalDamage * (1 - armor.GetArmor() / 100)) - armor.GetFreeArmor() : totalDamage;
         if (totalDamage > 0) {
             health.RemoveHealth(totalDamage);

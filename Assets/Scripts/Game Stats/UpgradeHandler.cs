@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class UpgradeHandler : MonoBehaviour
 {
-    public void LoadUpgrades(string[] upgradeIds) {
+    public void LoadUpgrades(List<string> upgradeIds) {
         List<Upgrade> upgradesToLoad = new List<Upgrade>();
         string upgradesFilepath = Directory.GetCurrentDirectory() + "\\Upgrades\\Upgrades.xml";
 
@@ -16,7 +16,7 @@ public class UpgradeHandler : MonoBehaviour
 
         if (upgrades != null && upgrades.Descendants("Upgrade") != null) {
             List<XElement> upgradesToLoadXml = upgrades.Descendants("Upgrade")
-                                            .Where(i => Array.Exists(upgradeIds, upgradeId => upgradeId.Equals(i.Attribute("id").Value)))
+                                            .Where(i => upgradeIds.Contains(i.Attribute("id").Value))
                                             .ToList();
             foreach (XElement upgradeElement in upgradesToLoadXml) {
                 List<UpgradeEffect> effects = new List<UpgradeEffect>();
@@ -63,89 +63,116 @@ public class UpgradeHandler : MonoBehaviour
             }
         }
 
-        MainCharacter mainCharacter = FindObjectOfType<MainCharacter>();
-
         // enforce order of operations (set, add, multiply)
         foreach (UpgradeEffect effect in setUpgradeEffects) {
-            ApplySetEffect(mainCharacter, effect);    
+            ApplySetEffect(effect);    
         }
         foreach (UpgradeEffect effect in addUpgradeEffects) {
-            ApplyAddEffect(mainCharacter, effect);
+            ApplyAddEffect(effect);
         }
         foreach (UpgradeEffect effect in multiplyUpgradeEffects) {
-            ApplyMultiplyEffect(mainCharacter, effect);
+            ApplyMultiplyEffect(effect);
         }
     }
 
-    private void ApplySetEffect(MainCharacter mainCharacter, UpgradeEffect effect) {
+    private void ApplySetEffect(UpgradeEffect effect) {
+        MainCharacter mainCharacter = GetComponent<MainCharacter>();
         switch (effect.GameStatKey) {
             case GameStats.STAT_HEALTH:
-                mainCharacter.GetComponent<Health>().MaximumHealth = effect.Value;
+                Health health = GetComponent<Health>();
+                health.MaximumHealth = effect.Value;
+                health.CurrentHealth = health.MaximumHealth;
                 break;
             case GameStats.STAT_ARMOR:
-                mainCharacter.GetComponent<Armor>().MaximumArmor = effect.Value;
+                GetComponent<Armor>().MaximumArmor = effect.Value;
                 break;
             case GameStats.STAT_MOVE_SPEED:
-                mainCharacter.MoveSpeed = effect.Value;
+                if (mainCharacter != null) {
+                    mainCharacter.MoveSpeed = effect.Value;
+                }
                 break;
             case GameStats.STAT_JUMP_SPEED:
-                mainCharacter.JumpSpeed = effect.Value;
+                if (mainCharacter != null) {
+                    mainCharacter.JumpSpeed = effect.Value;
+                }
                 break;
             case GameStats.STAT_ATTACK_SPEED:
-                mainCharacter.AttackSpeed = effect.Value;
+                if (mainCharacter != null) {
+                    mainCharacter.AttackSpeed = effect.Value;
+                }
                 break;
             case GameStats.STAT_MIDAIR_REVERSE_SPEED:
-                mainCharacter.MidairReverseSpeed = effect.Value;
+                if (mainCharacter != null) {
+                    mainCharacter.MidairReverseSpeed = effect.Value;
+                }
                 break;
             default:
                 throw new StatNotFoundException("Stat not found: " + effect.GameStatKey);
         }
     }
 
-    private void ApplyAddEffect(MainCharacter mainCharacter, UpgradeEffect effect) {
+    private void ApplyAddEffect(UpgradeEffect effect) {
+        MainCharacter mainCharacter = GetComponent<MainCharacter>();
         switch (effect.GameStatKey) {
             case GameStats.STAT_HEALTH:
-                mainCharacter.GetComponent<Health>().MaximumHealth += effect.Value;
+                GetComponent<Health>().MaximumHealth += effect.Value;
                 break;
             case GameStats.STAT_ARMOR:
-                mainCharacter.GetComponent<Armor>().MaximumArmor += effect.Value;
+                GetComponent<Armor>().MaximumArmor += effect.Value;
                 break;
             case GameStats.STAT_MOVE_SPEED:
-                mainCharacter.MoveSpeed += effect.Value;
+                if (mainCharacter != null) {
+                    mainCharacter.MoveSpeed += effect.Value;
+                }
                 break;
             case GameStats.STAT_JUMP_SPEED:
-                mainCharacter.JumpSpeed += effect.Value;
+                if (mainCharacter != null) {
+                    mainCharacter.JumpSpeed += effect.Value;
+                }
                 break;
             case GameStats.STAT_ATTACK_SPEED:
-                mainCharacter.AttackSpeed += effect.Value;
+                if (mainCharacter != null) {
+                    mainCharacter.AttackSpeed += effect.Value;
+                }
                 break;
             case GameStats.STAT_MIDAIR_REVERSE_SPEED:
-                mainCharacter.MidairReverseSpeed += effect.Value;
+                if (mainCharacter != null) {
+                    mainCharacter.MidairReverseSpeed += effect.Value;
+                }
                 break;
             default:
                 throw new StatNotFoundException("Stat not found: " + effect.GameStatKey);
         }
     }
 
-    private void ApplyMultiplyEffect(MainCharacter mainCharacter, UpgradeEffect effect) {
+    private void ApplyMultiplyEffect(UpgradeEffect effect) {
+        MainCharacter mainCharacter = GetComponent<MainCharacter>();
         switch (effect.GameStatKey) {
             case GameStats.STAT_HEALTH:
-                mainCharacter.GetComponent<Health>().MaximumHealth *= effect.Value;
+                GetComponent<Health>().MaximumHealth *= effect.Value;
                 break;
             case GameStats.STAT_ARMOR:
-                mainCharacter.GetComponent<Armor>().MaximumArmor *= effect.Value;
+                GetComponent<Armor>().MaximumArmor *= effect.Value;
                 break;
             case GameStats.STAT_MOVE_SPEED:
-                mainCharacter.MoveSpeed *= effect.Value;
+                if (mainCharacter != null) {
+                    mainCharacter.MoveSpeed *= effect.Value;
+                }
                 break;
             case GameStats.STAT_JUMP_SPEED:
-                mainCharacter.JumpSpeed *= effect.Value;
+                if (mainCharacter != null) {
+                    mainCharacter.JumpSpeed *= effect.Value;
+                }
                 break;
             case GameStats.STAT_ATTACK_SPEED:
-                mainCharacter.AttackSpeed *= effect.Value;
+                if (mainCharacter != null) {
+                    mainCharacter.AttackSpeed *= effect.Value;
+                }
                 break;
             case GameStats.STAT_MIDAIR_REVERSE_SPEED:
-                mainCharacter.MidairReverseSpeed *= effect.Value;
+                if (mainCharacter != null) {
+                    mainCharacter.MidairReverseSpeed *= effect.Value;
+                }
                 break;
             default:
                 throw new StatNotFoundException("Stat not found: " + effect.GameStatKey);

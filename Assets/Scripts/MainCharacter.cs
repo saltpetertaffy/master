@@ -2,6 +2,10 @@
 using UnityEngine;
 using GameConstants;
 using System.Dynamic;
+using System.Collections.Generic;
+using System.IO;
+using System.Xml.Linq;
+using System.Linq;
 
 public class MainCharacter : MonoBehaviour {
     public float MoveSpeed { get; set; }
@@ -13,11 +17,17 @@ public class MainCharacter : MonoBehaviour {
     BoxCollider2D mainCharacterFeetCollider;
     Rigidbody2D mainCharacterRigidbody;
     EquippedAbilitySelector abilities;
+    UpgradeHandler upgradeHandler;
 
     float jumpXSpeed = 0;
     bool hasReversedInMidair = false;
     bool isTouchingGround = true;
     bool canAttack = true;
+
+    private void Awake() {
+        upgradeHandler = GetComponent<UpgradeHandler>();
+        LoadMainCharacter();
+    }
 
     // Start is called before the first frame update
     void Start() {
@@ -37,6 +47,19 @@ public class MainCharacter : MonoBehaviour {
         Jump();
         Attack();
         CycleAbility();
+    }
+
+    private void LoadMainCharacter() {
+        List<string> upgradeIds = new List<string>();
+        string upgradesFilepath = Directory.GetCurrentDirectory() + "\\Main Character\\Main Character.xml";
+
+        XDocument upgrades = XDocument.Load(upgradesFilepath);
+        if (upgrades != null && upgrades.Descendants("MainCharacter") != null) {
+            upgradeIds = upgrades.Descendants("UpgradeId")
+                                 .Select(j => j.Attribute("id").Value)
+                                 .ToList();
+        }
+        upgradeHandler.LoadUpgrades(upgradeIds);
     }
 
     private void Move() {

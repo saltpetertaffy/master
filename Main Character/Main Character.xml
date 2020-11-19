@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MainCharacter id="you">
+	<UpgradeIds>
+		<UpgradeId id="base"/>
+		<UpgradeId id="addHealth1"/>
+		<UpgradeId id="multiplyHealth1"/>
+	</UpgradeIds>
+</MainCharacter>

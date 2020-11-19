@@ -12,13 +12,14 @@ public class ShootingEnemy : Enemy
     DebugOptions debugOptions;
 
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
         debugOptions = FindObjectOfType<DebugOptions>();
         attackRigidbody = attack.GetComponent<Rigidbody2D>();
         if (!attackRigidbody) {
             Debug.LogError("No rigidbody found on attack, did you forget to give the enemy an attack?");
         }
+        base.Start();
     }
 
     public override void Attack() {

@@ -12,6 +12,13 @@
 			<UpgradeEffect statkey="Midair Reverse Speed" type="SET" value="2" />
 		</Effects>
 	</Upgrade>
+	<Upgrade id="worm1Base">
+		<Name>Worm Base</Name>
+		<Description>Base stats for the Worm.</Description>
+		<Effects>
+			<UpgradeEffect statkey="Health" type="SET" value="20"/>
+		</Effects>
+	</Upgrade>
 	<Upgrade id="addHealth1">
 		<Name>Health Increase 1</Name>
 		<Description>Increases base health by 20.</Description>

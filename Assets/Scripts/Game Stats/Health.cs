@@ -6,11 +6,11 @@ using UnityEngine;
 public class Health : GameStat
 {
     public float MaximumHealth { get; set; }
+    public float CurrentHealth { get; set; }
 
     [Header("Model")]
     [SerializeField] GameObject healthOwner;
 
-    private float health;
     private bool isDead = false;
 
     DeathBehavior[] deathBehaviors;
@@ -23,7 +23,7 @@ public class Health : GameStat
         if (GetComponent<MainCharacter>()) {
             MaximumHealth = FindObjectOfType<GameSession>().currentMaximumHealth;
         }
-        health = MaximumHealth;
+        CurrentHealth = MaximumHealth;
         SetGameStatId(GameStats.STAT_HEALTH);
     }
 
@@ -43,26 +43,22 @@ public class Health : GameStat
     }
 
     public void AddHealth(float healthToAdd) {
-        health = (health + healthToAdd > MaximumHealth) ? MaximumHealth : health + healthToAdd;
+        CurrentHealth = (CurrentHealth + healthToAdd > MaximumHealth) ? MaximumHealth : CurrentHealth + healthToAdd;
     }
 
     public void RemoveHealth(float healthToRemove) {
         bool isGodmodedMainCharacter = GetComponentInParent<MainCharacter>() && debugOptions.godMode;
         if (healthToRemove < 0 || isGodmodedMainCharacter) { return; }
 
-        health = (health < healthToRemove) ? 0 : health - healthToRemove;
+        CurrentHealth = (CurrentHealth < healthToRemove) ? 0 : CurrentHealth - healthToRemove;
         
-        if (health == 0) {
+        if (CurrentHealth == 0) {
             Die();
         }
     }
 
-    public float GetHealth() {
-        return health;
-    }
-
     public float GetMissingHealth() {
-        return MaximumHealth - health;
+        return MaximumHealth - CurrentHealth;
     }
 
     private void Die() {
