@@ -75,9 +75,6 @@ public class UpgradeHandler : MonoBehaviour
         foreach (UpgradeEffect effect in multiplyUpgradeEffects) {
             ApplyMultiplyEffect(mainCharacter, effect);
         }
-        Debug.Log(mainCharacter.GetComponent<Health>().MaximumHealth + ", " +
-                  mainCharacter.GetComponent<Armor>().MaximumArmor + ", " +
-                  mainCharacter.MoveSpeed);
     }
 
     private void ApplySetEffect(MainCharacter mainCharacter, UpgradeEffect effect) {
