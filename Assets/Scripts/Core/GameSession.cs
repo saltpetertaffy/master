@@ -30,6 +30,7 @@ public class GameSession : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         if (SceneManager.GetActiveScene().buildIndex != 0) {
+            upgradeHandler = GetComponent<UpgradeHandler>();
             LoadGame();
         }
     }
@@ -82,10 +83,10 @@ public class GameSession : MonoBehaviour
             file.Close();
 
             lives = save.Lives;
-
             SetAbilityLoadout(save.AbilityLoadout);
+            upgradeHandler.LoadUpgrades(save.PermanentUpgrades);
 
-            Debug.LogAssertion("Game Loaded");
+            Debug.Log("Game Loaded");
         } else {
             Debug.LogError("Trying to load nonexistent game.");
         }

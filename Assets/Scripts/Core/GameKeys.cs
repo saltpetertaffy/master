@@ -46,10 +46,10 @@
         MOVEMENT
     }
 
-    public enum GameStatEffectTypes {
-        SET,
-        ADD,
-        MULTIPLY
+    public static class UpgradeEffectTypes {
+        public const string SET = "SET";
+        public const string ADD = "ADD";
+        public const string MULTIPLY = "MULTIPLY";
     }
 
     public static class GameStats {

@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Upgrades xmlns="https://www.w3schools.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://www.w3schools.com note.xsd">
+<Upgrades>
 	<Upgrade id="base">
 		<Name>Base</Name>
 		<Description>The stats you have at the start of the game.</Description>
 		<Effects>
-			<GameStatEffect stat="Health" type="SET" value="100" />
-			<GameStatEffect stat="Armor" type="SET" value="50" />
-			<GameStatEffect stat="Movement Speed" type="SET" value="5" />
+			<UpgradeEffect statkey="Health" type="SET" value="100" />
+			<UpgradeEffect statkey="Armor" type="SET" value="50" />
+			<UpgradeEffect statkey="Movement Speed" type="SET" value="5" />
 		</Effects>
 	</Upgrade>
 	<Upgrade id="addHealth1">
 		<Name>Health Increase 1</Name>
 		<Description>Increases base health by 20.</Description>
 		<Effects>
-			<GameStatEffect stat="Health" type="ADD" value="20" />
+			<UpgradeEffect statkey="Health" type="ADD" value="20" />
 		</Effects>
 	</Upgrade>
 	<Upgrade id = "multiplyHealth1">
 		<Name>Health Boost 1</Name>
 		<Description>Increases max health by 20%.</Description>
 		<Effects>
-			<GameStatEffect stat="Health" type="MULTIPLY" value="1.2"/>
+			<UpgradeEffect statkey="Health" type="MULTIPLY" value="1.2"/>
 		</Effects>
 	</Upgrade>
 </Upgrades>

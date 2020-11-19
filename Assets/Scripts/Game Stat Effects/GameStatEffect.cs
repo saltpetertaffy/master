@@ -6,7 +6,6 @@ public abstract class GameStatEffect : MonoBehaviour
 {
     [SerializeField] private float value;
     private string gameStatEffectName;
-    private int gameStatEffectType; // for use with upgrades only
     private int gameStatEffectId;
     private int gameStatEffectCategory;
 
@@ -16,14 +15,6 @@ public abstract class GameStatEffect : MonoBehaviour
 
     protected void SetEffectName(string gameStatEffectName) {
         this.gameStatEffectName = gameStatEffectName;
-    }
-
-    public int GetEffectType() {
-        return gameStatEffectType;
-    }
-
-    public void SetEffectType(int gameStatEffectType) {
-        this.gameStatEffectType = gameStatEffectType;
     }
 
     public int GetGameStatEffectId() {
