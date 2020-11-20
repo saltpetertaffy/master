@@ -8,6 +8,6 @@ public class ArmorRepairEffect : GameStatEffect
     private void Start() {
         SetEffectName("Armor Repair");
         SetGameStatEffectId((int) GameStatEffects.ARMOR_REPAIR);
-        SetGameStatEffectType((int) GameStatEffectTypes.ARMOR_REPAIR);
+        SetGameStatEffectCategory((int) GameStatEffectCategories.ARMOR_REPAIR);
     }
 }

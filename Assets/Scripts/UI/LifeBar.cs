@@ -13,7 +13,7 @@ public class LifeBar : StatBar
     }
 
     private void Update() {
-        SetMaxStat(mainCharacterHealth.GetMaximumHealth());
-        SetStat(mainCharacterHealth.GetHealth());
+        SetMaxStat(mainCharacterHealth.MaximumHealth);
+        SetStat(mainCharacterHealth.CurrentHealth);
     }
 }

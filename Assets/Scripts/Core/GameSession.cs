@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,6 +13,9 @@ public class GameSession : MonoBehaviour
     [SerializeField] public int lives = 3;
     public int currentMaximumHealth = 100;
     public int currentMaximumArmor = 50;
+
+    public List<Upgrade> tempUpgrades;
+    public List<Upgrade> permanentUpgrades;
 
     SceneLoader sceneLoader;
 
@@ -56,7 +58,7 @@ public class GameSession : MonoBehaviour
 
     private Save CreateSave() {
         Save save = new Save();
-        save.lives = lives;
+        save.Lives = lives;
 
         return save;
     }
@@ -78,13 +80,12 @@ public class GameSession : MonoBehaviour
             Save save = (Save) bin.Deserialize(file);
             file.Close();
 
-            lives = save.lives;
-
-            SetAbilityLoadout(save.abilityLoadout);
+            lives = save.Lives;
+            SetAbilityLoadout(save.AbilityLoadout);
 
             Debug.Log("Game Loaded");
         } else {
-            Debug.Log("No saved games.");
+            Debug.LogError("Trying to load nonexistent game.");
         }
     }
 

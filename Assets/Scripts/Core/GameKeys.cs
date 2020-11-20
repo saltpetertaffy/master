@@ -31,18 +31,33 @@
         ARMOR_SHRED_PERCENT_REMAINING,
         ARMOR_REPAIR,
         ARMOR_REPAIR_PERCENT_MAX,
-        ARMOR_REPAIR_PERCENT_MISSING
+        ARMOR_REPAIR_PERCENT_MISSING,
+        MOVEMENT_MOVE_SPEED_UP,
+        MOPVEMENT_MOVE_SPEED_DOWN,
+        MOVEMENT_JUMP_SPEED_UP,
+        MOVEMENT_JUMP_SPEED_DOWN
     }
 
-    public enum GameStatEffectTypes {
+    public enum GameStatEffectCategories {
         DAMAGE,
         ARMOR_SHRED,
         HEALING,
-        ARMOR_REPAIR
+        ARMOR_REPAIR,
+        MOVEMENT
     }
 
-    public enum GameStats {
-        HEALTH,
-        ARMOR
+    public static class UpgradeEffectTypes {
+        public const string ADD = "ADD";
+        public const string MULTIPLY = "MULTIPLY";
+        public const string SET = "SET";
+    }
+
+    public static class GameStats {
+        public const string STAT_ARMOR = "Armor";
+        public const string STAT_ATTACK_SPEED = "Attack Speed";
+        public const string STAT_HEALTH = "Health";
+        public const string STAT_JUMP_SPEED = "Jump Speed";
+        public const string STAT_MOVE_SPEED = "Movement Speed";
+        public const string STAT_MIDAIR_REVERSE_SPEED = "Midair Reverse Speed";
     }
 }

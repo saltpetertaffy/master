@@ -5,13 +5,12 @@ using UnityEngine;
 
 public class Health : GameStat
 {
-    [Header("Game Stats")]
-    [SerializeField] float maximumHealth = 100f;
+    public float MaximumHealth { get; set; }
+    public float CurrentHealth { get; set; }
 
     [Header("Model")]
     [SerializeField] GameObject healthOwner;
 
-    private float health;
     private bool isDead = false;
 
     DeathBehavior[] deathBehaviors;
@@ -22,10 +21,10 @@ public class Health : GameStat
         deathBehaviors = GetComponents<DeathBehavior>();
         debugOptions = FindObjectOfType<DebugOptions>();
         if (GetComponent<MainCharacter>()) {
-            maximumHealth = FindObjectOfType<GameSession>().currentMaximumHealth;
+            MaximumHealth = FindObjectOfType<GameSession>().currentMaximumHealth;
         }
-        health = maximumHealth;
-        SetGameStatId((int) GameStats.HEALTH);
+        CurrentHealth = MaximumHealth;
+        SetGameStatId(GameStats.STAT_HEALTH);
     }
 
     private void Update() {
@@ -44,30 +43,22 @@ public class Health : GameStat
     }
 
     public void AddHealth(float healthToAdd) {
-        health = (health + healthToAdd > maximumHealth) ? maximumHealth : health + healthToAdd;
+        CurrentHealth = (CurrentHealth + healthToAdd > MaximumHealth) ? MaximumHealth : CurrentHealth + healthToAdd;
     }
 
     public void RemoveHealth(float healthToRemove) {
         bool isGodmodedMainCharacter = GetComponentInParent<MainCharacter>() && debugOptions.godMode;
         if (healthToRemove < 0 || isGodmodedMainCharacter) { return; }
 
-        health = (health < healthToRemove) ? 0 : health - healthToRemove;
+        CurrentHealth = (CurrentHealth < healthToRemove) ? 0 : CurrentHealth - healthToRemove;
         
-        if (health == 0) {
+        if (CurrentHealth == 0) {
             Die();
         }
     }
 
-    public float GetHealth() {
-        return health;
-    }
-
-    public float GetMaximumHealth() {
-        return maximumHealth;
-    }
-
     public float GetMissingHealth() {
-        return maximumHealth - health;
+        return MaximumHealth - CurrentHealth;
     }
 
     private void Die() {
