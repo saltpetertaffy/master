@@ -81,28 +81,28 @@ public class UpgradeHandler : MonoBehaviour
             case GameStats.STAT_HEALTH:
                 Health health = GetComponent<Health>();
                 health.MaximumHealth = effect.Value;
-                health.CurrentHealth = health.MaximumHealth;
                 break;
             case GameStats.STAT_ARMOR:
-                GetComponent<Armor>().MaximumArmor = effect.Value;
+                Armor armor = GetComponent<Armor>();
+                armor.MaximumArmor = effect.Value;
                 break;
             case GameStats.STAT_MOVE_SPEED:
-                if (mainCharacter != null) {
+                if (mainCharacter) {
                     mainCharacter.MoveSpeed = effect.Value;
                 }
                 break;
             case GameStats.STAT_JUMP_SPEED:
-                if (mainCharacter != null) {
+                if (mainCharacter) {
                     mainCharacter.JumpSpeed = effect.Value;
                 }
                 break;
             case GameStats.STAT_ATTACK_SPEED:
-                if (mainCharacter != null) {
+                if (mainCharacter) {
                     mainCharacter.AttackSpeed = effect.Value;
                 }
                 break;
             case GameStats.STAT_MIDAIR_REVERSE_SPEED:
-                if (mainCharacter != null) {
+                if (mainCharacter) {
                     mainCharacter.MidairReverseSpeed = effect.Value;
                 }
                 break;

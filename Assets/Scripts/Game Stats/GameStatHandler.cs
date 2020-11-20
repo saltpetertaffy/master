@@ -39,7 +39,7 @@ public class GameStatHandler : MonoBehaviour
                     break;
             }
         }
-        totalDamage = armor ? (int) (totalDamage * (1 - armor.GetArmor() / 100)) - armor.GetFreeArmor() : totalDamage;
+        totalDamage = armor ? (int) (totalDamage * (1 - armor.CurrentArmor / 100)) - armor.GetFreeArmor() : totalDamage;
         if (totalDamage > 0) {
             health.RemoveHealth(totalDamage);
             textEmitter.EmitText("-" + totalDamage.ToString(), transform, Color.red);

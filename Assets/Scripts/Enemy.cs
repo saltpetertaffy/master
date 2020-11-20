@@ -40,5 +40,8 @@ public abstract class Enemy : MonoBehaviour
                                                       .ToList();
         }
         upgradeHandler.LoadUpgrades(upgradeIds);
+
+        Health health = GetComponent<Health>();
+        health.CurrentHealth = health.MaximumHealth;
     }
 }

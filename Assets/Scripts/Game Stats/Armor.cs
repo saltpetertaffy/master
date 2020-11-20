@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Armor : GameStat {
-    public float MaximumArmor { get; set; }    
+    public float MaximumArmor { get; set; }  
+    public float CurrentArmor { get; set; }
 
     [Header("Game Stats")]
     [SerializeField] int freeArmor = 10;
@@ -12,14 +13,12 @@ public class Armor : GameStat {
     [SerializeField] int armorDecayAmount = 5;
     [SerializeField] int armorAbsorption = 5;
 
-    private float armor;
-
     // Start is called before the first frame update
     private void Start() {
         if (GetComponent<MainCharacter>()) {
             MaximumArmor = FindObjectOfType<GameSession>().currentMaximumArmor;
         }
-        armor = MaximumArmor;
+        CurrentArmor = MaximumArmor;
         SetGameStatId(GameStats.STAT_ARMOR);
     }
 
@@ -28,23 +27,15 @@ public class Armor : GameStat {
     }
 
     public void AddArmor(float armorToAdd) {
-        armor = (armor + armorToAdd > MaximumArmor) ? MaximumArmor : armor + armorToAdd;
+        CurrentArmor = (CurrentArmor + armorToAdd > MaximumArmor) ? MaximumArmor : CurrentArmor + armorToAdd;
     }
 
     public void RemoveArmor(float armorToRemove) {
-        armor = (armor < armorToRemove) ? 0 : armor - armorToRemove;
+        CurrentArmor = (CurrentArmor < armorToRemove) ? 0 : CurrentArmor - armorToRemove;
     }
 
     private void DecayArmor() {
         RemoveArmor(armorDecayAmount * armorDecayRate * Time.deltaTime);
-    }
-
-    public float GetArmor() {
-        return armor;
-    }
-
-    public void SetArmor(float armor) {
-        this.armor = armor;
     }
 
     public int GetFreeArmor() {

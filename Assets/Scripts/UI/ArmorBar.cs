@@ -13,6 +13,6 @@ public class ArmorBar : StatBar
 
     private void Update() {
         SetMaxStat(mainCharacterArmor.MaximumArmor);
-        SetStat(mainCharacterArmor.GetArmor());
+        SetStat(mainCharacterArmor.CurrentArmor);
     }
 }

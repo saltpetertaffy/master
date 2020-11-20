@@ -60,6 +60,10 @@ public class MainCharacter : MonoBehaviour {
                                  .ToList();
         }
         upgradeHandler.LoadUpgrades(upgradeIds);
+        Health health = GetComponent<Health>();
+        health.CurrentHealth = health.MaximumHealth;
+        Armor armor = GetComponent<Armor>();
+        armor.CurrentArmor = armor.MaximumArmor;
     }
 
     private void Move() {
