@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
 using GameConstants;
-using System.Dynamic;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
@@ -9,7 +8,7 @@ using System.Linq;
 
 public class MainCharacter : MonoBehaviour {
     public float MoveSpeed { get; set; }
-    public float JumpSpeed { get; set; }
+    public float JumpVerticalSpeed { get; set; }
     public float AttackSpeed { get; set; }
     public float MidairReverseSpeed { get; set; }
 
@@ -96,7 +95,7 @@ public class MainCharacter : MonoBehaviour {
             jumpXSpeed = mainCharacterRigidbody.velocity.x;
         }
 
-        Vector2 newVelocity = new Vector2(mainCharacterRigidbody.velocity.x, JumpSpeed);
+        Vector2 newVelocity = new Vector2(mainCharacterRigidbody.velocity.x, JumpVerticalSpeed);
         mainCharacterRigidbody.velocity = newVelocity;
         
     }

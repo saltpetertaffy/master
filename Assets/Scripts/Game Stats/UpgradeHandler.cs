@@ -93,7 +93,7 @@ public class UpgradeHandler : MonoBehaviour
                 break;
             case GameStats.STAT_JUMP_SPEED:
                 if (mainCharacter) {
-                    mainCharacter.JumpSpeed = effect.Value;
+                    mainCharacter.JumpVerticalSpeed = effect.Value;
                 }
                 break;
             case GameStats.STAT_ATTACK_SPEED:
@@ -127,7 +127,7 @@ public class UpgradeHandler : MonoBehaviour
                 break;
             case GameStats.STAT_JUMP_SPEED:
                 if (mainCharacter != null) {
-                    mainCharacter.JumpSpeed += effect.Value;
+                    mainCharacter.JumpVerticalSpeed += effect.Value;
                 }
                 break;
             case GameStats.STAT_ATTACK_SPEED:
@@ -161,7 +161,7 @@ public class UpgradeHandler : MonoBehaviour
                 break;
             case GameStats.STAT_JUMP_SPEED:
                 if (mainCharacter != null) {
-                    mainCharacter.JumpSpeed *= effect.Value;
+                    mainCharacter.JumpVerticalSpeed *= effect.Value;
                 }
                 break;
             case GameStats.STAT_ATTACK_SPEED:
