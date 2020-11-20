@@ -35,10 +35,10 @@ public class UpgradeHandler : MonoBehaviour
                 upgradesToLoad.Add(upgradetoLoad);
             }
         }
-        ApplyPermanentUpgrades(upgradesToLoad);
+        ApplyUpgrades(upgradesToLoad);
     }
 
-    public void ApplyPermanentUpgrades(List<Upgrade> upgrades) {
+    public void ApplyUpgrades(List<Upgrade> upgrades) {
         if (upgrades.Count == 0) { return; }
 
         List<UpgradeEffect> setUpgradeEffects = new List<UpgradeEffect>();
