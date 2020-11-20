@@ -38,7 +38,7 @@ public class EnemyProjectile : Projectile
                     break;
             }
         }
-        totalDamage = (int) (totalDamage * (1 - mainCharacterArmor.CurrentArmor / 100) - mainCharacterArmor.GetFreeArmor());
+        totalDamage = (int) (totalDamage * (1 - mainCharacterArmor.CurrentArmor / 100) - mainCharacterArmor.FreeArmor);
 
         Color projectileColor;
         if (mainCharacterHealth.CurrentHealth == 0) {
