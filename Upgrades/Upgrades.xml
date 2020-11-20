@@ -6,6 +6,10 @@
 		<Effects>
 			<UpgradeEffect statkey="Health" type="SET" value="100" />
 			<UpgradeEffect statkey="Armor" type="SET" value="50" />
+			<UpgradeEffect statkey="Armor Absorption" type="SET" value="5" />
+			<UpgradeEffect statkey="Armor Decay Amount" type="SET" value="5" />
+			<UpgradeEffect statkey="Armor Decay Rate" type="SET" value="1" />
+			<UpgradeEffect statkey="Free Armor" type="SET" value="10" />
 			<UpgradeEffect statkey="Movement Speed" type="SET" value="5" />
 			<UpgradeEffect statkey="Jump Speed" type="SET" value="12" />
 			<UpgradeEffect statkey="Attack Speed" type="SET" value="1" />

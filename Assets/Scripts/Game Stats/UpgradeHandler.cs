@@ -77,14 +77,38 @@ public class UpgradeHandler : MonoBehaviour
 
     private void ApplySetEffect(UpgradeEffect effect) {
         MainCharacter mainCharacter = GetComponent<MainCharacter>();
+        Health health = GetComponent<Health>();
+        Armor armor = GetComponent<Armor>();
         switch (effect.GameStatKey) {
             case GameStats.STAT_HEALTH:
-                Health health = GetComponent<Health>();
-                health.MaximumHealth = effect.Value;
+                if (health) {
+                    health.MaximumHealth = effect.Value;
+                }
                 break;
             case GameStats.STAT_ARMOR:
-                Armor armor = GetComponent<Armor>();
-                armor.MaximumArmor = effect.Value;
+                if (armor)  {
+                    armor.MaximumArmor = effect.Value;
+                }
+                break;
+            case GameStats.STAT_ARMOR_ABSORPTION:
+                if (armor) {
+                    armor.ArmorAbsorption = effect.Value;
+                }
+                break;
+            case GameStats.STAT_ARMOR_DECAY_AMOUNT:
+                if (armor) {
+                    armor.ArmorDecayAmount = effect.Value;
+                }
+                break;
+            case GameStats.STAT_ARMOR_DECAY_RATE:
+                if (armor) {
+                    armor.ArmorDecayRate = effect.Value;
+                }
+                break;
+            case GameStats.STAT_ARMOR_FREE:
+                if (armor) {
+                    armor.FreeArmor = effect.Value;
+                }
                 break;
             case GameStats.STAT_MOVE_SPEED:
                 if (mainCharacter) {
@@ -113,30 +137,56 @@ public class UpgradeHandler : MonoBehaviour
 
     private void ApplyAddEffect(UpgradeEffect effect) {
         MainCharacter mainCharacter = GetComponent<MainCharacter>();
+        Health health = GetComponent<Health>();
+        Armor armor = GetComponent<Armor>();
         switch (effect.GameStatKey) {
             case GameStats.STAT_HEALTH:
-                GetComponent<Health>().MaximumHealth += effect.Value;
+                if (health) {
+                    health.MaximumHealth += effect.Value;
+                }
                 break;
             case GameStats.STAT_ARMOR:
-                GetComponent<Armor>().MaximumArmor += effect.Value;
+                if (armor) {
+                    armor.MaximumArmor += effect.Value;
+                }
+                break;
+            case GameStats.STAT_ARMOR_ABSORPTION:
+                if (armor) {
+                    armor.ArmorAbsorption += effect.Value;
+                }
+                break;
+            case GameStats.STAT_ARMOR_DECAY_AMOUNT:
+                if (armor) {
+                    armor.ArmorDecayAmount += effect.Value;
+                }
+                break;
+            case GameStats.STAT_ARMOR_DECAY_RATE:
+                if (armor) {
+                    armor.ArmorDecayRate += effect.Value;
+                }
+                break;
+            case GameStats.STAT_ARMOR_FREE:
+                if (armor) {
+                    armor.FreeArmor += effect.Value;
+                }
                 break;
             case GameStats.STAT_MOVE_SPEED:
-                if (mainCharacter != null) {
+                if (mainCharacter) {
                     mainCharacter.MoveSpeed += effect.Value;
                 }
                 break;
             case GameStats.STAT_JUMP_SPEED:
-                if (mainCharacter != null) {
+                if (mainCharacter) {
                     mainCharacter.JumpVerticalSpeed += effect.Value;
                 }
                 break;
             case GameStats.STAT_ATTACK_SPEED:
-                if (mainCharacter != null) {
+                if (mainCharacter) {
                     mainCharacter.AttackSpeed += effect.Value;
                 }
                 break;
             case GameStats.STAT_MIDAIR_REVERSE_SPEED:
-                if (mainCharacter != null) {
+                if (mainCharacter) {
                     mainCharacter.MidairReverseSpeed += effect.Value;
                 }
                 break;
@@ -147,30 +197,56 @@ public class UpgradeHandler : MonoBehaviour
 
     private void ApplyMultiplyEffect(UpgradeEffect effect) {
         MainCharacter mainCharacter = GetComponent<MainCharacter>();
+        Health health = GetComponent<Health>();
+        Armor armor = GetComponent<Armor>();
         switch (effect.GameStatKey) {
             case GameStats.STAT_HEALTH:
-                GetComponent<Health>().MaximumHealth *= effect.Value;
+                if (health) {
+                    health.MaximumHealth *= effect.Value;
+                }
                 break;
             case GameStats.STAT_ARMOR:
-                GetComponent<Armor>().MaximumArmor *= effect.Value;
+                if (armor) {
+                    armor.MaximumArmor *= effect.Value;
+                }
+                break;
+            case GameStats.STAT_ARMOR_ABSORPTION:
+                if (armor) {
+                    armor.ArmorAbsorption *= effect.Value;
+                }
+                break;
+            case GameStats.STAT_ARMOR_DECAY_AMOUNT:
+                if (armor) {
+                    armor.ArmorDecayAmount *= effect.Value;
+                }
+                break;
+            case GameStats.STAT_ARMOR_DECAY_RATE:
+                if (armor) {
+                    armor.ArmorDecayRate *= effect.Value;
+                }
+                break;
+            case GameStats.STAT_ARMOR_FREE:
+                if (armor) {
+                    armor.FreeArmor *= effect.Value;
+                }
                 break;
             case GameStats.STAT_MOVE_SPEED:
-                if (mainCharacter != null) {
+                if (mainCharacter) {
                     mainCharacter.MoveSpeed *= effect.Value;
                 }
                 break;
             case GameStats.STAT_JUMP_SPEED:
-                if (mainCharacter != null) {
+                if (mainCharacter) {
                     mainCharacter.JumpVerticalSpeed *= effect.Value;
                 }
                 break;
             case GameStats.STAT_ATTACK_SPEED:
-                if (mainCharacter != null) {
+                if (mainCharacter) {
                     mainCharacter.AttackSpeed *= effect.Value;
                 }
                 break;
             case GameStats.STAT_MIDAIR_REVERSE_SPEED:
-                if (mainCharacter != null) {
+                if (mainCharacter) {
                     mainCharacter.MidairReverseSpeed *= effect.Value;
                 }
                 break;
