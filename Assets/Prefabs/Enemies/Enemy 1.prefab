@@ -347,6 +347,7 @@ GameObject:
   - component: {fileID: 5026277}
   - component: {fileID: 5026278}
   - component: {fileID: 5026279}
+  - component: {fileID: 321517659}
   m_Layer: 14
   m_Name: Enemy 1
   m_TagString: Untagged
@@ -436,52 +437,45 @@ CompositeCollider2D:
         Y: 1034998
   - m_Collider: {fileID: 5026284}
     m_ColliderPaths:
-    - - X: -5546738
-        Y: 7425097
-      - X: 1508913
-        Y: 12052106
-      - X: -3118181
-        Y: 19107353
-      - X: -10173426
-        Y: 14480258
+    - - X: 4218457
+        Y: 10341258
+      - X: 4218457
+        Y: 18778758
+      - X: -4218750
+        Y: 18778465
+      - X: -4218457
+        Y: 10341258
   - m_Collider: {fileID: 5026283}
     m_ColliderPaths:
-    - - X: -8316932
-        Y: 11155261
-      - X: -3084199
-        Y: 17774170
-      - X: -9703061
-        Y: 23006492
-      - X: -14935382
-        Y: 16387631
+    - - X: 4218457
+        Y: 16391256
+      - X: 4218457
+        Y: 24828756
+      - X: -4218750
+        Y: 24828463
+      - X: -4218457
+        Y: 16391256
   - m_Collider: {fileID: 5026282}
     m_ColliderPaths:
-    - - X: -11415814
-        Y: 13288105
-      - X: -9615900
-        Y: 21531386
-      - X: -17858960
-        Y: 23330954
-      - X: -19658526
-        Y: 15087894
+    - - X: 4218457
+        Y: 22151256
+      - X: 4218457
+        Y: 30588756
+      - X: -4218750
+        Y: 30588463
+      - X: -4218457
+        Y: 22151256
   m_CompositePaths:
     m_Paths:
     - - {x: 0.7655664, y: -0.3515625}
       - {x: 0.7655664, y: 0.3515625}
       - {x: 0.56247073, y: 0.351588}
       - {x: 0.5624414, y: 1.2284999}
-      - {x: 0.1356167, y: 1.2285008}
-      - {x: -0.3118426, y: 1.9107194}
-      - {x: -0.402152, y: 1.8515136}
-      - {x: -0.97032434, y: 2.3006265}
-      - {x: -1.0684869, y: 2.1764755}
-      - {x: -1.7859023, y: 2.333067}
-      - {x: -1.965824, y: 1.5087832}
-      - {x: -1.1415752, y: 1.3288391}
-      - {x: -1.1356367, y: 1.3558158}
-      - {x: -0.831675, y: 1.115549}
-      - {x: -0.8139596, y: 1.1378905}
-      - {x: -0.5624877, y: 0.7544172}
+      - {x: 0.4218457, y: 1.2285256}
+      - {x: 0.4218164, y: 3.0588756}
+      - {x: -0.421875, y: 3.0588171}
+      - {x: -0.4218818, y: 1.2284743}
+      - {x: -0.5625, y: 1.2284414}
       - {x: -0.5625066, y: 0.3515371}
       - {x: -0.765625, y: 0.3515039}
       - {x: -0.7655664, y: -0.3515625}
@@ -499,7 +493,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a0e8b53b3440cf4088e2d5b429a8783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumHealth: 20
   healthOwner: {fileID: 4174195861917014775}
 --- !u!95 &5026295
 Animator:
@@ -532,6 +525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14da85c021053b54da2111591b3cd682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyId: worm1
   attack: {fileID: 5828157131272317073, guid: 8de829984ad27bb48906e9751f78539c, type: 3}
   attackPoint: {fileID: 8602141433681588040}
   projectileVelocity: {x: -3, y: 0}
@@ -558,6 +552,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2f86e70dd4e61646a5a06a1b3b45874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &321517659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4174195861917014775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac9bf8423ea55748bb213e8d6bf1bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5366444115268209912

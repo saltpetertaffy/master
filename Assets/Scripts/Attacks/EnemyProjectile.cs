@@ -31,25 +31,25 @@ public class EnemyProjectile : Projectile
                     totalDamage += Mathf.RoundToInt(projectileEffect.GetValue());
                     break;
                 case (int) GameStatEffects.DAMAGE_PERCENT_MAX:
-                    totalDamage += Mathf.RoundToInt(projectileEffect.GetValue() * mainCharacterHealth.GetMaximumHealth());
+                    totalDamage += Mathf.RoundToInt(projectileEffect.GetValue() * mainCharacterHealth.MaximumHealth);
                     break;
                 case (int) GameStatEffects.DAMAGE_PERCENT_REMAINING:
-                    totalDamage += Mathf.RoundToInt(projectileEffect.GetValue() * mainCharacterHealth.GetHealth());
+                    totalDamage += Mathf.RoundToInt(projectileEffect.GetValue() * mainCharacterHealth.CurrentHealth);
                     break;
             }
         }
-        totalDamage = (int) (totalDamage * (1 - mainCharacterArmor.GetArmor() / 100) - mainCharacterArmor.GetFreeArmor());
+        totalDamage = (int) (totalDamage * (1 - mainCharacterArmor.CurrentArmor / 100) - mainCharacterArmor.FreeArmor);
 
         Color projectileColor;
-        if (mainCharacterHealth.GetHealth() == 0) {
+        if (mainCharacterHealth.CurrentHealth == 0) {
             projectileColor = Color.red;
         }
         else if (totalDamage > 0) {
-            float damageRedShade = totalDamage / mainCharacterHealth.GetHealth();
+            float damageRedShade = totalDamage / mainCharacterHealth.CurrentHealth;
             projectileColor = new Color(1, 1 - damageRedShade, 1 - damageRedShade);
         }
         else if (totalDamage < 0) {
-            float healingCyanShade = Mathf.Abs(totalDamage) / mainCharacterHealth.GetHealth();
+            float healingCyanShade = Mathf.Abs(totalDamage) / mainCharacterHealth.CurrentHealth;
             projectileColor = new Color(0, 1 - healingCyanShade, 1);
         }
         else {

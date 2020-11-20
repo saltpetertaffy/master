@@ -1,24 +1,32 @@
 ﻿using System.Collections;
 using UnityEngine;
 using GameConstants;
+using System.Collections.Generic;
+using System.IO;
+using System.Xml.Linq;
+using System.Linq;
 
 public class MainCharacter : MonoBehaviour {
-    [Header("Movement And Action Config")]
-    [SerializeField] float moveSpeed = 5f;
-    [SerializeField] float midairReverseSpeed = 2f;
-    [SerializeField] float jumpSpeed = 12f;
-    [SerializeField] int abilityCap = 1;
-    [SerializeField] float attackSpeed = 1;
+    public float MoveSpeed { get; set; }
+    public float JumpVerticalSpeed { get; set; }
+    public float AttackSpeed { get; set; }
+    public float MidairReverseSpeed { get; set; }
 
     Ability activeAbility { get; set; }
     BoxCollider2D mainCharacterFeetCollider;
     Rigidbody2D mainCharacterRigidbody;
     EquippedAbilitySelector abilities;
+    UpgradeHandler upgradeHandler;
 
     float jumpXSpeed = 0;
     bool hasReversedInMidair = false;
     bool isTouchingGround = true;
     bool canAttack = true;
+
+    private void Awake() {
+        upgradeHandler = GetComponent<UpgradeHandler>();
+        LoadMainCharacter();
+    }
 
     // Start is called before the first frame update
     void Start() {
@@ -40,6 +48,23 @@ public class MainCharacter : MonoBehaviour {
         CycleAbility();
     }
 
+    private void LoadMainCharacter() {
+        List<string> upgradeIds = new List<string>();
+        string upgradesFilepath = Directory.GetCurrentDirectory() + "\\Main Character\\Main Character.xml";
+
+        XDocument upgrades = XDocument.Load(upgradesFilepath);
+        if (upgrades != null && upgrades.Descendants("MainCharacter") != null) {
+            upgradeIds = upgrades.Descendants("UpgradeId")
+                                 .Select(j => j.Attribute("id").Value)
+                                 .ToList();
+        }
+        upgradeHandler.LoadUpgrades(upgradeIds);
+        Health health = GetComponent<Health>();
+        health.CurrentHealth = health.MaximumHealth;
+        Armor armor = GetComponent<Armor>();
+        armor.CurrentArmor = armor.MaximumArmor;
+    }
+
     private void Move() {
         if (!Input.GetButton(GameKeys.AXIS_HORIZONTAL_KEY)) { return; }
         
@@ -49,10 +74,10 @@ public class MainCharacter : MonoBehaviour {
         bool isReversing = Mathf.Sign(xInput) != Mathf.Sign(jumpXSpeed) && Mathf.Abs(jumpXSpeed) > Mathf.Epsilon;
 
         if ((!isTouchingGround && isReversing) || hasReversedInMidair) {
-            selectedSpeed = midairReverseSpeed;
+            selectedSpeed = MidairReverseSpeed;
             hasReversedInMidair = true;
         } else {
-            selectedSpeed = moveSpeed;
+            selectedSpeed = MoveSpeed;
         }
 
         float newX = Mathf.Sign(xInput) * selectedSpeed;
@@ -70,7 +95,7 @@ public class MainCharacter : MonoBehaviour {
             jumpXSpeed = mainCharacterRigidbody.velocity.x;
         }
 
-        Vector2 newVelocity = new Vector2(mainCharacterRigidbody.velocity.x, jumpSpeed);
+        Vector2 newVelocity = new Vector2(mainCharacterRigidbody.velocity.x, JumpVerticalSpeed);
         mainCharacterRigidbody.velocity = newVelocity;
         
     }
@@ -102,7 +127,7 @@ public class MainCharacter : MonoBehaviour {
     }
 
     private IEnumerator DelayAttack() {
-        yield return new WaitForSeconds(attackSpeed);
+        yield return new WaitForSeconds(AttackSpeed);
         canAttack = true;
     }
 }

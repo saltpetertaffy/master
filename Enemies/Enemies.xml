@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Enemies>
+	<Enemy id="worm1">
+		<Name>Worm</Name>
+		<Description>Stationary enemy that fires a ring of spinning shots towards you.</Description>
+		<UpgradeIds>
+			<UpgradeId id = "worm1Base"/>
+		</UpgradeIds>
+	</Enemy>
+</Enemies>

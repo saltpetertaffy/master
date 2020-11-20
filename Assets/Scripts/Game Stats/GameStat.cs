@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class GameStat : MonoBehaviour {
-    private int gameStatId;
+    private string gameStatId;
 
-    public int GetGameStatId() {
+    public string GetGameStatId() {
         return gameStatId;
     }
 
-    public void SetGameStatId(int gameStatId) {
+    public void SetGameStatId(string gameStatId) {
         this.gameStatId = gameStatId;
     }
 }
