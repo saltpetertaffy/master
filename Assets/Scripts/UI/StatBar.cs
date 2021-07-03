@@ -6,6 +6,10 @@ using UnityEngine;
 public abstract class StatBar : MonoBehaviour
 {
     [SerializeField] GameObject statBarForeground;
+    [SerializeField] string statName;
+    [SerializeField] Color statColor;
+    [SerializeField] Color statTextColor;
+    [SerializeField] GameStat gameStat;
 
     SpriteRenderer statBarBackgroundSprite;
     
@@ -28,5 +32,9 @@ public abstract class StatBar : MonoBehaviour
         float statBarWidth = maxStatToSet * GameConfigConstants.UI_STAT_BAR_SCALING_MULTIPLIER
             + GameConfigConstants.UI_STAT_BAR_BACKGROUND_MARGIN;
         statBarBackgroundSprite.size = new Vector2(statBarWidth, statBarBackgroundSprite.size.y);
+    }
+
+    protected GameStat GetGameStat() {
+        return gameStat;
     }
 }

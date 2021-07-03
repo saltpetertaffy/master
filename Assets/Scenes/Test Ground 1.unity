@@ -121,24 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &2003439 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7831225749615327409, guid: beb693912c25377479596006ebf6213b,
-    type: 3}
-  m_PrefabInstance: {fileID: 2717782583150964849}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2003440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2003439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7821aa6865ccc924aaea62a56f6ec14a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &5026274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1649,12 +1631,12 @@ PrefabInstance:
     - target: {fileID: 2349175941858947237, guid: 9b91791e48c9e544eb5fa3959c4a25ab,
         type: 3}
       propertyPath: godMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2349175941858947237, guid: 9b91791e48c9e544eb5fa3959c4a25ab,
         type: 3}
       propertyPath: demilitarizedEnemies
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2349175941858947238, guid: 9b91791e48c9e544eb5fa3959c4a25ab,
         type: 3}
@@ -1670,11 +1652,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2717782584147890304, guid: beb693912c25377479596006ebf6213b,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -78.29999
-      objectReference: {fileID: 0}
     - target: {fileID: 2717782584504370934, guid: beb693912c25377479596006ebf6213b,
         type: 3}
       propertyPath: m_Name

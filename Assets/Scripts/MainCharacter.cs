@@ -50,7 +50,7 @@ public class MainCharacter : MonoBehaviour {
 
     private void LoadMainCharacter() {
         List<string> upgradeIds = new List<string>();
-        string upgradesFilepath = Directory.GetCurrentDirectory() + "\\Main Character\\Main Character.xml";
+        string upgradesFilepath = Directory.GetCurrentDirectory() + "\\xml\\Main Character.xml";
 
         XDocument upgrades = XDocument.Load(upgradesFilepath);
         if (upgrades != null && upgrades.Descendants("MainCharacter") != null) {

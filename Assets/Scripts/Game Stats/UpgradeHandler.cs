@@ -10,7 +10,7 @@ public class UpgradeHandler : MonoBehaviour
 {
     public void LoadUpgrades(List<string> upgradeIds) {
         List<Upgrade> upgradesToLoad = new List<Upgrade>();
-        string upgradesFilepath = Directory.GetCurrentDirectory() + "\\Upgrades\\Upgrades.xml";
+        string upgradesFilepath = Directory.GetCurrentDirectory() + "\\xml\\Upgrades.xml";
 
         XDocument upgrades = XDocument.Load(upgradesFilepath);
 

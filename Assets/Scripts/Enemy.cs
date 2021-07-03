@@ -30,7 +30,7 @@ public abstract class Enemy : MonoBehaviour
 
     protected void LoadEnemy(string enemyId) {
         List<string> upgradeIds = new List<string>();
-        string upgradesFilepath = Directory.GetCurrentDirectory() + "\\Enemies\\Enemies.xml";
+        string upgradesFilepath = Directory.GetCurrentDirectory() + "\\xml\\Enemies.xml";
 
         XDocument upgrades = XDocument.Load(upgradesFilepath);
         if (upgrades != null && upgrades.Descendants("Enemy") != null) {

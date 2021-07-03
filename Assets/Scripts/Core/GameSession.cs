@@ -12,7 +12,7 @@ public class GameSession : MonoBehaviour
     [SerializeField] float levelResetWaitTime = 3f;
     [SerializeField] public int lives = 3;
     public int currentMaximumHealth = 100;
-    public int currentMaximumArmor = 50;
+    public int currentMaximumArmor = 0;
 
     public List<Upgrade> tempUpgrades;
     public List<Upgrade> permanentUpgrades;
