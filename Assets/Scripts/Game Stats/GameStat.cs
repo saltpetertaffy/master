@@ -1,24 +1,24 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class GameStat : MonoBehaviour {
-    private string gameStatId;
-    private float gameStatValue;
+public class GameStat : MonoBehaviour {
+    protected string id { get; set; }
+    protected string name { get; set; }
+    protected float currentValue { get; set; }
+    protected float maxValue { get; set; }
+    protected float decayAmount { get; set; } = 0f;
+    protected float decayRate { get; set; } = 0f;
+    protected float absorbRate { get; set; } = 0f;
 
-    public string GetGameStatId() {
-        return gameStatId;
-    }
+    private bool decays { get; set; } = false;
+    private bool absorbs { get; set; } = false;
 
-    public void SetGameStatId(string gameStatId) {
-        this.gameStatId = gameStatId;
-    }
-
-    public float GetGameStatValue() {
-        return gameStatValue;
-    }
-
-    public void SetGameStatValue(float value) {
-        gameStatValue = value;
+    public GameStat(string id, string name, bool decays = false, bool absorbs = false) {
+        this.id = id;
+        this.name = name;
+        this.decays = decays;
+        this.absorbs = absorbs;
     }
 }

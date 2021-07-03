@@ -7,16 +7,13 @@ using System.Xml.Linq;
 using System.Linq;
 
 public class MainCharacter : MonoBehaviour {
-    public float MoveSpeed { get; set; }
-    public float JumpVerticalSpeed { get; set; }
-    public float AttackSpeed { get; set; }
-    public float MidairReverseSpeed { get; set; }
+    GameStat[] stats;
 
     Ability activeAbility { get; set; }
     BoxCollider2D mainCharacterFeetCollider;
     Rigidbody2D mainCharacterRigidbody;
     EquippedAbilitySelector abilities;
-    UpgradeHandler upgradeHandler;
+    CharacterLoader characterLoader;
 
     float jumpXSpeed = 0;
     bool hasReversedInMidair = false;
@@ -24,7 +21,7 @@ public class MainCharacter : MonoBehaviour {
     bool canAttack = true;
 
     private void Awake() {
-        upgradeHandler = GetComponent<UpgradeHandler>();
+        characterLoader = GetComponent<CharacterLoader>();
         LoadMainCharacter();
     }
 
@@ -49,16 +46,20 @@ public class MainCharacter : MonoBehaviour {
     }
 
     private void LoadMainCharacter() {
+        List<string> statIds = new List<string>();
         List<string> upgradeIds = new List<string>();
-        string upgradesFilepath = Directory.GetCurrentDirectory() + "\\xml\\Main Character.xml";
+        string mainCharacterFilepath = Directory.GetCurrentDirectory() + "\\xml\\Main Character.xml";
 
-        XDocument upgrades = XDocument.Load(upgradesFilepath);
-        if (upgrades != null && upgrades.Descendants("MainCharacter") != null) {
-            upgradeIds = upgrades.Descendants("UpgradeId")
+        XDocument mainCharacterDocument = XDocument.Load(mainCharacterFilepath);
+        if (mainCharacterDocument != null && mainCharacterDocument.Descendants("MainCharacter") != null) {
+            upgradeIds = mainCharacterDocument.Descendants("UpgradeId")
                                  .Select(j => j.Attribute("id").Value)
                                  .ToList();
+            statIds = mainCharacterDocument.Descendants("Stat")
+                                 .Select(j => j.Attribute("statkey").Value)
+                                 .ToList();
         }
-        upgradeHandler.LoadUpgrades(upgradeIds);
+        characterLoader.LoadUpgrades(upgradeIds);
         Health health = GetComponent<Health>();
         health.CurrentHealth = health.MaximumHealth;
         Armor armor = GetComponent<Armor>();

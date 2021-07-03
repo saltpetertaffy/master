@@ -6,9 +6,48 @@ using System.Linq;
 using System.Xml.Linq;
 using UnityEngine;
 
-public class UpgradeHandler : MonoBehaviour
+public class CharacterLoader : MonoBehaviour
 {
-    public void LoadUpgrades(List<string> upgradeIds) {
+    public void LoadCharacter(string characterId) {
+        List<string> statIds = new List<string>();
+        List<string> upgradeIds = new List<string>();
+        string charactersFilepath = Directory.GetCurrentDirectory() + "\\xml\\Characters.xml";
+
+        XDocument charactersDocument = XDocument.Load(charactersFilepath);
+        if (charactersDocument == null) {
+            throw new FileNotFoundException("File not found: " + charactersFilepath);
+        }
+        IEnumerable<XElement> characterLoadData = charactersDocument.Descendants("Character")
+                                              .Where(j => j.Attribute("id").Value == characterId);
+        if (characterLoadData == null) {
+            throw new CharacterNotFoundException("Character not found, id: " + characterId);
+        }
+        statIds = characterLoadData.Descendants("Stat")
+                                   .Select(j => j.Attribute("statkey").Value)
+                                   .ToList();
+        upgradeIds = characterLoadData.Descendants("Character")
+                                       .Select(j => j.Attribute("id").Value)
+                                       .ToList();
+        
+
+        List<GameStat> gameStatsToLoad = new List<GameStat>();
+        string statsFilepath = Directory.GetCurrentDirectory() + "\\xml\\Stats.xml";
+
+        XDocument statsDocument = XDocument.Load(statsFilepath);
+        if (statsDocument == null) {
+            throw new FileNotFoundException("File not found: " + statsFilepath);
+        }
+        List<XElement> statsToLoadXml = statsDocument.Descendants("Stat")
+                                                     .Where(i => statIds.Contains(i.Attribute("statkey").Value))
+                                                     .ToList();
+        foreach (XElement statElement in statsToLoadXml) {
+            GameStat statToLoad = new GameStat(statElement.Attribute("statkey").Value, 
+                                               statElement.Element("Name").Value,
+                                               bool.Parse(statElement.Attribute("decays").Value),
+                                               bool.Parse(statElement.Attribute("absorbs").Value));
+            gameStatsToLoad.Add(statToLoad);
+        }
+
         List<Upgrade> upgradesToLoad = new List<Upgrade>();
         string upgradesFilepath = Directory.GetCurrentDirectory() + "\\xml\\Upgrades.xml";
 

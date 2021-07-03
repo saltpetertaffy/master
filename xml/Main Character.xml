@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <MainCharacter id="you">
+	<Stats>
+		<Stat statkey="LIFE"/>
+		<Stat statkey="ARMOR"/>
+		<Stat statkey="ARMOR_FREE"/>
+		<Stat statkey="MOVEMENT_MOVE_SPEED"/>
+		<Stat statkey="MOVEMENT_JUMP_SPEED"/>
+		<Stat statkey="MOVEMENT_MIDAIR_REVERSE_SPEED"/>
+		<Stat statkey="ATTACK_SPEED"/>
+	</Stats>
 	<UpgradeIds>
 		<UpgradeId id="base"/>
 		<UpgradeId id="addHealth1"/>

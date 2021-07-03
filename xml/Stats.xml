@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Stats>
+	<Stat statkey="LIFE">
+		<Name>Life</Name>
+		<Description>If this value reaches zero, the associated character dies.</Description>
+	</Stat>
+	<Stat statkey="ARMOR" decays="true" absorbs="true">
+		<Name>Armor</Name>
+		<Description>Divide damage taken by this value.</Description>
+	</Stat>
+	<Stat statkey="ARMOR_FREE">
+		<Name>Free Armor</Name>
+		<Description>Reduce damage taken by this amount.</Description>
+	</Stat>
+	<Stat statkey="MOVEMENT_MOVE_SPEED">
+		<Name>Move Speed</Name>
+		<Description>Character move speed in units per second.</Description>
+	</Stat>
+	<Stat statkey="MOVEMENT_JUMP_SPEED">
+		<Name>Jump Speed</Name>
+		<Description>Speed at the start of a jump in units per second.</Description>
+	</Stat>
+	<Stat statkey="MOVEMENT_MIDAIR_REVERSE_SPEED">
+		<Name>Midair Reverse Speed</Name>
+		<Description>Horizontal speed in midair if the character reverses direction in midair.</Description>
+	</Stat>
+	<Stat statkey="ATTACK_SPEED">
+		<Name>Attack Speed</Name>
+		<Description>Base attack speed. Do not use this for characters with attacks that depend on animation triggers.</Description>
+	</Stat>
+</Stats>

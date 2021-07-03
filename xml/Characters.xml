@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Characters>
+	<Character id="you">
+		<Name>Main Character</Name>
+		<Description>You.</Description>
+		<Stats>
+			<Stat statkey="LIFE"/>
+			<Stat statkey="ARMOR"/>
+			<Stat statkey="ARMOR_FREE"/>
+			<Stat statkey="MOVEMENT_MOVE_SPEED"/>
+			<Stat statkey="MOVEMENT_JUMP_SPEED"/>
+			<Stat statkey="MOVEMENT_MIDAIR_REVERSE_SPEED"/>
+			<Stat statkey="ATTACK_SPEED"/>
+		</Stats>
+		<UpgradeIds>
+			<UpgradeId id="base"/>
+			<UpgradeId id="addHealth1"/>
+			<UpgradeId id="multiplyHealth1"/>
+		</UpgradeIds>
+	</Character>
+	<Character id="worm1">
+		<Name>Worm</Name>
+		<Description>Stationary enemy that fires a ring of spinning shots towards you.</Description>
+		<UpgradeIds>
+			<UpgradeId id = "worm1Base"/>
+		</UpgradeIds>
+	</Character>
+</Characters>

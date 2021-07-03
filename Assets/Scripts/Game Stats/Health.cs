@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class Health : GameStat
 {
-    public float MaximumHealth { get; set; }
-    public float CurrentHealth { get; set; }
-
     [Header("Model")]
     [SerializeField] GameObject healthOwner;
 
@@ -21,10 +18,9 @@ public class Health : GameStat
         deathBehaviors = GetComponents<DeathBehavior>();
         debugOptions = FindObjectOfType<DebugOptions>();
         if (GetComponent<MainCharacter>()) {
-            MaximumHealth = FindObjectOfType<GameSession>().currentMaximumHealth;
+            maxValue = FindObjectOfType<GameSession>().currentMaximumHealth;
         }
-        CurrentHealth = MaximumHealth;
-        SetGameStatId(GameStats.STAT_HEALTH);
+        currentValue = maxValue;
     }
 
     private void Update() {

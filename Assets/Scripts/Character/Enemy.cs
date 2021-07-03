@@ -11,10 +11,10 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected GameObject attack;
     [SerializeField] protected GameObject attackPoint;
 
-    protected UpgradeHandler upgradeHandler;
+    protected CharacterLoader characterLoader;
 
     protected void Start() {
-        upgradeHandler = GetComponent<UpgradeHandler>();
+        characterLoader = GetComponent<CharacterLoader>();
         LoadEnemy(EnemyId);
     }
 
@@ -39,7 +39,7 @@ public abstract class Enemy : MonoBehaviour
                                                       .Select(j => j.Attribute("id").Value)
                                                       .ToList();
         }
-        upgradeHandler.LoadUpgrades(upgradeIds);
+        characterLoader.LoadUpgrades(upgradeIds);
 
         Health health = GetComponent<Health>();
         health.CurrentHealth = health.MaximumHealth;

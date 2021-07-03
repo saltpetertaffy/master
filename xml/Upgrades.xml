@@ -4,37 +4,34 @@
 		<Name>Base</Name>
 		<Description>The stats you have at the start of the game.</Description>
 		<Effects>
-			<UpgradeEffect statkey="Health" type="SET" value="100" />
-			<UpgradeEffect statkey="Armor" type="SET" value="50" />
-			<UpgradeEffect statkey="Armor Absorption" type="SET" value="5" />
-			<UpgradeEffect statkey="Armor Decay Amount" type="SET" value="5" />
-			<UpgradeEffect statkey="Armor Decay Rate" type="SET" value="1" />
-			<UpgradeEffect statkey="Free Armor" type="SET" value="10" />
-			<UpgradeEffect statkey="Movement Speed" type="SET" value="5" />
-			<UpgradeEffect statkey="Jump Speed" type="SET" value="12" />
-			<UpgradeEffect statkey="Attack Speed" type="SET" value="1" />
-			<UpgradeEffect statkey="Midair Reverse Speed" type="SET" value="2" />
+			<UpgradeEffect statkey="LIFE" type="SET" value="100" />
+			<UpgradeEffect statkey="ARMOR" type="SET" value="50" decayAmount="5" decayRate="1" absorption="5"/>
+			<UpgradeEffect statkey="ARMOR_FREE" type="SET" value="10" />
+			<UpgradeEffect statkey="MOVEMENT_MOVE_SPEED" type="SET" value="5" />
+			<UpgradeEffect statkey="MOVEMENT_JUMP_SPEED" type="SET" value="12" />
+			<UpgradeEffect statkey="MOVEMENT_MIDAIR_REVERSE_SPEED" type="SET" value="2" />
+			<UpgradeEffect statkey="ATTACK_SPEED" type="SET" value="1" />
 		</Effects>
 	</Upgrade>
 	<Upgrade id="worm1Base">
 		<Name>Worm Base</Name>
 		<Description>Base stats for the Worm.</Description>
 		<Effects>
-			<UpgradeEffect statkey="Health" type="SET" value="20"/>
+			<UpgradeEffect statkey="LIFE" type="SET" value="20"/>
 		</Effects>
 	</Upgrade>
 	<Upgrade id="addHealth1">
 		<Name>Health Increase 1</Name>
 		<Description>Increases base health by 20.</Description>
 		<Effects>
-			<UpgradeEffect statkey="Health" type="ADD" value="20" />
+			<UpgradeEffect statkey="LIFE" type="ADD" value="20" />
 		</Effects>
 	</Upgrade>
 	<Upgrade id = "multiplyHealth1">
 		<Name>Health Boost 1</Name>
 		<Description>Increases max health by 20%.</Description>
 		<Effects>
-			<UpgradeEffect statkey="Health" type="MULTIPLY" value="1.2"/>
+			<UpgradeEffect statkey="LIFE" type="MULTIPLY" value="1.2"/>
 		</Effects>
 	</Upgrade>
 </Upgrades>
