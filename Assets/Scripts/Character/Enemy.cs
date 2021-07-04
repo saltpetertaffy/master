@@ -5,18 +5,12 @@ using System.Linq;
 using System.Xml.Linq;
 using UnityEngine;
 
-public abstract class Enemy : MonoBehaviour
+public abstract class Enemy : Character
 {
-    [SerializeField] protected string EnemyId;
     [SerializeField] protected GameObject attack;
     [SerializeField] protected GameObject attackPoint;
 
     protected CharacterLoader characterLoader;
-
-    protected void Start() {
-        characterLoader = GetComponent<CharacterLoader>();
-        LoadEnemy(EnemyId);
-    }
 
     public GameObject GetAttack() {
         return attack;

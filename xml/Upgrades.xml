@@ -5,7 +5,10 @@
 		<Description>The stats you have at the start of the game.</Description>
 		<Effects>
 			<UpgradeEffect statkey="LIFE" type="SET" value="100" />
-			<UpgradeEffect statkey="ARMOR" type="SET" value="50" decayAmount="5" decayRate="1" absorption="5"/>
+			<UpgradeEffect statkey="ARMOR" type="SET" value="50" />
+			<UpgradeEffect statkey="ARMOR" type="SET_DECAY_AMOUNT" value="5" />
+			<UpgradeEffect statkey="ARMOR" type="SET_DECAY_RATE" value="1" />
+			<UpgradeEffect statkey="ARMOR" type="SET_ABSORPTION" absorption="5" />
 			<UpgradeEffect statkey="ARMOR_FREE" type="SET" value="10" />
 			<UpgradeEffect statkey="MOVEMENT_MOVE_SPEED" type="SET" value="5" />
 			<UpgradeEffect statkey="MOVEMENT_JUMP_SPEED" type="SET" value="12" />

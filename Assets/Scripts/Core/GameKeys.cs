@@ -48,20 +48,16 @@
 
     public static class UpgradeEffectTypes {
         public const string ADD = "ADD";
+        public const string ADD_DECAY_AMOUNT = "ADD_DECAY_AMOUNT";
+        public const string ADD_DECAY_RATE = "ADD_DECAY_RATE";
+        public const string ADD_ABSORPTION = "ADD_ABSORPTION";
         public const string MULTIPLY = "MULTIPLY";
+        public const string MULTIPLY_DECAY_AMOUNT = "MULTIPLY_DECAY_AMOUNT";
+        public const string MULTIPLY_DECAY_RATE = "MULTIPLY_DECAY_RATE";
+        public const string MULTIPLY_ABSORPTION = "MULTIPLY_ABSORPTION";
         public const string SET = "SET";
-    }
-
-    public static class GameStats {
-        public const string STAT_ARMOR = "Armor";
-        public const string STAT_ARMOR_ABSORPTION = "Armor Absorption";
-        public const string STAT_ARMOR_DECAY_AMOUNT = "Armor Decay Amount";
-        public const string STAT_ARMOR_DECAY_RATE = "Armor Decay Rate";
-        public const string STAT_ARMOR_FREE = "Free Armor";
-        public const string STAT_ATTACK_SPEED = "Attack Speed";
-        public const string STAT_HEALTH = "Health";
-        public const string STAT_JUMP_SPEED = "Jump Speed";
-        public const string STAT_MOVE_SPEED = "Movement Speed";
-        public const string STAT_MIDAIR_REVERSE_SPEED = "Midair Reverse Speed";
+        public const string SET_DECAY_AMOUNT = "SET_DECAY_AMOUNT";
+        public const string SET_DECAY_RATE = "SET_DECAY_RATE";
+        public const string SET_ABSORPTION = "SET_ABSORPTION";
     }
 }

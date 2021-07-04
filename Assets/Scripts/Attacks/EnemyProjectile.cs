@@ -5,15 +5,10 @@ using UnityEngine;
 
 public class EnemyProjectile : Projectile
 {
-    Health mainCharacterHealth;
-    Armor mainCharacterArmor;
-
     // Start is called before the first frame update
     void Start()
     {
         targetLayer = GameKeys.LAYER_HITBOX_KEY;
-        mainCharacterHealth = FindObjectOfType<MainCharacter>().GetComponentInChildren<Health>();
-        mainCharacterArmor = FindObjectOfType<MainCharacter>().GetComponentInChildren<Armor>();
     }
 
     // Update is called once per frame

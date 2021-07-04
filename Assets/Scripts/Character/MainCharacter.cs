@@ -6,9 +6,7 @@ using System.IO;
 using System.Xml.Linq;
 using System.Linq;
 
-public class MainCharacter : MonoBehaviour {
-    GameStat[] stats;
-
+public class MainCharacter : Character, IMortal {
     Ability activeAbility { get; set; }
     BoxCollider2D mainCharacterFeetCollider;
     Rigidbody2D mainCharacterRigidbody;
@@ -20,11 +18,6 @@ public class MainCharacter : MonoBehaviour {
     bool isTouchingGround = true;
     bool canAttack = true;
 
-    private void Awake() {
-        characterLoader = GetComponent<CharacterLoader>();
-        LoadMainCharacter();
-    }
-
     // Start is called before the first frame update
     void Start() {
         mainCharacterRigidbody = GetComponent<Rigidbody2D>();
@@ -35,6 +28,7 @@ public class MainCharacter : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        Die();
         if (!activeAbility) {
             activeAbility = abilities.GetActiveAbility();
         }
@@ -43,27 +37,6 @@ public class MainCharacter : MonoBehaviour {
         Jump();
         Attack();
         CycleAbility();
-    }
-
-    private void LoadMainCharacter() {
-        List<string> statIds = new List<string>();
-        List<string> upgradeIds = new List<string>();
-        string mainCharacterFilepath = Directory.GetCurrentDirectory() + "\\xml\\Main Character.xml";
-
-        XDocument mainCharacterDocument = XDocument.Load(mainCharacterFilepath);
-        if (mainCharacterDocument != null && mainCharacterDocument.Descendants("MainCharacter") != null) {
-            upgradeIds = mainCharacterDocument.Descendants("UpgradeId")
-                                 .Select(j => j.Attribute("id").Value)
-                                 .ToList();
-            statIds = mainCharacterDocument.Descendants("Stat")
-                                 .Select(j => j.Attribute("statkey").Value)
-                                 .ToList();
-        }
-        characterLoader.LoadUpgrades(upgradeIds);
-        Health health = GetComponent<Health>();
-        health.CurrentHealth = health.MaximumHealth;
-        Armor armor = GetComponent<Armor>();
-        armor.CurrentArmor = armor.MaximumArmor;
     }
 
     private void Move() {
@@ -75,10 +48,10 @@ public class MainCharacter : MonoBehaviour {
         bool isReversing = Mathf.Sign(xInput) != Mathf.Sign(jumpXSpeed) && Mathf.Abs(jumpXSpeed) > Mathf.Epsilon;
 
         if ((!isTouchingGround && isReversing) || hasReversedInMidair) {
-            selectedSpeed = MidairReverseSpeed;
+            selectedSpeed = GetGameStatByKey("MOVEMENT_MIDAIR_REVERSE_SPEED").GetCurrentValue();
             hasReversedInMidair = true;
         } else {
-            selectedSpeed = MoveSpeed;
+            selectedSpeed = GetGameStatByKey("MOVEMENT_MOVE_SPEED").GetCurrentValue();
         }
 
         float newX = Mathf.Sign(xInput) * selectedSpeed;
@@ -96,7 +69,7 @@ public class MainCharacter : MonoBehaviour {
             jumpXSpeed = mainCharacterRigidbody.velocity.x;
         }
 
-        Vector2 newVelocity = new Vector2(mainCharacterRigidbody.velocity.x, JumpVerticalSpeed);
+        Vector2 newVelocity = new Vector2(mainCharacterRigidbody.velocity.x, GetGameStatByKey("MOVEMENT_JUMP_SPEED").GetCurrentValue());
         mainCharacterRigidbody.velocity = newVelocity;
         
     }
@@ -128,7 +101,17 @@ public class MainCharacter : MonoBehaviour {
     }
 
     private IEnumerator DelayAttack() {
-        yield return new WaitForSeconds(AttackSpeed);
+        yield return new WaitForSeconds(GetGameStatByKey("MOVEMENT_ATTACK_SPEED").GetCurrentValue());
         canAttack = true;
+    }
+
+    public void Die() {
+        if (GetGameStatByKey("LIFE").GetCurrentValue() > 0) return;
+
+        FindObjectOfType<GameSession>().ProcessPlayerDeath(GetComponentInParent<MainCharacter>());
+        DeathBehavior[] deathBehaviors = GetComponents<DeathBehavior>();
+        foreach (DeathBehavior deathBehavior in deathBehaviors) {
+            deathBehavior.OnDeath();
+        }
     }
 }

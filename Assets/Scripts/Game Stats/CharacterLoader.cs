@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class CharacterLoader : MonoBehaviour
 {
-    public void LoadCharacter(string characterId) {
+    public List<KeyValuePair<string, GameStat>> LoadCharacter(string characterId) {
         List<string> statIds = new List<string>();
         List<string> upgradeIds = new List<string>();
         string charactersFilepath = Directory.GetCurrentDirectory() + "\\xml\\Characters.xml";
@@ -30,7 +30,7 @@ public class CharacterLoader : MonoBehaviour
                                        .ToList();
         
 
-        List<GameStat> gameStatsToLoad = new List<GameStat>();
+        List<KeyValuePair<string, GameStat>> gameStatsToLoad = new List<KeyValuePair<string, GameStat>>();
         string statsFilepath = Directory.GetCurrentDirectory() + "\\xml\\Stats.xml";
 
         XDocument statsDocument = XDocument.Load(statsFilepath);
@@ -45,7 +45,7 @@ public class CharacterLoader : MonoBehaviour
                                                statElement.Element("Name").Value,
                                                bool.Parse(statElement.Attribute("decays").Value),
                                                bool.Parse(statElement.Attribute("absorbs").Value));
-            gameStatsToLoad.Add(statToLoad);
+            gameStatsToLoad.Add(new KeyValuePair<string, GameStat>(statToLoad.GetStatKey(), statToLoad));
         }
 
         List<Upgrade> upgradesToLoad = new List<Upgrade>();
@@ -74,223 +74,153 @@ public class CharacterLoader : MonoBehaviour
                 upgradesToLoad.Add(upgradetoLoad);
             }
         }
-        ApplyUpgrades(upgradesToLoad);
+        ApplyUpgrades(gameStatsToLoad, upgradesToLoad);
+        return gameStatsToLoad;
     }
 
-    public void ApplyUpgrades(List<Upgrade> upgrades) {
+    public void ApplyUpgrades(List<KeyValuePair<string, GameStat>> gameStatsToLoad, List<Upgrade> upgrades) {
         if (upgrades.Count == 0) { return; }
 
-        List<UpgradeEffect> setUpgradeEffects = new List<UpgradeEffect>();
-        List<UpgradeEffect> addUpgradeEffects = new List<UpgradeEffect>();
-        List<UpgradeEffect> multiplyUpgradeEffects = new List<UpgradeEffect>();
+        List<UpgradeEffect> setEffects = new List<UpgradeEffect>();
+        List<UpgradeEffect> setDecayAmountEffects = new List<UpgradeEffect>();
+        List<UpgradeEffect> setDecayRateEffects = new List<UpgradeEffect>();
+        List<UpgradeEffect> setAbsorptionEffects = new List<UpgradeEffect>();
+        List<UpgradeEffect> addEffects = new List<UpgradeEffect>();
+        List<UpgradeEffect> addDecayAmountEffects = new List<UpgradeEffect>();
+        List<UpgradeEffect> addDecayRateEffects = new List<UpgradeEffect>();
+        List<UpgradeEffect> addAbsorptionEffects = new List<UpgradeEffect>();
+        List<UpgradeEffect> multiplyEffects = new List<UpgradeEffect>();
+        List<UpgradeEffect> multiplyDecayAmountEffects = new List<UpgradeEffect>();
+        List<UpgradeEffect> multiplyDecayRateEffects = new List<UpgradeEffect>();
+        List<UpgradeEffect> multiplyAbsorptionEffects = new List<UpgradeEffect>();
 
+        // enforce order of operations (set, add, multiply)
         foreach (Upgrade upgrade in upgrades) {
             foreach (UpgradeEffect effect in upgrade.Effects) {
-                switch (effect.UpgradeEffectType) {
+                switch (effect.upgradeEffectType) {
                     case UpgradeEffectTypes.SET:
-                        setUpgradeEffects.Add(effect);
+                        setEffects.Add(effect);
+                        break;
+                    case UpgradeEffectTypes.SET_DECAY_AMOUNT:
+                        setDecayAmountEffects.Add(effect);
+                        break;
+                    case UpgradeEffectTypes.SET_DECAY_RATE:
+                        setDecayRateEffects.Add(effect);
+                        break;
+                    case UpgradeEffectTypes.SET_ABSORPTION:
+                        setAbsorptionEffects.Add(effect);
                         break;
                     case UpgradeEffectTypes.ADD:
-                        addUpgradeEffects.Add(effect);
+                        addEffects.Add(effect);
+                        break;
+                    case UpgradeEffectTypes.ADD_DECAY_AMOUNT:
+                        addDecayAmountEffects.Add(effect);
+                        break;
+                    case UpgradeEffectTypes.ADD_DECAY_RATE:
+                        addDecayRateEffects.Add(effect);
+                        break;
+                    case UpgradeEffectTypes.ADD_ABSORPTION:
+                        addAbsorptionEffects.Add(effect);
                         break;
                     case UpgradeEffectTypes.MULTIPLY:
-                        multiplyUpgradeEffects.Add(effect);
+                        multiplyEffects.Add(effect);
+                        break;
+                    case UpgradeEffectTypes.MULTIPLY_DECAY_AMOUNT:
+                        multiplyDecayAmountEffects.Add(effect);
+                        break;
+                    case UpgradeEffectTypes.MULTIPLY_DECAY_RATE:
+                        multiplyDecayRateEffects.Add(effect);
+                        break;
+                    case UpgradeEffectTypes.MULTIPLY_ABSORPTION:
+                        multiplyAbsorptionEffects.Add(effect);
                         break;
                     default:
-                        throw new EffectNotFoundException("Effect type not found: " + effect.UpgradeEffectType);
+                        throw new EffectNotFoundException("Effect type not found: " + effect.upgradeEffectType);
                 }
             }
         }
 
-        // enforce order of operations (set, add, multiply)
-        foreach (UpgradeEffect effect in setUpgradeEffects) {
-            ApplySetEffect(effect);    
+        foreach (UpgradeEffect effect in setEffects) {
+            ApplyUpgradeEffect(gameStatsToLoad, effect);    
         }
-        foreach (UpgradeEffect effect in addUpgradeEffects) {
-            ApplyAddEffect(effect);
+        foreach (UpgradeEffect effect in setDecayAmountEffects) {
+            ApplyUpgradeEffect(gameStatsToLoad, effect);
         }
-        foreach (UpgradeEffect effect in multiplyUpgradeEffects) {
-            ApplyMultiplyEffect(effect);
+        foreach (UpgradeEffect effect in setDecayRateEffects) {
+            ApplyUpgradeEffect(gameStatsToLoad, effect);
         }
-    }
-
-    private void ApplySetEffect(UpgradeEffect effect) {
-        MainCharacter mainCharacter = GetComponent<MainCharacter>();
-        Health health = GetComponent<Health>();
-        Armor armor = GetComponent<Armor>();
-        switch (effect.GameStatKey) {
-            case GameStats.STAT_HEALTH:
-                if (health) {
-                    health.MaximumHealth = effect.Value;
-                }
-                break;
-            case GameStats.STAT_ARMOR:
-                if (armor)  {
-                    armor.MaximumArmor = effect.Value;
-                }
-                break;
-            case GameStats.STAT_ARMOR_ABSORPTION:
-                if (armor) {
-                    armor.ArmorAbsorption = effect.Value;
-                }
-                break;
-            case GameStats.STAT_ARMOR_DECAY_AMOUNT:
-                if (armor) {
-                    armor.ArmorDecayAmount = effect.Value;
-                }
-                break;
-            case GameStats.STAT_ARMOR_DECAY_RATE:
-                if (armor) {
-                    armor.ArmorDecayRate = effect.Value;
-                }
-                break;
-            case GameStats.STAT_ARMOR_FREE:
-                if (armor) {
-                    armor.FreeArmor = effect.Value;
-                }
-                break;
-            case GameStats.STAT_MOVE_SPEED:
-                if (mainCharacter) {
-                    mainCharacter.MoveSpeed = effect.Value;
-                }
-                break;
-            case GameStats.STAT_JUMP_SPEED:
-                if (mainCharacter) {
-                    mainCharacter.JumpVerticalSpeed = effect.Value;
-                }
-                break;
-            case GameStats.STAT_ATTACK_SPEED:
-                if (mainCharacter) {
-                    mainCharacter.AttackSpeed = effect.Value;
-                }
-                break;
-            case GameStats.STAT_MIDAIR_REVERSE_SPEED:
-                if (mainCharacter) {
-                    mainCharacter.MidairReverseSpeed = effect.Value;
-                }
-                break;
-            default:
-                throw new StatNotFoundException("Stat not found: " + effect.GameStatKey);
+        foreach (UpgradeEffect effect in setAbsorptionEffects) {
+            ApplyUpgradeEffect(gameStatsToLoad, effect);
+        }
+        foreach (UpgradeEffect effect in addEffects) {
+            ApplyUpgradeEffect(gameStatsToLoad, effect);
+        }
+        foreach (UpgradeEffect effect in addDecayAmountEffects) {
+            ApplyUpgradeEffect(gameStatsToLoad, effect);
+        }
+        foreach (UpgradeEffect effect in addDecayRateEffects) {
+            ApplyUpgradeEffect(gameStatsToLoad, effect);
+        }
+        foreach (UpgradeEffect effect in addAbsorptionEffects) {
+            ApplyUpgradeEffect(gameStatsToLoad, effect);
+        }
+        foreach (UpgradeEffect effect in multiplyEffects) {
+            ApplyUpgradeEffect(gameStatsToLoad, effect);
+        }
+        foreach (UpgradeEffect effect in multiplyDecayAmountEffects) {
+            ApplyUpgradeEffect(gameStatsToLoad, effect);
+        }
+        foreach (UpgradeEffect effect in multiplyDecayRateEffects) {
+            ApplyUpgradeEffect(gameStatsToLoad, effect);
+        }
+        foreach (UpgradeEffect effect in multiplyAbsorptionEffects) {
+            ApplyUpgradeEffect(gameStatsToLoad, effect);
         }
     }
 
-    private void ApplyAddEffect(UpgradeEffect effect) {
-        MainCharacter mainCharacter = GetComponent<MainCharacter>();
-        Health health = GetComponent<Health>();
-        Armor armor = GetComponent<Armor>();
-        switch (effect.GameStatKey) {
-            case GameStats.STAT_HEALTH:
-                if (health) {
-                    health.MaximumHealth += effect.Value;
+    private void ApplyUpgradeEffect(List<KeyValuePair<string, GameStat>> gameStats, UpgradeEffect effect) {
+        foreach (KeyValuePair<string, GameStat> statPair in gameStats) {
+            GameStat stat = statPair.Value;
+            if (stat.GetStatKey() == effect.gameStatKey) {
+                switch (effect.upgradeEffectType) {
+                    case UpgradeEffectTypes.SET:
+                        stat.SetCurrentValue(effect.value);
+                        return;
+                    case UpgradeEffectTypes.ADD:
+                        stat.SetCurrentValue(stat.GetCurrentValue() + effect.value);
+                        return;
+                    case UpgradeEffectTypes.MULTIPLY:
+                        stat.SetCurrentValue(stat.GetCurrentValue() * effect.value);
+                        return;
+                    case UpgradeEffectTypes.SET_DECAY_AMOUNT:
+                        stat.SetDecayAmount(effect.value);
+                        return;
+                    case UpgradeEffectTypes.ADD_DECAY_AMOUNT:
+                        stat.SetDecayAmount(stat.GetDecayAmount() + effect.value);
+                        return;
+                    case UpgradeEffectTypes.MULTIPLY_DECAY_AMOUNT:
+                        stat.SetDecayAmount(stat.GetDecayAmount() * effect.value);
+                        return;
+                    case UpgradeEffectTypes.SET_DECAY_RATE:
+                        stat.SetDecayRate(effect.value);
+                        return;
+                    case UpgradeEffectTypes.ADD_DECAY_RATE:
+                        stat.SetDecayRate(stat.GetDecayRate() + effect.value);
+                        return;
+                    case UpgradeEffectTypes.MULTIPLY_DECAY_RATE:
+                        stat.SetDecayRate(stat.GetDecayRate() * effect.value);
+                        return;
+                    case UpgradeEffectTypes.SET_ABSORPTION:
+                        stat.SetAbsorption(effect.value);
+                        return;
+                    case UpgradeEffectTypes.ADD_ABSORPTION:
+                        stat.SetAbsorption(stat.GetAbsorption() + effect.value);
+                        return;
+                    case UpgradeEffectTypes.MULTIPLY_ABSORPTION:
+                        stat.SetAbsorption(stat.GetAbsorption() * effect.value);
+                        return;
                 }
-                break;
-            case GameStats.STAT_ARMOR:
-                if (armor) {
-                    armor.MaximumArmor += effect.Value;
-                }
-                break;
-            case GameStats.STAT_ARMOR_ABSORPTION:
-                if (armor) {
-                    armor.ArmorAbsorption += effect.Value;
-                }
-                break;
-            case GameStats.STAT_ARMOR_DECAY_AMOUNT:
-                if (armor) {
-                    armor.ArmorDecayAmount += effect.Value;
-                }
-                break;
-            case GameStats.STAT_ARMOR_DECAY_RATE:
-                if (armor) {
-                    armor.ArmorDecayRate += effect.Value;
-                }
-                break;
-            case GameStats.STAT_ARMOR_FREE:
-                if (armor) {
-                    armor.FreeArmor += effect.Value;
-                }
-                break;
-            case GameStats.STAT_MOVE_SPEED:
-                if (mainCharacter) {
-                    mainCharacter.MoveSpeed += effect.Value;
-                }
-                break;
-            case GameStats.STAT_JUMP_SPEED:
-                if (mainCharacter) {
-                    mainCharacter.JumpVerticalSpeed += effect.Value;
-                }
-                break;
-            case GameStats.STAT_ATTACK_SPEED:
-                if (mainCharacter) {
-                    mainCharacter.AttackSpeed += effect.Value;
-                }
-                break;
-            case GameStats.STAT_MIDAIR_REVERSE_SPEED:
-                if (mainCharacter) {
-                    mainCharacter.MidairReverseSpeed += effect.Value;
-                }
-                break;
-            default:
-                throw new StatNotFoundException("Stat not found: " + effect.GameStatKey);
-        }
-    }
-
-    private void ApplyMultiplyEffect(UpgradeEffect effect) {
-        MainCharacter mainCharacter = GetComponent<MainCharacter>();
-        Health health = GetComponent<Health>();
-        Armor armor = GetComponent<Armor>();
-        switch (effect.GameStatKey) {
-            case GameStats.STAT_HEALTH:
-                if (health) {
-                    health.MaximumHealth *= effect.Value;
-                }
-                break;
-            case GameStats.STAT_ARMOR:
-                if (armor) {
-                    armor.MaximumArmor *= effect.Value;
-                }
-                break;
-            case GameStats.STAT_ARMOR_ABSORPTION:
-                if (armor) {
-                    armor.ArmorAbsorption *= effect.Value;
-                }
-                break;
-            case GameStats.STAT_ARMOR_DECAY_AMOUNT:
-                if (armor) {
-                    armor.ArmorDecayAmount *= effect.Value;
-                }
-                break;
-            case GameStats.STAT_ARMOR_DECAY_RATE:
-                if (armor) {
-                    armor.ArmorDecayRate *= effect.Value;
-                }
-                break;
-            case GameStats.STAT_ARMOR_FREE:
-                if (armor) {
-                    armor.FreeArmor *= effect.Value;
-                }
-                break;
-            case GameStats.STAT_MOVE_SPEED:
-                if (mainCharacter) {
-                    mainCharacter.MoveSpeed *= effect.Value;
-                }
-                break;
-            case GameStats.STAT_JUMP_SPEED:
-                if (mainCharacter) {
-                    mainCharacter.JumpVerticalSpeed *= effect.Value;
-                }
-                break;
-            case GameStats.STAT_ATTACK_SPEED:
-                if (mainCharacter) {
-                    mainCharacter.AttackSpeed *= effect.Value;
-                }
-                break;
-            case GameStats.STAT_MIDAIR_REVERSE_SPEED:
-                if (mainCharacter) {
-                    mainCharacter.MidairReverseSpeed *= effect.Value;
-                }
-                break;
-            default:
-                throw new StatNotFoundException("Stat not found: " + effect.GameStatKey);
+            }
         }
     }
 }

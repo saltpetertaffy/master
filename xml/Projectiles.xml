@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Projectiles>
+	<Projectile id="worm1Projectile">
+		<ProjectileEffect statkey="LIFE" effectType="ADD" value="-20"/>
+	</Projectile>
+</Projectiles>
