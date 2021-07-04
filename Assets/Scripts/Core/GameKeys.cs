@@ -46,7 +46,7 @@
         MOVEMENT
     }
 
-    public static class UpgradeEffectTypes {
+    public static class StatEffectTypes {
         public const string ADD = "ADD";
         public const string ADD_DECAY_AMOUNT = "ADD_DECAY_AMOUNT";
         public const string ADD_DECAY_RATE = "ADD_DECAY_RATE";

@@ -10,8 +10,6 @@ public abstract class Enemy : Character
     [SerializeField] protected GameObject attack;
     [SerializeField] protected GameObject attackPoint;
 
-    protected CharacterLoader characterLoader;
-
     public GameObject GetAttack() {
         return attack;
     }

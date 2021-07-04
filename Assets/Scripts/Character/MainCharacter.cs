@@ -11,7 +11,6 @@ public class MainCharacter : Character, IMortal {
     BoxCollider2D mainCharacterFeetCollider;
     Rigidbody2D mainCharacterRigidbody;
     EquippedAbilitySelector abilities;
-    CharacterLoader characterLoader;
 
     float jumpXSpeed = 0;
     bool hasReversedInMidair = false;
@@ -48,10 +47,10 @@ public class MainCharacter : Character, IMortal {
         bool isReversing = Mathf.Sign(xInput) != Mathf.Sign(jumpXSpeed) && Mathf.Abs(jumpXSpeed) > Mathf.Epsilon;
 
         if ((!isTouchingGround && isReversing) || hasReversedInMidair) {
-            selectedSpeed = GetGameStatByKey("MOVEMENT_MIDAIR_REVERSE_SPEED").GetCurrentValue();
+            selectedSpeed = gameStatHandler.GetGameStatByKey("MOVEMENT_MIDAIR_REVERSE_SPEED").GetCurrentValue();
             hasReversedInMidair = true;
         } else {
-            selectedSpeed = GetGameStatByKey("MOVEMENT_MOVE_SPEED").GetCurrentValue();
+            selectedSpeed = gameStatHandler.GetGameStatByKey("MOVEMENT_MOVE_SPEED").GetCurrentValue();
         }
 
         float newX = Mathf.Sign(xInput) * selectedSpeed;
@@ -69,7 +68,7 @@ public class MainCharacter : Character, IMortal {
             jumpXSpeed = mainCharacterRigidbody.velocity.x;
         }
 
-        Vector2 newVelocity = new Vector2(mainCharacterRigidbody.velocity.x, GetGameStatByKey("MOVEMENT_JUMP_SPEED").GetCurrentValue());
+        Vector2 newVelocity = new Vector2(mainCharacterRigidbody.velocity.x, gameStatHandler.GetGameStatByKey("MOVEMENT_JUMP_SPEED").GetCurrentValue());
         mainCharacterRigidbody.velocity = newVelocity;
         
     }
@@ -101,12 +100,12 @@ public class MainCharacter : Character, IMortal {
     }
 
     private IEnumerator DelayAttack() {
-        yield return new WaitForSeconds(GetGameStatByKey("MOVEMENT_ATTACK_SPEED").GetCurrentValue());
+        yield return new WaitForSeconds(gameStatHandler.GetGameStatByKey("MOVEMENT_ATTACK_SPEED").GetCurrentValue());
         canAttack = true;
     }
 
     public void Die() {
-        if (GetGameStatByKey("LIFE").GetCurrentValue() > 0) return;
+        if (gameStatHandler.GetGameStatByKey("LIFE").GetCurrentValue() > 0) return;
 
         FindObjectOfType<GameSession>().ProcessPlayerDeath(GetComponentInParent<MainCharacter>());
         DeathBehavior[] deathBehaviors = GetComponents<DeathBehavior>();

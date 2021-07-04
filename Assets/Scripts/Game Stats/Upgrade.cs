@@ -9,9 +9,9 @@ public class Upgrade {
     public string Name { get; set; }
     public string Description { get; set; }
     public float Duration { get; set; }
-    public List<UpgradeEffect> Effects { get; set; }
+    public List<StatEffect> Effects { get; set; }
 
-    public Upgrade(string id, string name, string description, float duration, List<UpgradeEffect> effects) {
+    public Upgrade(string id, string name, string description, float duration, List<StatEffect> effects) {
         Id = id;
         Name = name;
         Description = description;
@@ -21,7 +21,7 @@ public class Upgrade {
 
     public override string ToString() {
         string effectsString = "Effects:\n";
-        foreach(UpgradeEffect effect in Effects) {
+        foreach(StatEffect effect in Effects) {
             effectsString += "-Stat: " + effect.GameStatKey + "\n--Type: " + effect.UpgradeEffectType + "\n--Value: " + effect.Value + "\n";
         }
 

@@ -7,23 +7,63 @@ using System.Collections.Generic;
 
 public class GameStatHandler : MonoBehaviour
 {
-    TextEmitter textEmitter = null;
-    List<string> gameStatKeys;
+    List<KeyValuePair<string, GameStat>> gameStats;
 
-    private void Awake() {
-        textEmitter = FindObjectOfType<TextEmitter>();
-        GetAllStatKeys();
+    public List<KeyValuePair<string, GameStat>> GetGameStats() {
+        return gameStats;
     }
 
-    private void GetAllStatKeys() {
-        string statsFilepath = Directory.GetCurrentDirectory() + "\\xml\\Stats.xml";
+    public void SetGameStats(List<KeyValuePair<string, GameStat>> stats) {
+        this.gameStats = stats;
+    }
 
-        XDocument statsDocument = XDocument.Load(statsFilepath);
-        if (statsDocument == null) {
-            throw new FileNotFoundException("File not found: " + statsFilepath);
+    public GameStat GetGameStatByKey(string key) {
+        return gameStats.SingleOrDefault(j => j.Key == key).Value;
+    }
+
+    public void ModifyStat(StatEffect effect) {
+        foreach (KeyValuePair<string, GameStat> statPair in gameStats) {
+            GameStat stat = statPair.Value;
+            if (stat.GetStatKey() == effect.gameStatKey) {
+                switch (effect.effectType) {
+                    case StatEffectTypes.SET:
+                        stat.SetCurrentValue(effect.value);
+                        return;
+                    case StatEffectTypes.ADD:
+                        stat.SetCurrentValue(stat.GetCurrentValue() + effect.value);
+                        return;
+                    case StatEffectTypes.MULTIPLY:
+                        stat.SetCurrentValue(stat.GetCurrentValue() * effect.value);
+                        return;
+                    case StatEffectTypes.SET_DECAY_AMOUNT:
+                        stat.SetDecayAmount(effect.value);
+                        return;
+                    case StatEffectTypes.ADD_DECAY_AMOUNT:
+                        stat.SetDecayAmount(stat.GetDecayAmount() + effect.value);
+                        return;
+                    case StatEffectTypes.MULTIPLY_DECAY_AMOUNT:
+                        stat.SetDecayAmount(stat.GetDecayAmount() * effect.value);
+                        return;
+                    case StatEffectTypes.SET_DECAY_RATE:
+                        stat.SetDecayRate(effect.value);
+                        return;
+                    case StatEffectTypes.ADD_DECAY_RATE:
+                        stat.SetDecayRate(stat.GetDecayRate() + effect.value);
+                        return;
+                    case StatEffectTypes.MULTIPLY_DECAY_RATE:
+                        stat.SetDecayRate(stat.GetDecayRate() * effect.value);
+                        return;
+                    case StatEffectTypes.SET_ABSORPTION:
+                        stat.SetAbsorption(effect.value);
+                        return;
+                    case StatEffectTypes.ADD_ABSORPTION:
+                        stat.SetAbsorption(stat.GetAbsorption() + effect.value);
+                        return;
+                    case StatEffectTypes.MULTIPLY_ABSORPTION:
+                        stat.SetAbsorption(stat.GetAbsorption() * effect.value);
+                        return;
+                }
+            }
         }
-        gameStatKeys = statsDocument.Descendants("Stat")
-                                    .Select(j => j.Attribute("statkey").Value)
-                                    .ToList();
     }
 }

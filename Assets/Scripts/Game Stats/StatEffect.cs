@@ -1,15 +1,15 @@
 ﻿using GameConstants;
 using UnityEngine;
 
-public class UpgradeEffect
+public class StatEffect
 {
     public string gameStatKey;
-    public string upgradeEffectType;
+    public string effectType;
     public float value;
     
-    public UpgradeEffect (string statKey, string type, float value) {
+    public StatEffect (string statKey, string type, float value) {
         this.gameStatKey = statKey;
-        this.upgradeEffectType = type;
+        this.effectType = type;
         this.value = value;
     }
 }

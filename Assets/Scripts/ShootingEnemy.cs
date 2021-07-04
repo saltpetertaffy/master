@@ -19,7 +19,6 @@ public class ShootingEnemy : Enemy
         if (!attackRigidbody) {
             Debug.LogError("No rigidbody found on attack, did you forget to give the enemy an attack?");
         }
-        base.Start();
     }
 
     public override void Attack() {
