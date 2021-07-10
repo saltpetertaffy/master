@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EffectSets>
+	<!-- Upgrades -->
+	
+	<EffectSet id="upgrade_base">
+		<Name>Base</Name>
+		<Description>The stats you have at the start of the game.</Description>
+		<Effects>
+			<Effect statkey="LIFE" type="SET" value="100" />
+			<Effect statkey="ARMOR" type="SET" value="50" />
+			<Effect statkey="ARMOR" type="SET_DECAY_AMOUNT" value="5" />
+			<Effect statkey="ARMOR" type="SET_DECAY_RATE" value="1" />
+			<Effect statkey="ARMOR" type="SET_ABSORPTION" value="5" />
+			<Effect statkey="ARMOR_FREE" type="SET" value="10" />
+			<Effect statkey="MOVEMENT_MOVE_SPEED" type="SET" value="5" />
+			<Effect statkey="MOVEMENT_JUMP_SPEED" type="SET" value="12" />
+			<Effect statkey="MOVEMENT_MIDAIR_REVERSE_SPEED" type="SET" value="2" />
+			<Effect statkey="ATTACK_SPEED" type="SET" value="1" />
+		</Effects>
+	</EffectSet>
+	<EffectSet id="upgrade_worm1Base">
+		<Name>Worm Base</Name>
+		<Description>Base stats for the Worm.</Description>
+		<Effects>
+			<Effect statkey="LIFE" type="SET" value="20"/>
+		</Effects>
+	</EffectSet>
+	<EffectSet id="upgrade_addHealth1">
+		<Name>Health Increase 1</Name>
+		<Description>Increases base health by 20.</Description>
+		<Effects>
+			<Effect statkey="LIFE" type="ADD" value="20" />
+		</Effects>
+	</EffectSet>
+	<EffectSet id = "upgrade_multiplyHealth1">
+		<Name>Health Boost 1</Name>
+		<Description>Increases max health by 20%.</Description>
+		<Effects>
+			<Effect statkey="LIFE" type="MULTIPLY" value="1.2"/>
+		</Effects>
+	</EffectSet>
+	
+	<!-- Attacks -->
+	
+	<EffectSet id="attack_worm1Projectile">
+		<Effect statkey="LIFE" effectType="ADD" value="-20"/>
+	</EffectSet>
+</EffectSets>

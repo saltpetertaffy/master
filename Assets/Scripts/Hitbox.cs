@@ -10,8 +10,8 @@ public class Hitbox : MonoBehaviour
         gameStatHandler = GetComponentInParent<GameStatHandler>();
     }
 
-    public void HandleHit(StatEffect[] projectileEffects) {
-        foreach (StatEffect effect in projectileEffects) {
+    public void HandleHit(EffectSet projectileEffectSet) {
+        foreach (StatEffect effect in projectileEffectSet.effects) {
             gameStatHandler.ModifyStat(effect);
         }
     }

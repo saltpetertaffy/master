@@ -10,10 +10,10 @@ public class Character : MonoBehaviour
 {
     [SerializeField] public string characterId;
 
-    protected GameStatHandler gameStatHandler;
+    public GameStatHandler gameStatHandler;
 
     private void Awake() {
-        gameStatHandler = GetComponent<GameStatHandler>();
+        gameStatHandler = new GameStatHandler();
         LoadCharacter();
     }
 
@@ -56,7 +56,7 @@ public class Character : MonoBehaviour
             gameStatsToLoad.Add(new KeyValuePair<string, GameStat>(statToLoad.GetStatKey(), statToLoad));
         }
 
-        List<Upgrade> upgradesToLoad = new List<Upgrade>();
+        List<EffectSet> upgradesToLoad = new List<EffectSet>();
         string upgradesFilepath = Directory.GetCurrentDirectory() + "\\xml\\Upgrades.xml";
 
         XDocument upgrades = XDocument.Load(upgradesFilepath);
@@ -67,14 +67,14 @@ public class Character : MonoBehaviour
                                             .ToList();
             foreach (XElement upgradeElement in upgradesToLoadXml) {
                 List<StatEffect> effects = new List<StatEffect>();
-                foreach (XElement effectElement in upgradeElement.Descendants("UpgradeEffect").ToList()) {
+                foreach (XElement effectElement in upgradeElement.Descendants("Effect").ToList()) {
                     StatEffect effectToLoad = new StatEffect(effectElement.Attribute("statkey").Value,
                                                                    effectElement.Attribute("type").Value,
                                                                    float.Parse(effectElement.Attribute("value").Value));
                     effects.Add(effectToLoad);
                 }
 
-                Upgrade upgradetoLoad = new Upgrade(upgradeElement.Attribute("id").Value,
+                EffectSet upgradetoLoad = new EffectSet(upgradeElement.Attribute("id").Value,
                                                     upgradeElement.Element("Name").Value,
                                                     upgradeElement.Element("Description").Value,
                                                     0f,
@@ -85,7 +85,7 @@ public class Character : MonoBehaviour
         ApplyUpgrades(gameStatsToLoad, upgradesToLoad);
     }
 
-    public void ApplyUpgrades(List<KeyValuePair<string, GameStat>> gameStatsToLoad, List<Upgrade> upgrades) {
+    public void ApplyUpgrades(List<KeyValuePair<string, GameStat>> gameStatsToLoad, List<EffectSet> upgrades) {
         if (upgrades.Count == 0) { return; }
 
         List<StatEffect> setEffects = new List<StatEffect>();
@@ -102,7 +102,7 @@ public class Character : MonoBehaviour
         List<StatEffect> multiplyAbsorptionEffects = new List<StatEffect>();
 
         // enforce order of operations (set, add, multiply)
-        foreach (Upgrade upgrade in upgrades) {
+        foreach (EffectSet upgrade in upgrades) {
             foreach (StatEffect effect in upgrade.Effects) {
                 switch (effect.effectType) {
                     case StatEffectTypes.SET:

@@ -5,12 +5,15 @@ using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 
-public class GameStatHandler : MonoBehaviour
+public class GameStatHandler
 {
-    List<KeyValuePair<string, GameStat>> gameStats;
+    private List<KeyValuePair<string, GameStat>> gameStats;
 
     public List<KeyValuePair<string, GameStat>> GetGameStats() {
         return gameStats;
+    }
+    public void AddStat(GameStat stat) {
+        gameStats.Add(new KeyValuePair<string, GameStat>(stat.GetStatKey(), stat));
     }
 
     public void SetGameStats(List<KeyValuePair<string, GameStat>> stats) {

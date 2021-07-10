@@ -5,24 +5,27 @@
 		<Description>You.</Description>
 		<Stats>
 			<Stat statkey="LIFE"/>
-			<Stat statkey="ARMOR"/>
+			<Stat statkey="ARMOR" decays="true" absorbs="true"/>
 			<Stat statkey="ARMOR_FREE"/>
 			<Stat statkey="MOVEMENT_MOVE_SPEED"/>
 			<Stat statkey="MOVEMENT_JUMP_SPEED"/>
 			<Stat statkey="MOVEMENT_MIDAIR_REVERSE_SPEED"/>
 			<Stat statkey="ATTACK_SPEED"/>
 		</Stats>
-		<UpgradeIds>
-			<UpgradeId id="base"/>
-			<UpgradeId id="addHealth1"/>
-			<UpgradeId id="multiplyHealth1"/>
-		</UpgradeIds>
+		<Upgrades>
+			<Upgrade id="base"/>
+			<Upgrade id="addHealth1"/>
+			<Upgrade id="multiplyHealth1"/>
+		</Upgrades>
 	</Character>
 	<Character id="worm1">
 		<Name>Worm</Name>
-		<Description>Stationary enemy that fires a ring of spinning shots towards you.</Description>
-		<UpgradeIds>
-			<UpgradeId id = "worm1Base"/>
-		</UpgradeIds>
+		<Description>Stationary enemy that fires a spinning ring of shots towards you.</Description>
+		<Stats>
+			<Stat statkey="LIFE"/>
+		</Stats>
+		<Upgrades>
+			<Upgrade id = "worm1Base"/>
+		</Upgrades>
 	</Character>
 </Characters>

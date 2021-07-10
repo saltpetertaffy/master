@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameStat : MonoBehaviour {
+public class GameStat {
     protected string statKey;
     protected string statName;
-    protected float currentValue;
-    protected float maxValue;
+    protected float currentValue = 0f;
+    protected float maxValue = 0f;
     protected float decayAmount = 0f;
     protected float decayRate = 0f;
     protected float absorption = 0f;
@@ -15,15 +15,22 @@ public class GameStat : MonoBehaviour {
     protected bool decays = false;
     protected bool absorbs = false;
 
-    public GameStat(string statKey, string name, bool decays = false, bool absorbs = false) {
+    protected Color anticolor = Color.black;
+    protected Color procolor = Color.black;
+
+    protected string[] damageReducedBy;
+    protected string[] damageBlockedBy;
+
+    public GameStat(string statKey, string name) {
         this.statKey = statKey;
-        this.name = name;
-        this.decays = decays;
-        this.absorbs = absorbs;
+        this.statName = name;
     }
 
     public string GetStatKey() {
         return statKey;
+    }
+    public string GetStatName() {
+        return statName;
     }
     public float GetCurrentValue() {
         return currentValue;
@@ -37,6 +44,24 @@ public class GameStat : MonoBehaviour {
     public float GetAbsorption() {
         return absorption;
     }
+    public bool Decays() {
+        return decays;
+    }
+    public bool Absorbs() {
+        return absorbs;
+    }
+    public Color GetAnticolor() {
+        return anticolor;
+    }
+    public Color GetProcolor() {
+        return procolor;
+    }
+    public string[] GetDamageReducedBy() {
+        return damageReducedBy;
+    }
+    public string[] GetDamageBlockedBy() {
+        return damageBlockedBy;
+    }
     public void SetCurrentValue(float value) {
         this.currentValue = value;
     }
@@ -48,5 +73,23 @@ public class GameStat : MonoBehaviour {
     }
     public void SetAbsorption(float value) {
         this.absorption = value;
+    }
+    public void SetDamageReducedBy(string[] damageReducedBy) {
+        this.damageReducedBy = damageReducedBy;
+    }
+    public void SetDamageBlockedBy(string[] damageBlockedBy) {
+        this.damageBlockedBy = damageBlockedBy;
+    }
+    public void SetDecays(bool decays) {
+        this.decays = decays;
+    }
+    public void SetAbsorbs(bool absorbs) {
+        this.absorbs = absorbs;
+    }
+    public void SetAnticolor(Color anticolor) {
+        this.anticolor = anticolor;
+    }
+    public void SetProcolor(Color procolor) {
+        this.procolor = procolor;
     }
 }

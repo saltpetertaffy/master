@@ -4,9 +4,8 @@ using System.IO;
 using System.Xml.Linq;
 using UnityEngine;
 
-public abstract class Attack : MonoBehaviour
+public abstract class Attack : EffectSet 
 {
-    [SerializeField] public string id;
     protected Collider2D attackCollider;
     protected GameStatHandler gameStatHandler;
     protected string targetLayer;

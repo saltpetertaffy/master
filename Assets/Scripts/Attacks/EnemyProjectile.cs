@@ -20,18 +20,8 @@ public class EnemyProjectile : Projectile
     private Color GenerateProjectileColor() {
         int totalDamage = 0;
 
-        foreach (GameStatEffect projectileEffect in attackEffects) {
-            switch (projectileEffect.GetGameStatEffectId()) {
-                case (int) GameStatEffects.DAMAGE:
-                    totalDamage += Mathf.RoundToInt(projectileEffect.GetValue());
-                    break;
-                case (int) GameStatEffects.DAMAGE_PERCENT_MAX:
-                    totalDamage += Mathf.RoundToInt(projectileEffect.GetValue() * mainCharacterHealth.MaximumHealth);
-                    break;
-                case (int) GameStatEffects.DAMAGE_PERCENT_REMAINING:
-                    totalDamage += Mathf.RoundToInt(projectileEffect.GetValue() * mainCharacterHealth.CurrentHealth);
-                    break;
-            }
+        foreach (StatEffect projectileEffect in effects) {
+            
         }
         totalDamage = (int) (totalDamage * (1 - mainCharacterArmor.CurrentArmor / 100) - mainCharacterArmor.FreeArmor);
 

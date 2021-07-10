@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Attacks>
 	<Attack id="worm1Projectile">
-		<AttackEffect statkey="LIFE" effectType="ADD" value="-20"/>
+		<Effect statkey="LIFE" effectType="ADD" value="-20"/>
 	</Attack>
 </Attacks>

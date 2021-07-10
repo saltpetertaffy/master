@@ -14,8 +14,8 @@ public class GameSession : MonoBehaviour
     public int currentMaximumHealth = 100;
     public int currentMaximumArmor = 0;
 
-    public List<Upgrade> tempUpgrades;
-    public List<Upgrade> permanentUpgrades;
+    public List<EffectSet> tempUpgrades;
+    public List<EffectSet> permanentUpgrades;
 
     SceneLoader sceneLoader;
 

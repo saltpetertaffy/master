@@ -3,8 +3,11 @@
 	<Stat statkey="LIFE">
 		<Name>Life</Name>
 		<Description>If this value reaches zero, the associated character dies.</Description>
+		<Anticolor r="1f" g="0f" b="0f"/>
+		<Procolor r="0f" g="0f" b="1f"/>
+		<Interactions damagereducedby="ARMOR" damageblockedby="ARMOR_FREE"/>
 	</Stat>
-	<Stat statkey="ARMOR" decays="true" absorbs="true">
+	<Stat statkey="ARMOR">
 		<Name>Armor</Name>
 		<Description>Divide damage taken by this value.</Description>
 	</Stat>
