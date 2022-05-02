@@ -1649,12 +1649,12 @@ PrefabInstance:
     - target: {fileID: 2349175941858947237, guid: 9b91791e48c9e544eb5fa3959c4a25ab,
         type: 3}
       propertyPath: godMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2349175941858947237, guid: 9b91791e48c9e544eb5fa3959c4a25ab,
         type: 3}
       propertyPath: demilitarizedEnemies
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2349175941858947238, guid: 9b91791e48c9e544eb5fa3959c4a25ab,
         type: 3}
